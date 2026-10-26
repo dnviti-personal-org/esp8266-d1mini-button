@@ -119,7 +119,7 @@ big key cap is centred on the lid. The LiPo lies on the enclosure floor
 | BT1 LiPo | (35.0, 25.0) **under the board** | 40 (X) × 30 (Y) × 8 | taped to the floor |
 | Mounting holes | (3,3) (67,3) (3,47) (67,47) | Ø2.2 | drill if the board has none |
 
-Tallest parts above the perfboard top surface: U1 stack ≈ 7.0 mm (header
+Solder pins protrude ≈ 1.5 mm below the perfboard. Tallest parts above the perfboard top surface: U1 stack ≈ 7.0 mm (header
 2.5 + PCB 1.0 + shield/USB 3.5), M1 ≈ 6.8 (header 2.5 + PCB 1.0 + USB-C 3.3),
 J2 header ≈ 8 mm, SW1 actuator top 7.3 mm. micro-USB receptacle centre ≈ 5.2 mm
 above the perfboard at x = 15.8 on the y = 0 edge; USB-C receptacle centre
@@ -134,23 +134,23 @@ edges, rubber feet so the box does not slide when pressed.
 - Three parts: **base** (floor + walls + 4 PCB standoffs + 4 lid screw bosses
   + 4 rubber-foot recesses), **lid** (round hole for the key cap, microphone
   pocket, charge-LED window), **key cap / plunger**.
-- Cavity: **80 × 56 × 23 mm** (6 mm taller than rev. A for the LiPo under the
-  board). The perfboard (70 × 50) sits at cavity offset (5, 3): x 5 → 75,
-  y 3 → 53. Walls 2 mm, floor 2 mm, lid 2 mm ⇒ outer **84 × 60 × 27 mm**.
+- Cavity: **80 × 56 × 24 mm** (7 mm taller than rev. A for the LiPo under the
+  board: 8 mm cell + 1.5 mm solder pins under the perfboard + 1.5 mm air). The perfboard (70 × 50) sits at cavity offset (5, 3): x 5 → 75,
+  y 3 → 53. Walls 2 mm, floor 2 mm, lid 2 mm ⇒ outer **84 × 60 × 28 mm**.
   Outer vertical edges rounded r = 4 mm, bottom and lid-top edges r = 1.5 mm.
-- PCB standoffs: Ø5 mm × **10 mm** tall, Ø1.6 mm pilot hole, at cavity
+- PCB standoffs: Ø5 mm × **11 mm** tall, Ø1.6 mm pilot hole, at cavity
   (8, 6), (72, 6), (8, 50), (72, 50). The LiPo (40 × 30 × 8) lies on the floor
   between them, centred at cavity (40, 28).
 - Lid bosses: Ø6 mm in the four inner corners (centres 3 mm from each wall),
   full cavity height, Ø2.0 mm pilot holes for M2.5 self-tapping screws; the
   lid has matching Ø2.8 mm countersunk holes.
 - Programming USB slot through the **y = 0 wall**: 12 mm wide × 7 mm tall,
-  centre at cavity x = 20.8, z = 16.7 above the inner floor (10 standoff +
+  centre at cavity x = 20.8, z = 17.7 above the inner floor (11 standoff +
   1.6 perfboard + 5.2).
 - Charging USB-C slot through the **y = 0 wall**: 10 mm wide × 5 mm tall,
-  centre at cavity x = 57.5, z = 16.7.
+  centre at cavity x = 57.5, z = 17.7.
 - Slide-switch slot through the **x = 80 wall**: 8 mm wide (along y) × 3.5 mm
-  tall, centre at cavity y = 39, z ≈ 13.8 above the inner floor.
+  tall, centre at cavity y = 39, z ≈ 14.8 above the inner floor.
 - Rubber-foot recesses under the floor: Ø8 × 0.8 mm, 6 mm in from each corner.
 - Key-cap hole in the lid: **Ø52.6 mm**, centred at cavity (40, 28) — the lid
   centre.
@@ -165,8 +165,8 @@ edges, rubber feet so the box does not slide when pressed.
 - Key cap: Ø52 mm, domed top (spherical dome rising 4 mm over a 4 mm tall
   cylindrical rim = 8 mm proud of the lid at rest), retaining flange Ø55 × 1.5
   mm under the lid, central stem Ø8 reaching the tactile switch actuator
-  (actuator top 18.9 mm above the inner floor, lid underside at 23 mm, flange
-  1.5 mm ⇒ stem ≈ 2.3 mm below the flange, tip at 19.2 mm, 0.3 mm play).
+  (actuator top 19.9 mm above the inner floor, lid underside at 24 mm, flange
+  1.5 mm ⇒ stem ≈ 2.3 mm below the flange, tip at 20.2 mm, 0.3 mm play).
   Radial clearance 0.3 mm in the lid hole; the 2 mm thick lid is the guide.
   Travel ≈ 0.5 mm; the tactile switch is the return spring. Inserted from
   inside before closing the lid. Print the cap in a bright contrasting colour

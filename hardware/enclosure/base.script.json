@@ -36,7 +36,7 @@
    "command": "parameters.add",
    "params": {
     "name": "cav_z",
-    "expression": "23 mm",
+    "expression": "24 mm",
     "comment": "cavity height (inner floor to lid underside)"
    }
   },
@@ -67,7 +67,7 @@
    "command": "parameters.add",
    "params": {
     "name": "standoff_h",
-    "expression": "10 mm"
+    "expression": "11 mm"
    }
   },
   {
@@ -104,7 +104,7 @@
    "command": "parameters.add",
    "params": {
     "name": "usb_z",
-    "expression": "16.7 mm",
+    "expression": "17.7 mm",
     "comment": "USB slot centre above inner floor"
    }
   },
@@ -136,7 +136,7 @@
    "command": "parameters.add",
    "params": {
     "name": "usbc_z",
-    "expression": "16.7 mm",
+    "expression": "17.7 mm",
     "comment": "charging USB-C slot centre above inner floor"
    }
   },
@@ -166,7 +166,7 @@
    "command": "parameters.add",
    "params": {
     "name": "sw_z",
-    "expression": "13.8 mm",
+    "expression": "14.8 mm",
     "comment": "slide switch slot centre above inner floor"
    }
   },
@@ -377,7 +377,7 @@
     "position": [
      5,
      5,
-     25
+     26
     ],
     "diameter": "2 mm",
     "depth": "9 mm",
@@ -390,7 +390,7 @@
     "position": [
      79,
      5,
-     25
+     26
     ],
     "diameter": "2 mm",
     "depth": "9 mm",
@@ -403,7 +403,7 @@
     "position": [
      5,
      55,
-     25
+     26
     ],
     "diameter": "2 mm",
     "depth": "9 mm",
@@ -416,7 +416,7 @@
     "position": [
      79,
      55,
-     25
+     26
     ],
     "diameter": "2 mm",
     "depth": "9 mm",
@@ -497,7 +497,7 @@
     "position": [
      10,
      8,
-     12
+     13
     ],
     "diameter": "1.6 mm",
     "depth": "6 mm",
@@ -510,7 +510,7 @@
     "position": [
      74,
      8,
-     12
+     13
     ],
     "diameter": "1.6 mm",
     "depth": "6 mm",
@@ -523,7 +523,7 @@
     "position": [
      10,
      52,
-     12
+     13
     ],
     "diameter": "1.6 mm",
     "depth": "6 mm",
@@ -536,7 +536,7 @@
     "position": [
      74,
      52,
-     12
+     13
     ],
     "diameter": "1.6 mm",
     "depth": "6 mm",

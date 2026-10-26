@@ -1,4 +1,4 @@
-# Enclosure (rev. B.1) — 3D-printed box for the ESP8266 D1 mini button
+# Enclosure (rev. B.2) — 3D-printed box for the ESP8266 D1 mini button
 
 Parametric CAD built with **SolidCraft** (`solidcraft-cli`) from the JSON scripts
 in this folder. Dimensions follow `../DESIGN.md` §6 (hardware revision B.1: LiPo
@@ -9,11 +9,15 @@ deviations listed at the end.
 
 | File | What it is |
 |---|---|
-| `base.script.json` → `base.solidcraft`, `base.stl`, `base.step` | Box: 2 mm floor + 2 mm walls around the 80 × 56 × 23 mm cavity, 4 PCB standoffs Ø5 × 10, 4 lid screw bosses Ø6, programming micro-USB slot 12 × 7 and charging USB-C slot 10 × 5 (y = 0 wall), slide-switch slot 8 × 3.5 (x = 80 wall), 4 rubber-foot recesses Ø8 × 0.8. Outer 84 × 60 × 25 mm. |
+| `base.script.json` → `base.solidcraft`, `base.stl`, `base.step` | Box: 2 mm floor + 2 mm walls around the 80 × 56 × 24 mm cavity, 4 PCB standoffs Ø5 × 11, 4 lid screw bosses Ø6, programming micro-USB slot 12 × 7 and charging USB-C slot 10 × 5 (y = 0 wall), slide-switch slot 8 × 3.5 (x = 80 wall), 4 rubber-foot recesses Ø8 × 0.8. Outer 84 × 60 × 26 mm. |
 | `lid.script.json` → `lid.solidcraft`, `lid.stl`, `lid.step` | 84 × 60 × 2 mm plate with the Ø52.6 key-cap hole, 4 countersunk Ø2.8 screw holes, 1 mm alignment lips on the short sides (the right one in two segments), INMP441 microphone pocket 11.5 × 15 × 1.2 mm on the underside with a Ø2 sound hole, and the 6 × 3 charge-LED window. Bounding box 84 × 60 × 3.5 mm (2 plate + 1.5 lips). |
 | `plunger.script.json` → `plunger.solidcraft`, `plunger.stl`, `plunger.step` | Key cap: Ø52 domed cap, Ø55 retaining flange, Ø8 stem. Bounding box Ø55 × 13.8 mm. Unchanged from rev. A. |
-| `assembly.script.json` → `assembly.solidcraft` | All three bodies in place, exploded by the `explode` parameter (14 mm; set 0 for the assembled position). For checking/rendering only. |
-| `base-iso.png`, `base-top.png`, `base-bottom.png`, `lid-iso.png`, `lid-bottom.png`, `lid-underside.png` (mic pocket + lips), `plunger-iso.png`, `assembly-iso.png` | Snapshots rendered from the scripts. |
+| `assembly.script.json` → `assembly.solidcraft` | The three printed parts, exploded by the `explode` parameter (14 mm; 0 = assembled). |
+| `electronics.script.json` → `electronics.solidcraft`, `electronics.step`, `electronics.stl` | Simplified block/cylinder models of every electronic part at the DESIGN.md §5 positions, one body per reference designator (PCB1, PCB1_pins, U1, SW1, M1, J2, J1, SW2, D2, R2, R3, C3, C4, JP1, BT1, M2), coloured. Base coordinates (world = cavity + 2). |
+| `full-assembly.script.json` → `full-assembly.solidcraft`, `full-assembly.step`, `full-assembly.stl` | Base + electronics + lid + key cap + M2, assembled (`explode` = 0). |
+| `full-assembly-exploded.script.json`, `full-assembly-nolid.script.json`, `full-assembly-section.script.json`, `full-assembly-check.script.json` | Variants of the full assembly: `explode` = 14; lid/cap/M2 removed (`solid.remove`, used for the "nolid" renders — a `show_lid` parameter is not possible because a SolidCraft parameter cannot drive visibility); everything in front of world y = 29 removed or cut (1 mm beside the key-cap centre, along X — the revolve seam at y = 30 itself cannot be cut) for the section render; `inspect.interference` on all bodies. |
+| `base-iso.png`, `base-top.png`, `base-bottom.png`, `lid-iso.png`, `lid-bottom.png`, `lid-underside.png` (mic pocket + lips), `plunger-iso.png`, `assembly-iso.png` | Snapshots of the printed parts. |
+| `full-top-nolid.png`, `full-iso-nolid.png`, `full-iso.png`, `full-exploded.png`, `full-section.png` | Full assembly with electronics: top and iso without lid/cap, closed, exploded, and sectioned at the key-cap centre. |
 
 The base and lid are modelled with the **outer bottom-left corner at the
 origin**; cavity coordinates from DESIGN.md are world coordinates + (2, 2, 2).
@@ -63,10 +67,10 @@ The key cap is a single revolved profile with numeric coordinates.
 | Rim | 52 | 1.5 … 7.5 | 2 mm inside the lid + 4 mm proud; 0.3 mm radial clearance in the Ø52.6 hole |
 | Dome | 52 → 0 | 7.5 … 11.5 | spherical, R = 86.5 mm, rises 4 mm; r 2 fillet where it meets the rim |
 
-Assembled (cavity z, inner floor = 0): lid underside 23, flange 21.5–23,
-stem tip 19.2 (actuator top 18.9 + 0.3 play), cap top 33 = 8 mm above the lid
-top (25). Travel ≈ 0.5 mm, limited by the switch. The LiPo (8 mm) lies under
-the perfboard (underside at 10 mm).
+Assembled (cavity z, inner floor = 0): lid underside 24, flange 22.5–24,
+stem tip 20.2 (actuator top 19.9 + 0.3 play), cap top 34 = 8 mm above the lid
+top (26). Travel ≈ 0.5 mm, limited by the switch. The LiPo (8 mm) lies under
+the perfboard (underside at 11 mm, solder pins down to 9.5 mm).
 
 ## Printing
 
@@ -85,7 +89,7 @@ protrudes 0.4 mm below the lid; nothing in the base is in the way there.
 ## Assembly
 
 1. Tape the LiPo (40 × 30 × 8) to the inner floor, centred between the standoffs (cavity (40, 28)), leads toward the charger.
-2. Screw the perfboard to the 4 standoffs (M2 × 4–5 mm self-tapping, Ø1.6 pilots; the PCB sits at cavity offset (5, 3), 10 mm above the floor).
+2. Screw the perfboard to the 4 standoffs (M2 × 4–5 mm self-tapping, Ø1.6 pilots; the PCB sits at cavity offset (5, 3), 11 mm above the floor). The perfboard corners need a ≈ 1 × 2.5 mm notch (or a 3 mm chamfer) to clear the Ø6 lid bosses — see the clearance table.
 3. Route the micro-USB and USB-C to their slots in the y = 0 wall and the slide switch to the slot in the x = 80 wall (USB-C centred at cavity x = 57.5); check the tactile switch is centred under cavity (40, 28).
 4. Glue (drop of CA or foam tape) the INMP441 breakout into the pocket on the lid underside, port over the Ø2 sound hole, and run its 6 wires (SCK WS SD L/R VDD GND) to J2 on the perfboard.
 5. Drop the key cap into the lid **from the inside** (stem down) — the Ø55 flange retains it.
@@ -104,16 +108,63 @@ protrudes 0.4 mm below the lid; nothing in the base is in the way there.
   alignment lip is omitted over the pocket's y range (+0.5 mm each side) so
   the board, which protrudes 0.4 mm below the lid, can sit there; the lip is
   two segments (y 8.5–22 and 38–51.5 world).
-- **Stem 2.3 mm** as in §6 (tip at 19.2 = 18.9 + 0.3).
+- **Stem 2.3 mm** as in §6 (tip at 20.2 = 19.9 + 0.3).
 - r 1.5 fillet applied to the base bottom edge loop and the lid top edge loop.
 - **Alignment lip** (not in DESIGN.md): only along the two short walls, 1 mm
   wide, 1.5 mm tall, 0.2 mm clearance; the Ø55 flange would hit a lip on the
   long walls.
 - Slide-switch slot cut starts 0.5 mm inside the wall (no visible effect; avoids
   a sliver boolean with the corner boss).
-- Standoff pilot holes are Ø1.6 × 6 mm deep (not through the 10 mm standoff);
+- Standoff pilot holes are Ø1.6 × 6 mm deep (not through the 11 mm standoff);
   boss pilot holes Ø2.0 × 9 mm deep (10 mm screws through the 2 mm lid).
 - Added for comfort/printability: r 2 fillet on the cap's rim/dome edge, r 0.5
   on the flange edge.
-- Masses from SolidCraft (PETG 1.29 g/cm³, solid): base ≈ 32.5 g, lid ≈ 6.9 g,
+- Masses from SolidCraft (PETG 1.29 g/cm³, solid): base ≈ 34 g, lid ≈ 6.9 g,
   key cap ≈ 25 g (solid cap; use infill).
+
+## Electronics model and clearances (rev. B.2)
+
+`electronics.script.json` places simplified bodies at the §5 perfboard
+coordinates. Parameters: `pcb_x0`/`pcb_y0` = 7/5 mm (perfboard origin, world =
+cavity (5, 3) + wall), `pcb_z0` = 13 mm (board underside = floor 2 +
+standoff 11), `pcb_t` = 1.6, `pcb_top` = 14.6 mm (cavity 12.6), `lipo_x/y`,
+`m2_z`. Every part position is an expression of these. Modelling notes: U1 =
+two header strips 2.54 × 20.3 × 2.5 + PCB 25.6 × 34.2 × 1.0 + ESP-12 shield
+15.5 × 24 × **3.5** + micro-USB 8 × 6 × **3.5** (3.5 instead of 3 so the stack
+top is board + 7.0 as DESIGN.md states); M1 = two header strips + PCB 26 ×
+17.5 × 1.0 + USB-C 9 × 7.3 × 3.3 centred on the module (perfboard x = 52.5,
+matching the slot; §4's "x = 54" is 1.5 mm off) + two LEDs; SW2 body 1 mm
+above the board with the 2 × 2 × 2 actuator at board + 3.2 as instructed;
+`PCB1_pins` = 60 × 40 × 1.5 plate under the board (solder-pin zone).
+
+Checked with `solidcraft-cli eval full-assembly.script.json` (body bounding
+boxes) and `solidcraft-cli run full-assembly-check.script.json --results`
+(`inspect.interference`, 19 bodies: one overlap found, see PCB1 below; the
+Lid/Base pair is reported "unchecked" because they only touch).
+
+Reference heights (cavity z, inner floor = 0): lid underside **24.0**; key-cap
+flange underside **22.5** at rest, **22.0** pressed (0.5 mm travel); the
+flange covers the Ø55 circle around cavity (40, 28). Board top 12.6.
+
+| Part | Top z (cavity) | Under the flange? | Reference | Clearance at rest / pressed | Status |
+|---|---|---|---|---|---|
+| U1 D1 mini stack (shield, micro-USB) | 19.6 | yes | flange 22.5 | 2.9 / 2.4 | OK |
+| SW1 actuator | 19.9 | yes (centre) | stem tip 20.2 | 0.3 play by design; 0.5 travel | OK |
+| M1 TP4056 USB-C top | 19.4 | yes (USB-C corner r = 25.5) | flange 22.5 | 3.1 / 2.6 | OK |
+| M1 PCB / LEDs | 16.1 / 16.9 | partly | flange 22.5 | 6.4 / 5.6 | OK |
+| J2 6-pin header (8.5 tall) | 21.1 | yes (far corner r = 27.5) | flange 22.5 | 1.4 / **0.9** | **FLAG** – use a 6 mm-pin header (top 18.6) or a right-angle one |
+| JP1 jumper (8.5 tall) | 21.1 | yes (r = 23.8) | flange 22.5 | 1.4 / **0.9** | **FLAG** – fit a low-profile jumper or lay it flat |
+| J1 JST-PH | 18.6 | no (nearest r = 28.0) | lid 24.0 / M2 underside 23.6 | 5.4 / 5.0 | OK |
+| SW2 body | 18.6 | no | lid 24.0 / M2 underside 23.6 | 5.4 / 5.0 | OK |
+| SW2 actuator (2 × 2 × 2, z 15.8–17.8) | 17.8 | no | wall slot z 13.05–16.55, y 35–43 | actuator top 1.25 mm **above** the slot; tip 4.2 mm inside the wall | **FLAG** – move the slot to z ≈ 15.8 (or confirm the actuator height: §6's 14.8 assumes board + 2.2); the actuator is reachable only with a tool |
+| D2, R2, R3 (Ø2.5 axial) | 15.85 | yes | flange 22.5 | 6.65 / 6.15 | OK |
+| C3 | 17.6 | yes | flange 22.5 | 4.9 / 4.4 | OK |
+| C4 (Ø5 along X) | 18.1 | yes | flange 22.5 | 4.4 / 3.9 | OK |
+| BT1 LiPo (top 8.0) | 8.0 | – | solder-pin zone bottom 9.5 | 1.5 | OK (2 mm from the standoffs in XY) |
+| M2 INMP441 (z 23.6–25.2, x 68.5–79.5) | – | lateral | flange edge x 67.5 (z 22.5–24) | 1.0 lateral; 1.0 to each lip segment | tight but OK |
+| PCB1 perfboard corners | 12.6 | – | Ø6 lid bosses in the cavity corners | **interference** 9.9 mm³ total (≈ 1 × 2.3 mm per corner) | **FLAG** – notch the four board corners ≈ 1 × 2.5 mm (or 3 mm chamfer) |
+| Micro-USB receptacle (U1) | centre z 17.85, x 16.8–24.8 | – | slot z 14.2–21.2, x 14.8–26.8 | 2.0 each side in x, 3.3 in z | OK as a slot, **but** the receptacle face is **9.9 mm inside the wall** (+ 2 mm wall): a micro-USB plug shell (≈ 6.5–7 mm) cannot reach it | **FLAG** – move U1 toward y = 0 (module edge at perfboard y ≈ −1 … 1) or program with the lid off |
+| USB-C receptacle (M1) | centre z 17.75, x 53–62 | – | slot z 15.2–20.2, x 52.5–62.5 | 0.5 each side in x, 2.4 in z; face 2.25 mm inside the wall | OK (plug shell ≈ 6.5 mm reaches; the slot is larger than the plug shell 8.4 × 2.6) |
+
+Nothing else touches: `inspect.interference` finds no overlap between the key
+cap and any part, nor between the lid/lips and the electronics.

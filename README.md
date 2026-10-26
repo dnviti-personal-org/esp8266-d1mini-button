@@ -133,7 +133,7 @@ Full details, numbers and reasoning in [`hardware/DESIGN.md`](hardware/DESIGN.md
   10 kΩ pull-up, 100 nF filter and jumper JP1 to RST for deep-sleep wake.
 - INMP441 microphone breakout in a pocket under the lid, 6 wires to a header
   on the board; charger CHRG pin to D0 with a 10 kΩ pull-up.
-- Everything on a 70 × 50 mm perfboard inside an 84 × 60 × 27 mm printed box
+- Everything on a 70 × 50 mm perfboard inside an 84 × 60 × 28 mm printed box
   with a Ø52 mm domed key cap, a USB-C charging slot and a charge-LED window.
 
 ### Why not the CR2032 of the first revision

@@ -1,0 +1,11 @@
+{"commands":[
+ {"command":"sketch.create","params":{"plane":"XZ","name":"CapProfile"}},
+ {"command":"sketch.line","params":{"points":[[0,2.3],[4,2.3],[4,0],[27.5,0],[27.5,-1.5],[26,-1.5],[26,-7.5]]}},
+ {"command":"sketch.arc.center_point","params":{"center":[0,75],"start":[0,-11.5],"end":[26,-7.5]}},
+ {"command":"sketch.line","params":{"points":[[0,-11.5],[0,2.3]]}},
+ {"command":"sketch.finish","params":{}},
+ {"command":"solid.revolve","params":{"axis":"Z","sketch":"CapProfile","operation":"new","body_name":"KeyCap","name":"KeyCapRevolve"}},
+ {"command":"solid.fillet","params":{"body":"KeyCap","edges":[[26,0,7.5]],"radius":"2 mm","name":"RimFillet"}},
+ {"command":"solid.fillet","params":{"body":"KeyCap","edges":[[27.5,0,0]],"radius":"0.5 mm","name":"FlangeFillet"}},
+ {"command":"appearance.assign","params":{"bodies":["KeyCap"],"color":"#e53935"}}
+]}

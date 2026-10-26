@@ -1,0 +1,29 @@
+{"commands":[
+ {"command":"parameters.add","params":{"name":"wall","expression":"2 mm"}},
+ {"command":"parameters.add","params":{"name":"cav_x","expression":"80 mm"}},
+ {"command":"parameters.add","params":{"name":"cav_y","expression":"56 mm"}},
+ {"command":"parameters.add","params":{"name":"lid_t","expression":"2 mm","comment":"lid plate thickness"}},
+ {"command":"parameters.add","params":{"name":"r_vert","expression":"4 mm"}},
+ {"command":"parameters.add","params":{"name":"r_edge","expression":"1.5 mm","comment":"outer top edge radius"}},
+ {"command":"parameters.add","params":{"name":"boss_d","expression":"6 mm"}},
+ {"command":"parameters.add","params":{"name":"lip_w","expression":"1 mm","comment":"alignment lip width"}},
+ {"command":"parameters.add","params":{"name":"lip_h","expression":"1.5 mm","comment":"alignment lip height below the lid"}},
+ {"command":"parameters.add","params":{"name":"lip_gap","expression":"0.2 mm","comment":"lip to wall clearance per side"}},
+ {"command":"parameters.add","params":{"name":"cap_hole_d","expression":"52.6 mm","comment":"key cap hole"}},
+ {"command":"parameters.add","params":{"name":"cap_x","expression":"40 mm","comment":"key cap centre, cavity x"}},
+ {"command":"parameters.add","params":{"name":"cap_y","expression":"28 mm","comment":"key cap centre, cavity y"}},
+
+ {"command":"solid.box","params":{"length":"cav_x + 2*wall","width":"cav_y + 2*wall","height":"lid_t","operation":"new","body_name":"Lid","name":"LidPlate"}},
+ {"command":"solid.fillet","params":{"body":"Lid","edges":[[0,0,1],[84,0,1],[84,60,1],[0,60,1]],"radius":"r_vert","name":"VerticalFillets"}},
+ {"command":"solid.fillet","params":{"body":"Lid","edges":[[42,0,2],[84,30,2],[42,60,2],[0,30,2],[1.17,1.17,2],[82.83,1.17,2],[82.83,58.83,2],[1.17,58.83,2]],"radius":"r_edge","name":"TopEdgeFillet"}},
+
+ {"command":"solid.box","params":{"length":"lip_w","width":"cav_y - 2*boss_d - 1 mm","height":"lip_h","corner":["wall + lip_gap","wall + boss_d + 0.5 mm","-lip_h"],"operation":"join","targets":["Lid"],"name":"LipLeft"}},
+ {"command":"solid.box","params":{"length":"lip_w","width":"cav_y - 2*boss_d - 1 mm","height":"lip_h","corner":["wall + cav_x - lip_gap - lip_w","wall + boss_d + 0.5 mm","-lip_h"],"operation":"join","targets":["Lid"],"name":"LipRight"}},
+
+ {"command":"solid.hole","params":{"position":[42,30,2],"diameter":"cap_hole_d","name":"CapHole"}},
+ {"command":"solid.hole","params":{"position":[5,5,2],"diameter":"2.8 mm","type":"countersink","cs_diameter":"5.5 mm","cs_angle":"90 deg","name":"Screw1"}},
+ {"command":"solid.hole","params":{"position":[79,5,2],"diameter":"2.8 mm","type":"countersink","cs_diameter":"5.5 mm","cs_angle":"90 deg","name":"Screw2"}},
+ {"command":"solid.hole","params":{"position":[5,55,2],"diameter":"2.8 mm","type":"countersink","cs_diameter":"5.5 mm","cs_angle":"90 deg","name":"Screw3"}},
+ {"command":"solid.hole","params":{"position":[79,55,2],"diameter":"2.8 mm","type":"countersink","cs_diameter":"5.5 mm","cs_angle":"90 deg","name":"Screw4"}},
+ {"command":"appearance.assign","params":{"bodies":["Lid"],"color":"#b0b8c0"}}
+]}

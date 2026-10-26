@@ -122,8 +122,8 @@ no sharp edges, rubber feet so the box does not slide when pressed.
 - Key cap: Ø52 mm, domed top (spherical dome rising 4 mm over a 4 mm tall
   cylindrical rim = 8 mm proud of the lid at rest), retaining flange Ø55 × 1.5
   mm under the lid, central stem Ø8 reaching the tactile switch actuator
-  (actuator top 12.9 mm above the inner floor, lid underside at 17 mm ⇒ stem
-  ≈ 3.8 mm below the flange, 0.3 mm play). Radial clearance 0.3 mm in the
+  (actuator top 12.9 mm above the inner floor, lid underside at 17 mm, flange
+  1.5 mm ⇒ stem ≈ 2.3 mm below the flange, tip at 13.2 mm, 0.3 mm play). Radial clearance 0.3 mm in the
   lid hole; the 2 mm thick lid is the guide. Travel ≈ 0.5 mm; the tactile
   switch is the return spring. Inserted from inside before closing the lid.
   Print the cap in a bright contrasting colour (red or yellow).

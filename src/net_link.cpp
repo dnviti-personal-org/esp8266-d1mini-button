@@ -1,5 +1,6 @@
 #include "net_link.h"
 #include "rtc_cache.h"
+#include "audio_recorder.h"
 
 namespace {
 constexpr uint32_t WIFI_RETRY_MS = 10000;
@@ -75,6 +76,8 @@ void NetLink::loop(uint32_t now) {
                     mqtt_.publish(topicAvailability().c_str(), "online", true);
                 publishDiscovery();
                 if (settings_->power_mode == POWER_ALWAYS_ON) publishButton(lastButton_);
+                mqtt_.publish(topicRecordingState().c_str(), lastRecording_ ? "ON" : "OFF", true);
+                if (chargingKnown_) mqtt_.publish(topicCharging().c_str(), lastCharging_ ? "ON" : "OFF", true);
             }
         }
         return;
@@ -110,34 +113,38 @@ const char* NetLink::stateName() const {
 }
 
 String NetLink::topicBase() const { return String(settings_->topic_prefix) + "/" + deviceId_; }
-String NetLink::topicDiscoveryButton() const {
-    return String(settings_->ha_prefix) + "/binary_sensor/" + deviceId_ + "/button/config";
+String NetLink::topicDiscovery(const char* component, const char* object) const {
+    return String(settings_->ha_prefix) + "/" + component + "/" + deviceId_ + "/" + object + "/config";
 }
-String NetLink::topicDiscoveryVcc() const {
-    return String(settings_->ha_prefix) + "/sensor/" + deviceId_ + "/vcc/config";
-}
+String NetLink::topicDiscoveryButton() const { return topicDiscovery("binary_sensor", "button"); }
 
 String NetLink::deviceJson() const {
     return String("\"dev\":{\"ids\":[\"") + deviceId_ + "\"],\"name\":\"ESP8266 Button " + deviceId_ +
-           "\",\"mf\":\"dnviti\",\"mdl\":\"D1 mini CR2032 button\",\"sw\":\"" FW_VERSION "\"}";
+           "\",\"mf\":\"dnviti\",\"mdl\":\"D1 mini audio button\",\"sw\":\"" FW_VERSION "\"}";
+}
+
+bool NetLink::publishEntity(const char* component, const char* object, const String& body) {
+    const bool battery = settings_->power_mode == POWER_BATTERY;
+    String json = String("{\"~\":\"") + topicBase() + "\",\"uniq_id\":\"" + deviceId_ + "_" + object + "\"," + body;
+    if (!battery) json += ",\"avty_t\":\"~/availability\"";
+    json += "," + deviceJson() + "}";
+    return mqtt_.publish(topicDiscovery(component, object).c_str(), json.c_str(), true);
 }
 
 void NetLink::publishDiscovery() {
     const bool battery = settings_->power_mode == POWER_BATTERY;
-    String base = topicBase();
-    String btn = String("{\"~\":\"") + base + "\",\"name\":\"Button\",\"uniq_id\":\"" + deviceId_ +
-                 "_button\",\"stat_t\":\"~/state\",\"pl_on\":\"ON\",\"pl_off\":\"OFF\"";
+    String btn = "\"name\":\"Button\",\"stat_t\":\"~/state\",\"pl_on\":\"ON\",\"pl_off\":\"OFF\"";
     if (battery) btn += ",\"off_delay\":2";
-    else btn += ",\"avty_t\":\"~/availability\"";
-    btn += "," + deviceJson() + "}";
-    mqtt_.publish(topicDiscoveryButton().c_str(), btn.c_str(), true);
-
-    String vcc = String("{\"~\":\"") + base + "\",\"name\":\"Battery voltage\",\"uniq_id\":\"" + deviceId_ +
-                 "_vcc\",\"stat_t\":\"~/vcc\",\"unit_of_meas\":\"V\",\"dev_cla\":\"voltage\","
-                 "\"stat_cla\":\"measurement\",\"ent_cat\":\"diagnostic\",\"sug_dsp_prc\":2";
-    if (!battery) vcc += ",\"avty_t\":\"~/availability\"";
-    vcc += "," + deviceJson() + "}";
-    mqtt_.publish(topicDiscoveryVcc().c_str(), vcc.c_str(), true);
+    publishEntity("binary_sensor", "button", btn);
+    publishEntity("binary_sensor", "recording",
+                  "\"name\":\"Recording\",\"stat_t\":\"~/recording_state\",\"pl_on\":\"ON\",\"pl_off\":\"OFF\","
+                  "\"dev_cla\":\"running\",\"icon\":\"mdi:microphone\"");
+    publishEntity("binary_sensor", "charging",
+                  "\"name\":\"Charging\",\"stat_t\":\"~/charging\",\"pl_on\":\"ON\",\"pl_off\":\"OFF\","
+                  "\"dev_cla\":\"battery_charging\",\"ent_cat\":\"diagnostic\"");
+    publishEntity("sensor", "last_recording",
+                  "\"name\":\"Last recording\",\"stat_t\":\"~/recording\",\"val_tpl\":\"{{ value_json.url }}\","
+                  "\"json_attr_t\":\"~/recording\",\"icon\":\"mdi:file-music\"");
 }
 
 bool NetLink::publishButton(bool pressed) {
@@ -147,11 +154,24 @@ bool NetLink::publishButton(bool pressed) {
     return mqtt_.publish(topicState().c_str(), pressed ? "ON" : "OFF", retain);
 }
 
-bool NetLink::publishVcc(float volts) {
+bool NetLink::publishRecordingState(bool recording) {
+    lastRecording_ = recording;
     if (!online()) return false;
-    char buf[16];
-    snprintf(buf, sizeof(buf), "%.2f", volts);
-    return mqtt_.publish(topicVcc().c_str(), buf, true);
+    return mqtt_.publish(topicRecordingState().c_str(), recording ? "ON" : "OFF", true);
+}
+
+bool NetLink::publishCharging(bool charging) {
+    lastCharging_ = charging;
+    chargingKnown_ = true;
+    if (!online()) return false;
+    return mqtt_.publish(topicCharging().c_str(), charging ? "ON" : "OFF", true);
+}
+
+bool NetLink::publishRecording(const String& url, uint32_t seconds, uint32_t bytes) {
+    if (!online()) return false;
+    String json = String("{\"url\":\"") + url + "\",\"seconds\":" + seconds + ",\"bytes\":" + bytes +
+                  ",\"rate\":" + AUDIO_SAMPLE_RATE + ",\"bits\":" + AUDIO_BITS + ",\"mac\":\"" + deviceId_ + "\"}";
+    return mqtt_.publish(topicRecording().c_str(), json.c_str(), false);
 }
 
 void NetLink::flush() {

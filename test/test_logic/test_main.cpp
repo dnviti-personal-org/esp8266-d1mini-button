@@ -3,6 +3,7 @@
 #include "button.h"
 #include "command_parser.h"
 #include "settings.h"
+#include "wav.h"
 
 void setUp() {}
 void tearDown() {}
@@ -82,6 +83,8 @@ void test_defaults() {
     TEST_ASSERT_EQUAL_STRING("homeassistant", s.ha_prefix);
     TEST_ASSERT_EQUAL_UINT8(POWER_BATTERY, s.power_mode);
     TEST_ASSERT_EQUAL_UINT16(60, s.awake_seconds);
+    TEST_ASSERT_EQUAL_UINT16(120, s.record_seconds);
+    TEST_ASSERT_EQUAL_UINT8(8, s.mic_gain);
     TEST_ASSERT_FALSE(settingsWifiConfigured(s));
     TEST_ASSERT_FALSE(settingsMqttConfigured(s));
 }
@@ -98,6 +101,10 @@ void test_set_valid_keys() {
     TEST_ASSERT_TRUE(settingsSet(s, "ha_prefix", "ha/disc").ok);
     TEST_ASSERT_TRUE(settingsSet(s, "power_mode", "always_on").ok);
     TEST_ASSERT_TRUE(settingsSet(s, "awake_seconds", "120").ok);
+    TEST_ASSERT_TRUE(settingsSet(s, "record_seconds", "0").ok);
+    TEST_ASSERT_TRUE(settingsSet(s, "mic_gain", "16").ok);
+    TEST_ASSERT_EQUAL_UINT8(16, s.mic_gain);
+    TEST_ASSERT_EQUAL_UINT16(0, s.record_seconds);
     TEST_ASSERT_EQUAL_UINT16(8883, s.mqtt_port);
     TEST_ASSERT_EQUAL_STRING("casa", s.topic_prefix);
     TEST_ASSERT_EQUAL_UINT8(POWER_ALWAYS_ON, s.power_mode);
@@ -117,6 +124,10 @@ void test_set_rejects_invalid() {
     TEST_ASSERT_FALSE(settingsSet(s, "prefix", "a b").ok);
     TEST_ASSERT_FALSE(settingsSet(s, "power_mode", "sometimes").ok);
     TEST_ASSERT_FALSE(settingsSet(s, "awake_seconds", "1").ok);
+    TEST_ASSERT_FALSE(settingsSet(s, "record_seconds", "601").ok);
+    TEST_ASSERT_FALSE(settingsSet(s, "record_seconds", "-1").ok);
+    TEST_ASSERT_FALSE(settingsSet(s, "mic_gain", "0").ok);
+    TEST_ASSERT_FALSE(settingsSet(s, "mic_gain", "65").ok);
     char longv[80];
     memset(longv, 'a', sizeof(longv) - 1);
     longv[sizeof(longv) - 1] = 0;
@@ -165,6 +176,39 @@ void test_decode_rejects_corruption() {
     TEST_ASSERT_EQUAL_STRING("", out.wifi_ssid);  // untouched
 }
 
+void test_parse_record_and_stop() {
+    Command c = parseCommand("record 30");
+    TEST_ASSERT_EQUAL(Command::Type::Record, c.type);
+    TEST_ASSERT_EQUAL_STRING("30", c.value);
+    c = parseCommand("RECORD");
+    TEST_ASSERT_EQUAL(Command::Type::Record, c.type);
+    TEST_ASSERT_EQUAL_STRING("", c.value);
+    TEST_ASSERT_EQUAL(Command::Type::Stop, parseCommand("stop").type);
+    TEST_ASSERT_EQUAL(Command::Type::Scan, parseCommand("scan").type);
+}
+
+void test_wav_header() {
+    uint8_t h[WAV_HEADER_SIZE];
+    wavHeaderMono(h, 8000, 8, 16000);
+    TEST_ASSERT_EQUAL_MEMORY("RIFF", h, 4);
+    TEST_ASSERT_EQUAL_MEMORY("WAVEfmt ", h + 8, 8);
+    TEST_ASSERT_EQUAL_UINT32(36 + 16000, (uint32_t)h[4] | (uint32_t)h[5] << 8 | (uint32_t)h[6] << 16 | (uint32_t)h[7] << 24);
+    TEST_ASSERT_EQUAL_UINT16(1, h[20] | h[21] << 8);     // PCM
+    TEST_ASSERT_EQUAL_UINT16(1, h[22] | h[23] << 8);     // mono
+    TEST_ASSERT_EQUAL_UINT32(8000, (uint32_t)h[24] | (uint32_t)h[25] << 8 | (uint32_t)h[26] << 16 | (uint32_t)h[27] << 24);
+    TEST_ASSERT_EQUAL_UINT32(8000, (uint32_t)h[28] | (uint32_t)h[29] << 8);  // byte rate
+    TEST_ASSERT_EQUAL_UINT16(1, h[32] | h[33] << 8);     // block align
+    TEST_ASSERT_EQUAL_UINT16(8, h[34] | h[35] << 8);     // bits
+    TEST_ASSERT_EQUAL_MEMORY("data", h + 36, 4);
+    TEST_ASSERT_EQUAL_UINT32(16000, (uint32_t)h[40] | (uint32_t)h[41] << 8 | (uint32_t)h[42] << 16 | (uint32_t)h[43] << 24);
+
+    wavHeaderMono(h, 8000, 16, 32000);
+    TEST_ASSERT_EQUAL_UINT32(16000, (uint32_t)h[28] | (uint32_t)h[29] << 8);  // byte rate = 8000 * 2
+    TEST_ASSERT_EQUAL_UINT16(2, h[32] | h[33] << 8);                          // block align
+    TEST_ASSERT_EQUAL_UINT16(16, h[34] | h[35] << 8);
+    TEST_ASSERT_EQUAL_UINT32(32000, (uint32_t)h[40] | (uint32_t)h[41] << 8 | (uint32_t)h[42] << 16 | (uint32_t)h[43] << 24);
+}
+
 void test_crc32_known_vector() {
     TEST_ASSERT_EQUAL_HEX32(0xCBF43926u, crc32("123456789", 9));
 }
@@ -184,6 +228,8 @@ int main(int, char**) {
     RUN_TEST(test_set_rejects_invalid);
     RUN_TEST(test_encode_decode_roundtrip);
     RUN_TEST(test_decode_rejects_corruption);
+    RUN_TEST(test_parse_record_and_stop);
+    RUN_TEST(test_wav_header);
     RUN_TEST(test_crc32_known_vector);
     return UNITY_END();
 }

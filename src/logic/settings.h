@@ -14,6 +14,8 @@ struct Settings {
     char ha_prefix[33];
     uint8_t power_mode;      // PowerMode
     uint16_t awake_seconds;  // battery mode: config window after power-on / reset
+    uint16_t record_seconds; // audio recording length per press, 0 = disabled
+    uint8_t mic_gain;        // digital gain applied to the I2S samples, 1..64
 };
 
 enum PowerMode : uint8_t { POWER_BATTERY = 0, POWER_ALWAYS_ON = 1 };
@@ -28,7 +30,7 @@ struct SettingsBlob {
 };
 
 constexpr uint32_t SETTINGS_MAGIC = 0x314E5442;  // "BTN1"
-constexpr uint8_t SETTINGS_VERSION = 1;
+constexpr uint8_t SETTINGS_VERSION = 3;  // v2: record_seconds, v3: mic_gain
 
 struct SetResult {
     bool ok;

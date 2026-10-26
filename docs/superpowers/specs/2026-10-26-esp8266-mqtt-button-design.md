@@ -121,6 +121,25 @@ tested natively.
 - Wi-Fi channel + BSSID cached in RTC user memory for fast reconnect.
 - Hardware: see `hardware/DESIGN.md`.
 
+## Audio recording (added 2026-10-26, revision B.1)
+
+- Requirement: on a press, record a few minutes of audio and deliver it to HA.
+- Hardware: LiPo + TP4056 (the CR2032 cannot sustain minutes at 75 mA),
+  INMP441 I2S microphone (the on-chip ADC cannot be sampled from an ISR while
+  Wi-Fi is active: Exception 0 reproduced on the bench; and flash erase
+  stalls would drop 10–20 % of the samples if the audio were stored).
+- Firmware: `AudioRecorder` drains the I2S DMA buffers in `loop()` into a
+  16 KB ring (8 kHz, 16-bit, decimated from 16 kHz I2S frames, digital gain
+  `mic_gain`). `AudioServer` answers `GET /rec.wav` with a fixed-length WAV
+  and streams samples as they arrive, padding with silence if the recorder
+  stops early. `NetLink` publishes `recording_state`, the `recording` JSON
+  (URL, seconds, bytes) and `charging`; discovery adds three entities.
+- Flow (battery): wake → online → `state ON` → start recorder → publish JSON →
+  HA downloads for `record_seconds` → sleep. Abort if no client within 15 s.
+- Verified on hardware with the real broker: wake→online 1.36 s, 6 s stream
+  downloaded in 6.0 s with 0 ring overruns, in both power modes. Audio content
+  not verified (no microphone on the bench).
+
 ## Out of scope
 
 OTA updates, web UI, multiple buttons, TLS to the broker.

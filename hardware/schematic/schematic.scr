@@ -1,6 +1,6 @@
-; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic (CADCraft script, mm).
+; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev B.1 (CADCraft script, mm).
 ; Replay: cadcraft-cli run --metric --script-file schematic.scr --save schematic.dxf --export schematic.png
-; Circuit per hardware/DESIGN.md sections 1-3. Layers: frame, symbols, wires, text, nets, notes.
+; Circuit per hardware/DESIGN.md sections 1-4. Layers: frame, symbols, wires, text, nets, notes.
 lwdisplay {"on": true}
 layer.new {"name": "frame", "color": 7, "lineweight": 0.5}
 layer.new {"name": "symbols", "color": 7, "lineweight": 0.35}
@@ -9,171 +9,281 @@ layer.new {"name": "text", "color": "0,170,230"}
 layer.new {"name": "nets", "color": "255,140,0"}
 layer.new {"name": "notes", "color": "0,170,230"}
 layer.current {"name": "frame"}
-rectang {"p1": [10, 10], "p2": [410, 270]}
-rectang {"p1": [250, 10], "p2": [410, 40]}
-line {"points": [[250, 28], [410, 28]]}
-line {"points": [[340, 10], [340, 28]]}
-line {"points": [[380, 10], [380, 28]]}
+rectang {"p1": [10, 10], "p2": [430, 270]}
+rectang {"p1": [270, 10], "p2": [430, 40]}
+line {"points": [[270, 28], [430, 28]]}
+line {"points": [[360, 10], [360, 28]]}
+line {"points": [[400, 10], [400, 28]]}
 layer.current {"name": "text"}
-text {"at": [330, 34], "text": "ESP8266 D1 mini MQTT battery button", "height": 4.5, "justify": "MC"}
-text {"at": [255, 21.5], "text": "Schematic: power path + button", "height": 3, "justify": "L"}
-text {"at": [255, 14], "text": "Date: 2026-10-26", "height": 3, "justify": "L"}
-text {"at": [360, 21.5], "text": "Rev A", "height": 3, "justify": "MC"}
-text {"at": [360, 14], "text": "CADCraft", "height": 3, "justify": "MC"}
-text {"at": [395, 21.5], "text": "Sheet", "height": 3, "justify": "MC"}
-text {"at": [395, 14], "text": "1 / 1", "height": 3, "justify": "MC"}
+text {"at": [350, 34], "text": "ESP8266 D1 mini MQTT battery button", "height": 4.5, "justify": "MC"}
+text {"at": [275, 21.5], "text": "Rev B.1: LiPo, button, I2S mic", "height": 3, "justify": "L"}
+text {"at": [275, 14], "text": "Date: 2026-10-26", "height": 3, "justify": "L"}
+text {"at": [380, 21.5], "text": "Rev B.1", "height": 3, "justify": "MC"}
+text {"at": [380, 14], "text": "CADCraft", "height": 3, "justify": "MC"}
+text {"at": [415, 21.5], "text": "Sheet", "height": 3, "justify": "MC"}
+text {"at": [415, 14], "text": "1 / 1", "height": 3, "justify": "MC"}
 layer.current {"name": "symbols"}
-line {"points": [[39, 162], [51, 162]]}
-pline {"vertices": [[42, 158], [48, 158]], "width": 0.8}
-text {"at": [53, 165], "text": "+", "height": 4, "justify": "MC"}
+line {"points": [[39, 179.5], [51, 179.5]]}
+pline {"vertices": [[42, 175.5], [48, 175.5]], "width": 0.8}
+text {"at": [53, 182.5], "text": "+", "height": 4, "justify": "MC"}
 layer.current {"name": "text"}
-text {"at": [37, 164], "text": "BT1", "height": 3.5, "justify": "R"}
-text {"at": [37, 159], "text": "CR2032", "height": 3.5, "justify": "R"}
-text {"at": [37, 154], "text": "3.0 V", "height": 3, "justify": "R"}
+text {"at": [37, 183], "text": "BT1", "height": 3.5, "justify": "R"}
+text {"at": [37, 178], "text": "LiPo 3.7 V", "height": 3, "justify": "R"}
+text {"at": [37, 173.5], "text": "1000 mAh", "height": 3, "justify": "R"}
+text {"at": [37, 169], "text": "803040", "height": 2.6, "justify": "R"}
 layer.current {"name": "symbols"}
-line {"points": [[70, 215], [71.5, 215]]}
-line {"points": [[88.5, 215], [90, 215]]}
-circle {"center": [72.3, 215], "radius": 0.8}
-circle {"center": [87.7, 215], "radius": 0.8}
-line {"points": [[73, 215.4], [87.2, 220.2]]}
-line {"points": [[75.5, 222.5], [78.5, 222.5]]}
-line {"points": [[77, 222.5], [77, 221]]}
+rectang {"p1": [61, 154], "p2": [69, 201]}
+circle {"center": [65, 195], "radius": 1.3}
+line {"points": [[61, 195], [63.7, 195]]}
+line {"points": [[66.3, 195], [69, 195]]}
+circle {"center": [65, 160], "radius": 1.3}
+line {"points": [[61, 160], [63.7, 160]]}
+line {"points": [[66.3, 160], [69, 160]]}
 layer.current {"name": "text"}
-text {"at": [80, 232], "text": "SW2", "height": 3.5, "justify": "MC"}
-text {"at": [80, 227.5], "text": "POWER", "height": 3, "justify": "MC"}
-layer.current {"name": "symbols"}
-rectang {"p1": [107.0, 212.5], "p2": [123.0, 217.5]}
-layer.current {"name": "text"}
-text {"at": [115, 226], "text": "R1", "height": 3.5, "justify": "MC"}
-text {"at": [115, 221], "text": "68 Ω", "height": 3.5, "justify": "MC"}
+text {"at": [65, 206], "text": "J1", "height": 3.5, "justify": "MC"}
+text {"at": [65, 210.5], "text": "JST-PH 2.0", "height": 2.6, "justify": "MC"}
 layer.current {"name": "wires"}
-line {"points": [[45, 215], [45, 162]]}
-line {"points": [[45, 158], [45, 105]]}
-line {"points": [[45, 215], [70, 215]]}
-line {"points": [[90, 215], [107, 215]]}
-line {"points": [[123, 215], [350, 215]]}
-line {"points": [[45, 105], [388, 105]]}
+line {"points": [[45, 195], [45, 179.5]]}
+line {"points": [[45, 175.5], [45, 160]]}
+line {"points": [[45, 195], [61, 195]]}
+line {"points": [[69, 195], [85, 195]]}
+line {"points": [[45, 160], [61, 160]]}
+line {"points": [[69, 160], [85, 160]]}
 layer.current {"name": "nets"}
-text {"at": [57, 219], "text": "VBAT", "height": 3.5, "justify": "MC"}
-text {"at": [150, 219.5], "text": "VCAP = 3V3", "height": 3.5, "justify": "MC"}
-text {"at": [300, 219.5], "text": "3V3", "height": 3.5, "justify": "MC"}
+text {"at": [78, 199], "text": "VBAT", "height": 3.5, "justify": "MC"}
 layer.current {"name": "symbols"}
-line {"points": [[160.5, 191.2], [169.5, 191.2]]}
-arc {"center": [165, 181.3], "radius": 7.5, "start": 55, "end": 125}
-text {"at": [158, 194], "text": "+", "height": 4, "justify": "MC"}
-layer.current {"name": "symbols"}
-line {"points": [[160.5, 161.2], [169.5, 161.2]]}
-arc {"center": [165, 151.3], "radius": 7.5, "start": 55, "end": 125}
-text {"at": [158, 164], "text": "+", "height": 4, "justify": "MC"}
-layer.current {"name": "wires"}
-line {"points": [[165, 215], [165, 191.2]]}
-line {"points": [[165, 188.8], [165, 161.2]]}
-line {"points": [[165, 158.8], [165, 105]]}
-donut {"center": [165, 215], "inside": 0, "outside": 1.6}
-donut {"center": [165, 105], "inside": 0, "outside": 1.6}
+rectang {"p1": [85, 150], "p2": [145, 207]}
 layer.current {"name": "text"}
-text {"at": [173, 193], "text": "C1", "height": 3.5, "justify": "L"}
-text {"at": [173, 188], "text": "3.3 F 2.7 V", "height": 3, "justify": "L"}
-text {"at": [173, 163], "text": "C2", "height": 3.5, "justify": "L"}
-text {"at": [173, 158], "text": "3.3 F 2.7 V", "height": 3, "justify": "L"}
-text {"at": [173, 150], "text": "EDLC, series", "height": 2.5, "justify": "L"}
-text {"at": [173, 146], "text": "= 1.65 F / 5.4 V", "height": 2.5, "justify": "L"}
-layer.current {"name": "symbols"}
-line {"points": [[205.5, 161.2], [214.5, 161.2]]}
-arc {"center": [210, 151.3], "radius": 7.5, "start": 55, "end": 125}
-text {"at": [203, 164], "text": "+", "height": 4, "justify": "MC"}
+text {"at": [88, 195], "text": "B+", "height": 3, "justify": "ML"}
+text {"at": [88, 160], "text": "B-", "height": 3, "justify": "ML"}
+text {"at": [142, 190], "text": "OUT+", "height": 3, "justify": "MR"}
+text {"at": [142, 170], "text": "CHRG", "height": 3, "justify": "MR"}
+text {"at": [103, 154], "text": "OUT-", "height": 2.6, "justify": "ML"}
+text {"at": [115, 186], "text": "M1", "height": 4.5, "justify": "MC"}
+text {"at": [115, 179], "text": "TP4056 + DW01", "height": 3, "justify": "MC"}
+text {"at": [115, 173.5], "text": "LiPo charger 1 A", "height": 2.6, "justify": "MC"}
+text {"at": [115, 166], "text": "USB-C (charge only)", "height": 2.4, "justify": "MC"}
 layer.current {"name": "wires"}
-line {"points": [[210, 215], [210, 161.2]]}
-line {"points": [[210, 158.8], [210, 105]]}
-donut {"center": [210, 215], "inside": 0, "outside": 1.6}
-donut {"center": [210, 105], "inside": 0, "outside": 1.6}
-layer.current {"name": "text"}
-text {"at": [218, 163], "text": "C4", "height": 3.5, "justify": "L"}
-text {"at": [218, 158], "text": "100 µF", "height": 3, "justify": "L"}
-text {"at": [218, 154], "text": "low ESR", "height": 2.5, "justify": "L"}
+line {"points": [[145, 190], [160, 190]]}
+line {"points": [[100, 150], [100, 140]]}
 layer.current {"name": "symbols"}
-line {"points": [[130, 105], [130, 98]]}
-line {"points": [[125, 98], [135, 98]]}
-line {"points": [[127, 96], [133, 96]]}
-line {"points": [[128.8, 94], [131.2, 94]]}
+line {"points": [[100, 140], [100, 134]]}
+line {"points": [[95, 134], [105, 134]]}
+line {"points": [[97, 132], [103, 132]]}
+line {"points": [[98.8, 130], [101.2, 130]]}
+layer.current {"name": "text"}
+text {"at": [100, 126], "text": "GND", "height": 2.5, "justify": "MC"}
+layer.current {"name": "symbols"}
+line {"points": [[160, 190], [161.5, 190]]}
+line {"points": [[178.5, 190], [180, 190]]}
+circle {"center": [162.3, 190], "radius": 0.8}
+circle {"center": [177.7, 190], "radius": 0.8}
+line {"points": [[163, 190.4], [177.2, 195.2]]}
+layer.current {"name": "text"}
+text {"at": [170, 205], "text": "SW2", "height": 3.5, "justify": "MC"}
+text {"at": [170, 200.5], "text": "POWER", "height": 3, "justify": "MC"}
+layer.current {"name": "symbols"}
+line {"points": [[185, 190], [188, 190]]}
+line {"points": [[196, 190], [199, 190]]}
+pline {"vertices": [[188, 193.5], [196, 190], [188, 186.5]], "closed": true}
+pline {"vertices": [[196, 193.5], [196, 186.5]], "width": 0.6}
+layer.current {"name": "text"}
+text {"at": [192, 200.5], "text": "D2", "height": 3.5, "justify": "MC"}
+text {"at": [192, 196], "text": "SS14", "height": 2.8, "justify": "MC"}
+layer.current {"name": "wires"}
+line {"points": [[180, 190], [185, 190]]}
+line {"points": [[199, 190], [240, 190]]}
 layer.current {"name": "nets"}
-text {"at": [130, 89], "text": "GND", "height": 3.5, "justify": "MC"}
-layer.current {"name": "symbols"}
-rectang {"p1": [240, 115], "p2": [300, 200]}
+text {"at": [182.5, 184], "text": "VSW", "height": 3, "justify": "MC"}
+text {"at": [222, 194], "text": "5V", "height": 3.5, "justify": "MC"}
 layer.current {"name": "wires"}
-line {"points": [[220, 215], [220, 190], [240, 190]]}
-donut {"center": [220, 215], "inside": 0, "outside": 1.6}
-line {"points": [[220, 105], [220, 125], [240, 125]]}
-donut {"center": [220, 105], "inside": 0, "outside": 1.6}
-line {"points": [[300, 185], [325, 185], [325, 180]]}
-line {"points": [[300, 170], [308, 170]]}
-line {"points": [[300, 155], [388, 155]]}
-line {"points": [[300, 140], [308, 140]]}
+line {"points": [[240, 204], [215, 204], [215, 225]]}
+line {"points": [[205, 225], [350, 225]]}
+donut {"center": [215, 225], "inside": 0, "outside": 1.6}
 layer.current {"name": "symbols"}
-line {"points": [[308.2, 168.7], [310.8, 171.3]]}
-line {"points": [[308.2, 171.3], [310.8, 168.7]]}
+line {"points": [[200.5, 214.7], [209.5, 214.7]]}
+arc {"center": [205, 204.8], "radius": 7.5, "start": 55, "end": 125}
+text {"at": [211, 217.5], "text": "+", "height": 4, "justify": "MC"}
+layer.current {"name": "wires"}
+line {"points": [[205, 225], [205, 214.7]]}
+line {"points": [[205, 212.3], [205, 207]]}
+layer.current {"name": "symbols"}
+line {"points": [[205, 207], [205, 201]]}
+line {"points": [[200, 201], [210, 201]]}
+line {"points": [[202, 199], [208, 199]]}
+line {"points": [[203.8, 197], [206.2, 197]]}
 layer.current {"name": "text"}
-text {"at": [243, 190], "text": "3V3", "height": 3, "justify": "ML"}
-text {"at": [243, 125], "text": "G", "height": 3, "justify": "ML"}
-text {"at": [297, 185], "text": "RST", "height": 3, "justify": "MR"}
-text {"at": [297, 170], "text": "A0", "height": 3, "justify": "MR"}
-text {"at": [297, 155], "text": "D1", "height": 3, "justify": "MR"}
-text {"at": [297, 140], "text": "D4", "height": 3, "justify": "MR"}
-text {"at": [270, 172], "text": "U1", "height": 4.5, "justify": "MC"}
-text {"at": [270, 165], "text": "D1 mini", "height": 3.5, "justify": "MC"}
-text {"at": [270, 159], "text": "ESP8266 / CH340", "height": 3, "justify": "MC"}
-text {"at": [270, 119], "text": "USB: programming only, SW2 OFF", "height": 2.3, "justify": "MC"}
-text {"at": [312, 170], "text": "n.c.", "height": 2.5, "justify": "ML"}
-text {"at": [312, 140.5], "text": "GPIO2: LED on board", "height": 2.5, "justify": "ML"}
-text {"at": [312, 136.5], "text": "(active-low)", "height": 2.3, "justify": "ML"}
-text {"at": [311, 158.5], "text": "GPIO5", "height": 2.5, "justify": "L"}
+text {"at": [199, 218], "text": "C4", "height": 3.5, "justify": "R"}
+text {"at": [199, 213], "text": "100 µF", "height": 3, "justify": "R"}
+text {"at": [199, 209], "text": "low ESR", "height": 2.5, "justify": "R"}
 layer.current {"name": "nets"}
-text {"at": [338, 158.5], "text": "BTN", "height": 3.5, "justify": "MC"}
-layer.current {"name": "symbols"}
-rectang {"p1": [322, 164], "p2": [328, 178]}
-circle {"center": [325, 167], "radius": 1}
-circle {"center": [325, 175], "radius": 1}
-pline {"vertices": [[325, 168], [325, 174]], "width": 1.2}
+text {"at": [280, 229], "text": "3V3", "height": 3.5, "justify": "MC"}
 layer.current {"name": "wires"}
-line {"points": [[325, 180], [325, 178]]}
-line {"points": [[325, 164], [325, 155]]}
-donut {"center": [325, 155], "inside": 0, "outside": 1.6}
-layer.current {"name": "text"}
-text {"at": [330, 171], "text": "JP1", "height": 3.5, "justify": "L"}
-text {"at": [330, 167], "text": "RST", "height": 2.5, "justify": "L"}
+line {"points": [[145, 170], [165, 170], [165, 150], [240, 150]]}
+donut {"center": [195, 150], "inside": 0, "outside": 1.6}
 layer.current {"name": "symbols"}
-rectang {"p1": [347.5, 172.0], "p2": [352.5, 188.0]}
+rectang {"p1": [192.5, 158.0], "p2": [197.5, 174.0]}
 layer.current {"name": "wires"}
-line {"points": [[350, 215], [350, 188]]}
-line {"points": [[350, 172], [350, 155]]}
-donut {"center": [350, 155], "inside": 0, "outside": 1.6}
-layer.current {"name": "text"}
-text {"at": [354.5, 183], "text": "R2", "height": 3.5, "justify": "L"}
-text {"at": [354.5, 178], "text": "10 k", "height": 3.5, "justify": "L"}
+line {"points": [[195, 150], [195, 158]]}
+line {"points": [[195, 174], [195, 180]]}
 layer.current {"name": "symbols"}
-line {"points": [[364, 129.2], [372, 129.2]]}
-line {"points": [[364, 126.8], [372, 126.8]]}
-layer.current {"name": "wires"}
-line {"points": [[368, 155], [368, 129.2]]}
-line {"points": [[368, 126.8], [368, 105]]}
-donut {"center": [368, 155], "inside": 0, "outside": 1.6}
-donut {"center": [368, 105], "inside": 0, "outside": 1.6}
+line {"points": [[191, 180], [199, 180]]}
+layer.current {"name": "nets"}
+text {"at": [195, 184], "text": "3V3", "height": 3, "justify": "MC"}
+text {"at": [222, 153.5], "text": "CHRG", "height": 3, "justify": "MC"}
 layer.current {"name": "text"}
-text {"at": [362, 131], "text": "C3", "height": 3.5, "justify": "R"}
-text {"at": [362, 126], "text": "100 nF", "height": 3, "justify": "R"}
+text {"at": [199, 169], "text": "R3", "height": 3, "justify": "L"}
+text {"at": [199, 164], "text": "10 k", "height": 3, "justify": "L"}
+text {"at": [215, 146.5], "text": "open drain, low = charging", "height": 2.3, "justify": "MC"}
 layer.current {"name": "symbols"}
-circle {"center": [388, 135], "radius": 0.8}
-circle {"center": [388, 118], "radius": 0.8}
-line {"points": [[383, 136.5], [383, 116.5]]}
-line {"points": [[383, 126.5], [379, 126.5]]}
-line {"points": [[379, 124.5], [379, 128.5]]}
+rectang {"p1": [240, 100], "p2": [300, 212]}
 layer.current {"name": "wires"}
-line {"points": [[388, 155], [388, 135.8]]}
-line {"points": [[388, 117.2], [388, 105]]}
+line {"points": [[240, 110], [230, 110], [230, 100]]}
+layer.current {"name": "symbols"}
+line {"points": [[230, 100], [230, 94]]}
+line {"points": [[225, 94], [235, 94]]}
+line {"points": [[227, 92], [233, 92]]}
+line {"points": [[228.8, 90], [231.2, 90]]}
+layer.current {"name": "wires"}
+line {"points": [[240, 125], [230, 125]]}
 layer.current {"name": "text"}
-text {"at": [392, 131], "text": "SW1", "height": 3.5, "justify": "L"}
-text {"at": [392, 126.5], "text": "tactile", "height": 2.8, "justify": "L"}
-text {"at": [392, 122.5], "text": "100 gf", "height": 2.8, "justify": "L"}
+text {"at": [230, 86], "text": "GND", "height": 2.5, "justify": "MC"}
+layer.current {"name": "text"}
+text {"at": [243, 204], "text": "3V3", "height": 3, "justify": "ML"}
+text {"at": [243, 190], "text": "5V", "height": 3, "justify": "ML"}
+text {"at": [243, 150], "text": "D0 GPIO16", "height": 2.6, "justify": "ML"}
+text {"at": [243, 125], "text": "D4 GPIO2", "height": 2.6, "justify": "ML"}
+text {"at": [243, 110], "text": "G", "height": 3, "justify": "ML"}
+text {"at": [297, 200], "text": "RST", "height": 3, "justify": "MR"}
+text {"at": [297, 188], "text": "D1 GPIO5", "height": 2.6, "justify": "MR"}
+text {"at": [297, 172], "text": "A0", "height": 2.6, "justify": "MR"}
+text {"at": [297, 140], "text": "D2 GPIO4", "height": 2.6, "justify": "MR"}
+text {"at": [297, 128], "text": "D7 GPIO13", "height": 2.6, "justify": "MR"}
+text {"at": [297, 118], "text": "D5 GPIO14", "height": 2.6, "justify": "MR"}
+text {"at": [297, 108], "text": "D6 GPIO12", "height": 2.6, "justify": "MR"}
+text {"at": [270, 178], "text": "U1", "height": 4.5, "justify": "MC"}
+text {"at": [270, 171], "text": "D1 mini", "height": 3.5, "justify": "MC"}
+text {"at": [270, 165], "text": "ESP8266 / CH340", "height": 3, "justify": "MC"}
+text {"at": [270, 104], "text": "micro-USB: programming, any time", "height": 2.2, "justify": "MC"}
+text {"at": [228, 126.8], "text": "LED on board", "height": 2.2, "justify": "MR"}
+text {"at": [228, 122.8], "text": "(active-low)", "height": 2.2, "justify": "MR"}
+layer.current {"name": "nets"}
+text {"at": [228, 130.6], "text": "LED", "height": 2.6, "justify": "MR"}
+layer.current {"name": "wires"}
+line {"points": [[300, 172], [310, 172]]}
+layer.current {"name": "symbols"}
+line {"points": [[310.2, 170.7], [312.8, 173.3]]}
+line {"points": [[310.2, 173.3], [312.8, 170.7]]}
+layer.current {"name": "text"}
+text {"at": [314, 172], "text": "n.c.", "height": 2.4, "justify": "ML"}
+layer.current {"name": "wires"}
+line {"points": [[300, 200], [318, 200]]}
+line {"points": [[332, 200], [340, 200], [340, 188]]}
+line {"points": [[300, 188], [385, 188]]}
+donut {"center": [340, 188], "inside": 0, "outside": 1.6}
+layer.current {"name": "symbols"}
+rectang {"p1": [318, 197], "p2": [332, 203]}
+circle {"center": [321, 200], "radius": 1}
+circle {"center": [329, 200], "radius": 1}
+pline {"vertices": [[322, 200], [328, 200]], "width": 1.2}
+layer.current {"name": "text"}
+text {"at": [325, 207], "text": "JP1", "height": 3.5, "justify": "MC"}
+layer.current {"name": "nets"}
+text {"at": [357, 191.5], "text": "BTN", "height": 3.5, "justify": "MC"}
+layer.current {"name": "symbols"}
+rectang {"p1": [347.5, 198.5], "p2": [352.5, 214.5]}
+layer.current {"name": "wires"}
+line {"points": [[350, 225], [350, 214.5]]}
+line {"points": [[350, 198.5], [350, 188]]}
+donut {"center": [350, 188], "inside": 0, "outside": 1.6}
+donut {"center": [350, 225], "inside": 0, "outside": 1.6}
+layer.current {"name": "text"}
+text {"at": [354, 209], "text": "R2", "height": 3.5, "justify": "L"}
+text {"at": [354, 204], "text": "10 k", "height": 3.5, "justify": "L"}
+layer.current {"name": "symbols"}
+line {"points": [[361, 175.7], [369, 175.7]]}
+line {"points": [[361, 173.3], [369, 173.3]]}
+layer.current {"name": "wires"}
+line {"points": [[365, 188], [365, 175.7]]}
+line {"points": [[365, 173.3], [365, 168]]}
+layer.current {"name": "symbols"}
+line {"points": [[365, 168], [365, 162]]}
+line {"points": [[360, 162], [370, 162]]}
+line {"points": [[362, 160], [368, 160]]}
+line {"points": [[363.8, 158], [366.2, 158]]}
+donut {"center": [365, 188], "inside": 0, "outside": 1.6}
+layer.current {"name": "text"}
+text {"at": [359, 177.5], "text": "C3", "height": 3.5, "justify": "R"}
+text {"at": [359, 172.5], "text": "100 nF", "height": 3, "justify": "R"}
+layer.current {"name": "symbols"}
+circle {"center": [385, 178], "radius": 0.8}
+circle {"center": [385, 162], "radius": 0.8}
+line {"points": [[380, 179.5], [380, 160.5]]}
+line {"points": [[380, 170.0], [376, 170.0]]}
+line {"points": [[376, 168.0], [376, 172.0]]}
+layer.current {"name": "wires"}
+line {"points": [[385, 188], [385, 178.8]]}
+line {"points": [[385, 161.2], [385, 158]]}
+layer.current {"name": "symbols"}
+line {"points": [[385, 158], [385, 152]]}
+line {"points": [[380, 152], [390, 152]]}
+line {"points": [[382, 150], [388, 150]]}
+line {"points": [[383.8, 148], [386.2, 148]]}
+layer.current {"name": "text"}
+text {"at": [389, 174], "text": "SW1", "height": 3.5, "justify": "L"}
+text {"at": [389, 169.5], "text": "tactile", "height": 2.8, "justify": "L"}
+text {"at": [389, 165.5], "text": "100 gf", "height": 2.8, "justify": "L"}
+layer.current {"name": "symbols"}
+rectang {"p1": [321, 82], "p2": [329, 146]}
+circle {"center": [325, 140], "radius": 1.3}
+circle {"center": [325, 128], "radius": 1.3}
+circle {"center": [325, 118], "radius": 1.3}
+circle {"center": [325, 108], "radius": 1.3}
+circle {"center": [325, 98], "radius": 1.3}
+circle {"center": [325, 88], "radius": 1.3}
+layer.current {"name": "wires"}
+line {"points": [[300, 140], [323.7, 140]]}
+line {"points": [[326.3, 140], [345, 140]]}
+line {"points": [[300, 128], [323.7, 128]]}
+line {"points": [[326.3, 128], [345, 128]]}
+line {"points": [[300, 118], [323.7, 118]]}
+line {"points": [[326.3, 118], [345, 118]]}
+line {"points": [[300, 108], [323.7, 108]]}
+line {"points": [[326.3, 108], [345, 108]]}
+line {"points": [[323.7, 98], [312, 98], [312, 78]]}
+line {"points": [[323.7, 88], [312, 88]]}
+donut {"center": [312, 88], "inside": 0, "outside": 1.6}
+layer.current {"name": "symbols"}
+line {"points": [[312, 78], [312, 72]]}
+line {"points": [[307, 72], [317, 72]]}
+line {"points": [[309, 70], [315, 70]]}
+line {"points": [[310.8, 68], [313.2, 68]]}
+line {"points": [[326.3, 98], [345, 98]]}
+line {"points": [[326.3, 88], [345, 88]]}
+layer.current {"name": "symbols"}
+rectang {"p1": [345, 80], "p2": [395, 145]}
+layer.current {"name": "nets"}
+text {"at": [337, 142.6], "text": "MICPWR", "height": 2.2, "justify": "MC"}
+text {"at": [337, 130.6], "text": "I2S_SCK", "height": 2.2, "justify": "MC"}
+text {"at": [337, 120.6], "text": "I2S_WS", "height": 2.2, "justify": "MC"}
+text {"at": [337, 110.6], "text": "I2S_SD", "height": 2.2, "justify": "MC"}
+layer.current {"name": "text"}
+text {"at": [325, 151], "text": "J2", "height": 3, "justify": "MC"}
+text {"at": [325, 155.5], "text": "6-pin header", "height": 2.2, "justify": "MC"}
+text {"at": [312, 64], "text": "GND", "height": 2.5, "justify": "MC"}
+text {"at": [348, 140], "text": "VDD", "height": 2.6, "justify": "ML"}
+text {"at": [348, 128], "text": "SCK", "height": 2.6, "justify": "ML"}
+text {"at": [348, 118], "text": "WS", "height": 2.6, "justify": "ML"}
+text {"at": [348, 108], "text": "SD", "height": 2.6, "justify": "ML"}
+text {"at": [348, 98], "text": "L/R", "height": 2.6, "justify": "ML"}
+text {"at": [348, 88], "text": "GND", "height": 2.6, "justify": "ML"}
+text {"at": [376, 131], "text": "M2", "height": 4, "justify": "MC"}
+text {"at": [376, 124], "text": "INMP441", "height": 3, "justify": "MC"}
+text {"at": [376, 118.5], "text": "I2S MEMS mic", "height": 2.3, "justify": "MC"}
+text {"at": [376, 113.5], "text": "11 × 14 mm breakout", "height": 2.2, "justify": "MC"}
+text {"at": [376, 108.5], "text": "under the lid,", "height": 2.2, "justify": "MC"}
+text {"at": [376, 104], "text": "6 wires to J2", "height": 2.2, "justify": "MC"}
+text {"at": [376, 96], "text": "L/R = GND: left ch.", "height": 2.1, "justify": "MC"}
 layer.current {"name": "notes"}
-mtext {"at": [15, 70], "text": "NOTES\\P1. SW2 OFF before connecting USB: the on-board USB LDO (3.3 V) would push current back into the cell.\\P2. A0 must stay unconnected (ADC_VCC): the firmware reads VCC with ADC_MODE(ADC_VCC).\\P3. C1 + C2 in series = 1.65 F / 5.4 V. R1 limits the cell current (<= 45 mA at insertion, then < 5 mA), tau = 112 s.\\P4. JP1 closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. JP1 open = always_on (USB).\\P5. U1 is fed directly on its 3V3 pin (on-board LDO bypassed). Standby 0.2-0.3 mA => about 4-6 weeks per CR2032.\\P6. GPIO2 drives the LED already on the D1 mini (active-low): one blink per publish. SW1 pressed = GPIO5 LOW.", "height": 2.5, "width": 232, "attach": 1, "lineSpacing": 1.15}
+mtext {"at": [15, 76], "text": "NOTES\\P1. Rev B: LiPo 1000 mAh replaces the CR2032 of rev A (audio recording needs about 75 mA for minutes).\\P2. Charge only via M1's USB-C port (TP4056, 1 A default; R_PROG 2.4 k for 0.5 A). DW01 protects the cell.\\P3. D2 blocks USB back-feed into the LiPo: USB programming is allowed at any time, with SW2 in any position.\\P4. A0 n.c.; I2S mic on GPIO12/13/14 (the ESP8266's fixed I2S RX pins): SCK = D7, WS = D5, SD = D6, L/R to GND (left channel).\\P5. M2 VDD power-gated by D2/GPIO4 (1.4 mA). M1 CHRG (open drain, low = charging) -> D0/GPIO16, R3 10 k pull-up to 3V3.\\P6. JP1 closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. JP1 open = always_on (USB).\\P7. GPIO2 drives the LED already on the D1 mini (active-low): on while recording. SW1 pressed = GPIO5 LOW.\\P8. Rev B.1: M2 INMP441 (11 x 14 mm) sits in a pocket under the lid, sound port over a 2 mm hole; 6 wires to header J2.", "height": 2.5, "width": 250, "attach": 1, "lineSpacing": 1.15}
 zoom {"mode": "extents"}

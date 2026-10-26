@@ -1,0 +1,44 @@
+# ESP8266 audio button — copy into your automations.yaml
+# Requires: downloader integration (download_dir: www/recordings)
+
+- id: esp8266_button_fetch_recording
+  alias: "ESP8266 button: fetch recording"
+  description: "Download the live WAV stream announced by a button over MQTT"
+  mode: parallel
+  trigger:
+    - platform: mqtt
+      topic: "esp8266button/+/recording"
+  variables:
+    mac: "{{ trigger.payload_json.mac }}"
+    filename: "{{ now().strftime('%Y%m%d-%H%M%S') }}-{{ trigger.payload_json.mac }}.wav"
+  action:
+    - service: downloader.download_file
+      data:
+        url: "{{ trigger.payload_json.url }}"
+        filename: "{{ filename }}"
+        overwrite: true
+
+- id: esp8266_button_recording_ready
+  alias: "ESP8266 button: recording ready"
+  description: "Notify when a button recording finished downloading"
+  mode: queued
+  trigger:
+    - platform: event
+      event_type: downloader_download_completed
+  condition:
+    - condition: template
+      value_template: "{{ trigger.event.data.filename.endswith('.wav') }}"
+  action:
+    - service: persistent_notification.create
+      data:
+        title: "Nuova registrazione dal pulsante"
+        message: >-
+          File `{{ trigger.event.data.filename }}` —
+          [ascolta](/local/recordings/{{ trigger.event.data.filename }})
+    # Example: play it on a speaker
+    # - service: media_player.play_media
+    #   target:
+    #     entity_id: media_player.cucina
+    #   data:
+    #     media_content_type: music
+    #     media_content_id: "/local/recordings/{{ trigger.event.data.filename }}"

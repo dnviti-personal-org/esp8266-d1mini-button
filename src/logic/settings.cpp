@@ -32,6 +32,8 @@ Settings settingsDefaults() {
     strcpy(s.ha_prefix, "homeassistant");
     s.power_mode = POWER_BATTERY;
     s.awake_seconds = 60;
+    s.record_seconds = 120;
+    s.mic_gain = 8;
     return s;
 }
 
@@ -69,6 +71,18 @@ SetResult settingsSet(Settings& s, const char* key, const char* value) {
         long v;
         if (!parseUint(value, 5, 3600, v)) return {false, "awake_seconds must be 5..3600"};
         s.awake_seconds = (uint16_t)v;
+        return {true, nullptr};
+    }
+    if (strcmp(key, "record_seconds") == 0) {
+        long v;
+        if (!parseUint(value, 0, 600, v)) return {false, "record_seconds must be 0..600 (0 = no audio)"};
+        s.record_seconds = (uint16_t)v;
+        return {true, nullptr};
+    }
+    if (strcmp(key, "mic_gain") == 0) {
+        long v;
+        if (!parseUint(value, 1, 64, v)) return {false, "mic_gain must be 1..64"};
+        s.mic_gain = (uint8_t)v;
         return {true, nullptr};
     }
     if (strcmp(key, "power_mode") == 0) {

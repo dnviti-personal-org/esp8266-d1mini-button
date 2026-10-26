@@ -17,6 +17,9 @@ public:
 
     bool stayAwakeRequested() const { return stayAwake_; }
     bool sleepRequested() const { return sleepNow_; }
+    // Record/stop requests from the console; consumed by main.
+    bool takeRecordRequest(uint32_t& seconds);
+    bool takeStopRequest();
     void printStatus();
 
 private:
@@ -32,4 +35,7 @@ private:
     bool dirty_ = false;
     bool stayAwake_ = false;
     bool sleepNow_ = false;
+    bool recordRequested_ = false;
+    bool stopRequested_ = false;
+    uint32_t recordSeconds_ = 0;
 };

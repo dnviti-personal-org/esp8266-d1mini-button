@@ -20,22 +20,28 @@ public:
 
     // Returns true when the message was handed to the TCP stack.
     bool publishButton(bool pressed);
-    bool publishVcc(float volts);
+    bool publishRecordingState(bool recording);
+    bool publishCharging(bool charging);
+    // Announces a live recording: HA downloads <url> while the ESP streams it.
+    bool publishRecording(const String& url, uint32_t seconds, uint32_t bytes);
     void flush();              // push pending bytes before sleeping
     void disconnect();
 
     String topicBase() const;
     String topicState() const { return topicBase() + "/state"; }
-    String topicVcc() const { return topicBase() + "/vcc"; }
+    String topicRecording() const { return topicBase() + "/recording"; }
+    String topicRecordingState() const { return topicBase() + "/recording_state"; }
+    String topicCharging() const { return topicBase() + "/charging"; }
     String topicAvailability() const { return topicBase() + "/availability"; }
     String topicDiscoveryButton() const;
-    String topicDiscoveryVcc() const;
+    String topicDiscovery(const char* component, const char* object) const;
 
 private:
     void startWifi();
     bool tryMqtt();
     void publishDiscovery();
     String deviceJson() const;
+    bool publishEntity(const char* component, const char* object, const String& body);
 
     const Settings* settings_ = nullptr;
     String deviceId_;
@@ -48,4 +54,7 @@ private:
     uint32_t wifiStartedMs_ = 0;
     bool fastConnectTried_ = false;
     bool lastButton_ = false;
+    bool lastRecording_ = false;
+    bool lastCharging_ = false;
+    bool chargingKnown_ = false;
 };

@@ -108,6 +108,86 @@
    }
   },
   {
+   "command": "parameters.add",
+   "params": {
+    "name": "mic_x",
+    "expression": "74 mm",
+    "comment": "microphone centre, cavity x"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "mic_y",
+    "expression": "28 mm",
+    "comment": "microphone centre, cavity y"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "mic_hole_d",
+    "expression": "2 mm",
+    "comment": "sound hole through the lid at the pocket centre"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "mic_pocket_w",
+    "expression": "11.5 mm",
+    "comment": "INMP441 pocket size along x (DESIGN: 12; 11.5 keeps 0.75 mm to the cap flange and 0.25 mm to the wall)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "mic_pocket_l",
+    "expression": "15 mm",
+    "comment": "INMP441 pocket size along y"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "mic_pocket_d",
+    "expression": "1.2 mm",
+    "comment": "pocket depth into the lid underside"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_w",
+    "expression": "6 mm",
+    "comment": "charge-LED window size along x"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_l",
+    "expression": "3 mm",
+    "comment": "charge-LED window size along y"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_x",
+    "expression": "66.5 mm",
+    "comment": "LED window centre, cavity x (DESIGN says 59: inside the key-cap hole, see README)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_y",
+    "expression": "11 mm",
+    "comment": "LED window centre, cavity y (DESIGN says 16)"
+   }
+  },
+  {
    "command": "solid.box",
    "params": {
     "length": "cav_x + 2*wall",
@@ -220,7 +300,7 @@
    "command": "solid.box",
    "params": {
     "length": "lip_w",
-    "width": "cav_y - 2*boss_d - 1 mm",
+    "width": "(wall + mic_y - mic_pocket_l/2 - 0.5 mm) - (wall + boss_d + 0.5 mm)",
     "height": "lip_h",
     "corner": [
      "wall + cav_x - lip_gap - lip_w",
@@ -231,7 +311,25 @@
     "targets": [
      "Lid"
     ],
-    "name": "LipRight"
+    "name": "LipRightA"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "lip_w",
+    "width": "(wall + cav_y - boss_d - 0.5 mm) - (wall + mic_y + mic_pocket_l/2 + 0.5 mm)",
+    "height": "lip_h",
+    "corner": [
+     "wall + cav_x - lip_gap - lip_w",
+     "wall + mic_y + mic_pocket_l/2 + 0.5 mm",
+     "-lip_h"
+    ],
+    "operation": "join",
+    "targets": [
+     "Lid"
+    ],
+    "name": "LipRightB"
    }
   },
   {
@@ -244,6 +342,54 @@
     ],
     "diameter": "cap_hole_d",
     "name": "CapHole"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "mic_pocket_w",
+    "width": "mic_pocket_l",
+    "height": "mic_pocket_d + 1 mm",
+    "corner": [
+     "wall + mic_x - mic_pocket_w/2",
+     "wall + mic_y - mic_pocket_l/2",
+     "-1 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Lid"
+    ],
+    "name": "MicPocket"
+   }
+  },
+  {
+   "command": "solid.hole",
+   "params": {
+    "position": [
+     76,
+     30,
+     2
+    ],
+    "diameter": "mic_hole_d",
+    "name": "MicHole"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "led_w",
+    "width": "led_l",
+    "height": "lid_t + 2 mm",
+    "corner": [
+     "wall + led_x - led_w/2",
+     "wall + led_y - led_l/2",
+     "-1 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Lid"
+    ],
+    "name": "LedWindow"
    }
   },
   {
@@ -327,7 +473,7 @@
    "command": "parameters.add",
    "params": {
     "name": "cav_z",
-    "expression": "17 mm",
+    "expression": "23 mm",
     "comment": "cavity height (inner floor to lid underside)"
    }
   },
@@ -342,7 +488,7 @@
    "command": "parameters.add",
    "params": {
     "name": "standoff_h",
-    "expression": "4 mm"
+    "expression": "10 mm"
    }
   },
   {
@@ -364,15 +510,47 @@
    "params": {
     "name": "usb_x",
     "expression": "20.8 mm",
-    "comment": "USB slot centre, cavity x"
+    "comment": "programming micro-USB slot centre, cavity x"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "usb_z",
-    "expression": "10.7 mm",
+    "expression": "16.7 mm",
     "comment": "USB slot centre above inner floor"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "usbc_w",
+    "expression": "10 mm",
+    "comment": "charging USB-C slot width"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "usbc_h",
+    "expression": "5 mm",
+    "comment": "charging USB-C slot height"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "usbc_x",
+    "expression": "57.5 mm",
+    "comment": "charging USB-C slot centre, cavity x"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "usbc_z",
+    "expression": "16.7 mm",
+    "comment": "charging USB-C slot centre above inner floor"
    }
   },
   {
@@ -401,7 +579,7 @@
    "command": "parameters.add",
    "params": {
     "name": "sw_z",
-    "expression": "7.8 mm",
+    "expression": "13.8 mm",
     "comment": "slide switch slot centre above inner floor"
    }
   },
@@ -765,7 +943,7 @@
     "position": [
      5,
      5,
-     19
+     25
     ],
     "diameter": "2 mm",
     "depth": "9 mm",
@@ -778,7 +956,7 @@
     "position": [
      79,
      5,
-     19
+     25
     ],
     "diameter": "2 mm",
     "depth": "9 mm",
@@ -791,7 +969,7 @@
     "position": [
      5,
      55,
-     19
+     25
     ],
     "diameter": "2 mm",
     "depth": "9 mm",
@@ -804,7 +982,7 @@
     "position": [
      79,
      55,
-     19
+     25
     ],
     "diameter": "2 mm",
     "depth": "9 mm",
@@ -885,10 +1063,10 @@
     "position": [
      10,
      8,
-     6
+     12
     ],
     "diameter": "1.6 mm",
-    "depth": "standoff_h + 1 mm",
+    "depth": "6 mm",
     "name": "PcbPilot1"
    }
   },
@@ -898,10 +1076,10 @@
     "position": [
      74,
      8,
-     6
+     12
     ],
     "diameter": "1.6 mm",
-    "depth": "standoff_h + 1 mm",
+    "depth": "6 mm",
     "name": "PcbPilot2"
    }
   },
@@ -911,10 +1089,10 @@
     "position": [
      10,
      52,
-     6
+     12
     ],
     "diameter": "1.6 mm",
-    "depth": "standoff_h + 1 mm",
+    "depth": "6 mm",
     "name": "PcbPilot3"
    }
   },
@@ -924,10 +1102,10 @@
     "position": [
      74,
      52,
-     6
+     12
     ],
     "diameter": "1.6 mm",
-    "depth": "standoff_h + 1 mm",
+    "depth": "6 mm",
     "name": "PcbPilot4"
    }
   },
@@ -946,7 +1124,25 @@
     "targets": [
      "Base"
     ],
-    "name": "UsbSlot"
+    "name": "UsbProgSlot"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "usbc_w",
+    "width": "wall + 2 mm",
+    "height": "usbc_h",
+    "corner": [
+     "wall + usbc_x - usbc_w/2",
+     "-1 mm",
+     "floor_t + usbc_z - usbc_h/2"
+    ],
+    "operation": "cut",
+    "targets": [
+     "Base"
+    ],
+    "name": "UsbChargeSlot"
    }
   },
   {

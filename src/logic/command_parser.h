@@ -3,10 +3,10 @@
 
 // Parses one line typed on the serial console into a command.
 struct Command {
-    enum class Type { Empty, Unknown, Help, Show, Status, Set, Save, Reboot, Factory, Sleep, Stay };
+    enum class Type { Empty, Unknown, Help, Show, Status, Set, Save, Reboot, Factory, Sleep, Stay, Record, Stop, Scan };
     Type type = Type::Empty;
     char key[32] = {0};     // for Set
-    char value[128] = {0};  // for Set: everything after the key, trimmed
+    char value[128] = {0};  // for Set: everything after the key, trimmed; for Record: optional seconds
 };
 
 Command parseCommand(const char* line);

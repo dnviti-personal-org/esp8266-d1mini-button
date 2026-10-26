@@ -29,8 +29,8 @@ GND ─────────────────────────�
 - Budget: deep-sleep standby ≈ 0.25 mA (D1 mini LDO + CH340 leakage, TP4056
   idle < 10 µA) ⇒ **≈ 4 months**. Recording ≈ 75 mA ⇒ 1000 mAh ≈ 13 h of
   audio ≈ **250 three-minute presses** per charge. Charge at 500 mA ≈ 2.5 h.
-- Battery voltage is not measured: the single ADC input A0 is used by the
-  microphone.
+- Battery voltage is not measured (A0 is free but the firmware does not use it:
+  `ADC_VCC` would need A0 floating, add a divider + `analogRead` if wanted).
 
 ## 2. Button wiring
 
@@ -48,22 +48,33 @@ GND ─────────────────────────�
   during a recording stops it early.
 - The on-board LED (GPIO2, active-low) is on while recording.
 
-## 3. Audio path
+## 3. Audio path (I2S MEMS microphone)
+
+Revision B.1: the electret + MAX9814 + internal ADC path of the first B draft
+was dropped after bench testing: the ESP8266's only ADC is read through the
+Wi-Fi PHY (`system_adc_read`, flash-resident, up to 220 µs per sample) and
+calling it from a timer interrupt crashes the chip as soon as there is TCP
+traffic (Exception 0 in the ISR). A digital I2S microphone is filled by DMA
+with no CPU involvement and no interaction with the radio.
 
 ```
-MIC1 electret Ø9.7 mm ─ M2 MAX9814 preamp module (AGC, 60 dB max) ─ OUT ─ A0 (D1 mini 220k/100k divider → ADC 0–1 V)
-                        M2 VDD ← D5 (GPIO14)   power gated, ≈ 3 mA when on
-                        M2 GAIN, A/R: floating (60 dB, 1:4000 attack/release)
+M2 INMP441 breakout   SCK ← D7 (GPIO13)   WS ← D5 (GPIO14)   SD → D6 (GPIO12)
+                      L/R → GND (left channel)   VDD ← D2 (GPIO4), power gated, 1.4 mA   GND → GND
+M1 TP4056 CHRG ──┬── D0 (GPIO16)   (open drain, low = charging)
+                 └── R3 10 kΩ → 3V3
 ```
 
-- The capsule sits in the lid, 2 wires to the MAX9814 "MIC" pads (the stock
-  capsule on the module is removed or left unused — its pads are in parallel).
-- Sampling: timer ISR at 8 kHz, 10-bit ADC stored as 8-bit unsigned PCM, WAV
-  container, written to LittleFS (3 MB partition ⇒ up to 240 s per file).
-- After the recording the ESP serves `http://<ip>/rec.wav` and publishes a
-  JSON on MQTT (`<prefix>/<mac>/recording`); Home Assistant downloads it
+- GPIO12/13/14 are the ESP8266's fixed I2S RX pins; the charger sense therefore
+  moved to GPIO16 (no internal pull-up: R3 provides it) and the mic power to GPIO4.
+- Sampling: 8 kHz, 24-bit frames read as 16-bit, mono, WAV container, with a
+  configurable digital gain (`mic_gain`, ×1…×64, default ×8).
+- The samples go to a RAM ring buffer (1 s of pre-roll) and are streamed live
+  over HTTP (`http://<ip>/rec.wav`, fixed-length WAV). Home Assistant starts the
+  download when the ESP publishes the JSON on `<prefix>/<mac>/recording`
   (`downloader` integration, see `homeassistant/`). The ESP stays awake until
-  the file has been streamed once or 90 s elapse, then sleeps.
+  the file has been streamed once or the client never shows up (15 s), then sleeps.
+- The breakout (11 × 14 mm) sits in a pocket under the lid with its sound port
+  over a Ø2 mm hole. No flash is written during recording.
 
 ## 4. Bill of materials
 
@@ -73,8 +84,8 @@ MIC1 electret Ø9.7 mm ─ M2 MAX9814 preamp module (AGC, 60 dB max) ─ OUT ─
 | PCB1 | Perfboard 50 × 70 mm, 2.54 mm pitch, single side | 18 × 24 holes, FR-4 1.6 mm |
 | BT1 | LiPo 3.7 V 1000 mAh 803040 with JST-PH 2.0 plug | 8 × 30 × 40 mm, lies under the perfboard |
 | M1 | TP4056 charger module with DW01/FS8205 protection, USB-C (03962A) | 26 × 17.5 mm, 1.0 A default (R_PROG 1.2 kΩ); change R_PROG to 2.4 kΩ for 0.5 A |
-| M2 | MAX9814 electret preamp module with AGC (Adafruit 1713 or clone) | 26 × 15.3 mm, 6 pins: VDD GND OUT GAIN AR + MIC pads |
-| MIC1 | Electret condenser capsule Ø9.7 × 6.7 mm, 2 pins (e.g. CUI CMC-9767-130T, PUI AOM-6738P) | mounted in the lid, 2 wires to M2 |
+| M2 | INMP441 I2S MEMS microphone breakout | 11 × 14 mm, 6 pins (VDD GND SD WS SCK L/R), 1.4 mA, mounted under the lid, 6 wires to the perfboard |
+| R3 | 10 kΩ 1/4 W (pull-up for CHRG on GPIO16) | axial |
 | J1 | JST-PH 2-pin right-angle header (battery) | 2.0 mm pitch |
 | SW1 | Tactile switch 12 × 12 mm, THT, 7.3 mm actuator, **low force 100 gf** (e.g. Omron B3F-4000) | standard 12×12 footprint |
 | SW2 | SPDT slide switch SS12D00 (power) | 8.6 × 3.6 mm body, 3 pins 3.0 mm pitch, actuator 2 mm |
@@ -95,11 +106,12 @@ big key cap is centred on the lid. The LiPo lies on the enclosure floor
 |---|---|---|---|
 | U1 D1 mini | (15.8, 25.0) | 25.6 (X) × 34.2 (Y) | micro-USB toward the **y = 0** edge, antenna toward y = 50 |
 | SW1 button | (35.0, 25.0) | 12 × 12 | exact centre of the enclosure (cavity 40, 28) |
-| M1 TP4056 | (54.0, 9.5) | 26 (X) × 17.5 (Y) | USB-C toward the **y = 0** edge (protrudes ≈ 1.5 mm), on male header pins |
-| M2 MAX9814 | (54.0, 36.0) | 15.3 (X) × 26 (Y) | pins toward y = 50; MIC pads toward SW1 |
+| M1 TP4056 | (52.5, 9.5) | 26 (X) × 17.5 (Y), x 39.5 → 65.5 | USB-C toward the **y = 0** edge (protrudes ≈ 1.5 mm), on male header pins |
+| J2 mic header | (54.0, 36.0) | 6 pins 2.54 along Y | wires to M2 in the lid (SCK WS SD L/R VDD GND) |
+| R3 | (44.0, 47.5) | axial, 10 mm along X | pads at x 39 and 49 |
 | J1 battery | (66.0, 24.0) | 6 (X) × 5 (Y) | wires leave toward x = 70 and go under the board |
-| D2 | (36.0, 7.0) | axial, 10 mm along X | cathode (band) toward U1 |
-| R2 | (36.0, 13.0) | axial, 10 mm along X | |
+| D2 | (34.0, 7.0) | axial, 10 mm along X | cathode (band) toward U1 |
+| R2 | (34.0, 13.0) | axial, 10 mm along X | |
 | C3 | (36.0, 35.0) | 2.54 pitch | |
 | C4 | (36.0, 42.0) | Ø5 × 11 lying flat along X | |
 | JP1 | (34.0, 47.5) | 2 pins along X | |
@@ -109,7 +121,7 @@ big key cap is centred on the lid. The LiPo lies on the enclosure floor
 
 Tallest parts above the perfboard top surface: U1 stack ≈ 7.0 mm (header
 2.5 + PCB 1.0 + shield/USB 3.5), M1 ≈ 6.8 (header 2.5 + PCB 1.0 + USB-C 3.3),
-M2 ≈ 5 mm, SW1 actuator top 7.3 mm. micro-USB receptacle centre ≈ 5.2 mm
+J2 header ≈ 8 mm, SW1 actuator top 7.3 mm. micro-USB receptacle centre ≈ 5.2 mm
 above the perfboard at x = 15.8 on the y = 0 edge; USB-C receptacle centre
 ≈ 5.2 mm above the perfboard at x = 54 on the y = 0 edge.
 
@@ -121,7 +133,7 @@ edges, rubber feet so the box does not slide when pressed.
 
 - Three parts: **base** (floor + walls + 4 PCB standoffs + 4 lid screw bosses
   + 4 rubber-foot recesses), **lid** (round hole for the key cap, microphone
-  socket, charge-LED window), **key cap / plunger**.
+  pocket, charge-LED window), **key cap / plunger**.
 - Cavity: **80 × 56 × 23 mm** (6 mm taller than rev. A for the LiPo under the
   board). The perfboard (70 × 50) sits at cavity offset (5, 3): x 5 → 75,
   y 3 → 53. Walls 2 mm, floor 2 mm, lid 2 mm ⇒ outer **84 × 60 × 27 mm**.
@@ -136,19 +148,20 @@ edges, rubber feet so the box does not slide when pressed.
   centre at cavity x = 20.8, z = 16.7 above the inner floor (10 standoff +
   1.6 perfboard + 5.2).
 - Charging USB-C slot through the **y = 0 wall**: 10 mm wide × 5 mm tall,
-  centre at cavity x = 59, z = 16.7.
+  centre at cavity x = 57.5, z = 16.7.
 - Slide-switch slot through the **x = 80 wall**: 8 mm wide (along y) × 3.5 mm
   tall, centre at cavity y = 39, z ≈ 13.8 above the inner floor.
 - Rubber-foot recesses under the floor: Ø8 × 0.8 mm, 6 mm in from each corner.
 - Key-cap hole in the lid: **Ø52.6 mm**, centred at cavity (40, 28) — the lid
   centre.
-- **Microphone socket** in the lid at cavity (74, 28): Ø7 mm through-hole
-  (sound opening, optionally 7 × Ø1.5 holes in a hex pattern instead) and,
-  on the lid underside, a ring Ø9.9 inner / Ø12.5 outer, 4 mm tall, that holds
-  the Ø9.7 capsule by friction (glue a drop if loose). The capsule's wires run
-  to M2 on the perfboard.
+- **Microphone pocket** on the lid underside at cavity (74, 28): a 12 × 15 mm
+  (x × y) recess 1.2 mm deep for the INMP441 breakout and a Ø2 mm sound hole
+  through the lid at the pocket centre. The board is held with a drop of glue
+  or foam tape, port facing the hole; 6 wires run to J2 on the perfboard.
 - **Charge-LED window** in the lid: 6 (x) × 3 (y) mm slot centred at cavity
-  (59, 16), above the TP4056 LEDs.
+  (66.5, 11), just outside the key-cap flange on the TP4056 side (the module's
+  LEDs are seen obliquely; add a short light pipe or mount M1 with its LEDs
+  toward x = 70 if needed).
 - Key cap: Ø52 mm, domed top (spherical dome rising 4 mm over a 4 mm tall
   cylindrical rim = 8 mm proud of the lid at rest), retaining flange Ø55 × 1.5
   mm under the lid, central stem Ø8 reaching the tactile switch actuator

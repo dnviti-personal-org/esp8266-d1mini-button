@@ -47,6 +47,8 @@ Command parseCommand(const char* line) {
         {"set", Command::Type::Set},       {"save", Command::Type::Save},
         {"reboot", Command::Type::Reboot}, {"factory", Command::Type::Factory},
         {"sleep", Command::Type::Sleep},   {"stay", Command::Type::Stay},
+        {"record", Command::Type::Record}, {"stop", Command::Type::Stop},
+        {"scan", Command::Type::Scan},
     };
     cmd.type = Command::Type::Unknown;
     for (const Entry& e : table) {
@@ -57,6 +59,8 @@ Command parseCommand(const char* line) {
         p = readWord(p, cmd.key, sizeof(cmd.key));
         copyTrimmed(p, cmd.value, sizeof(cmd.value));
         if (cmd.key[0] == 0) cmd.type = Command::Type::Unknown;
+    } else if (cmd.type == Command::Type::Record) {
+        copyTrimmed(p, cmd.value, sizeof(cmd.value));
     }
     return cmd;
 }
@@ -67,13 +71,17 @@ const char* commandHelpText() {
         "  help                 this text\n"
         "  show                 print settings (passwords masked)\n"
         "  status               device id, network and MQTT state, topics\n"
+        "  scan                 list nearby Wi-Fi networks (2.4 GHz only)\n"
         "  set <key> <value>    change a setting (in RAM until 'save')\n"
         "     keys: ssid pass mqtt_host mqtt_port mqtt_user mqtt_pass\n"
         "           prefix ha_prefix power_mode (battery|always_on) awake_seconds\n"
+        "           record_seconds (0 = no audio) mic_gain (1..64)\n"
         "     example: set ssid My Home WiFi\n"
         "  save                 write settings to flash\n"
         "  reboot               restart the board\n"
         "  factory              erase settings and restart\n"
         "  stay                 battery mode: do not deep-sleep until reboot\n"
-        "  sleep                battery mode: deep-sleep now\n";
+        "  sleep                battery mode: deep-sleep now\n"
+        "  record [seconds]     start an audio recording (served at http://<ip>/rec.wav)\n"
+        "  stop                 stop the current recording early\n";
 }

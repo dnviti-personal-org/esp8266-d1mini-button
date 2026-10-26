@@ -80,10 +80,44 @@ void SerialMenu::handle(const Command& cmd) {
     case Command::Type::Sleep:
         sleepNow_ = true;
         return;
+    case Command::Type::Record: {
+        long v = cmd.value[0] ? atol(cmd.value) : settings_.record_seconds;
+        if (v <= 0 || v > 600) { Serial.println(F("error: seconds must be 1..600")); return; }
+        recordSeconds_ = (uint32_t)v;
+        recordRequested_ = true;
+        stayAwake_ = true;
+        return;
+    }
+    case Command::Type::Stop:
+        stopRequested_ = true;
+        return;
+    case Command::Type::Scan: {
+        Serial.println(F("scanning..."));
+        int n = WiFi.scanNetworks();
+        for (int i = 0; i < n; ++i)
+            Serial.printf("  %-32s ch %2d  %4d dBm  %s\n", WiFi.SSID(i).c_str(), WiFi.channel(i), WiFi.RSSI(i),
+                          WiFi.encryptionType(i) == ENC_TYPE_NONE ? "open" : "secured");
+        if (n <= 0) Serial.println(F("  no networks found"));
+        WiFi.scanDelete();
+        return;
+    }
     case Command::Type::Unknown:
         Serial.println(F("unknown command, type 'help'"));
         return;
     }
+}
+
+bool SerialMenu::takeRecordRequest(uint32_t& seconds) {
+    if (!recordRequested_) return false;
+    recordRequested_ = false;
+    seconds = recordSeconds_;
+    return true;
+}
+
+bool SerialMenu::takeStopRequest() {
+    bool r = stopRequested_;
+    stopRequested_ = false;
+    return r;
 }
 
 void SerialMenu::printShow() {
@@ -99,6 +133,8 @@ void SerialMenu::printShow() {
     Serial.printf("  ha_prefix     = %s\n", s.ha_prefix);
     Serial.printf("  power_mode    = %s\n", powerModeName(s.power_mode));
     Serial.printf("  awake_seconds = %u\n", s.awake_seconds);
+    Serial.printf("  record_seconds= %u\n", s.record_seconds);
+    Serial.printf("  mic_gain      = %u\n", s.mic_gain);
     if (dirty_) Serial.println(F("  (unsaved changes: type 'save')"));
 }
 
@@ -107,14 +143,14 @@ void SerialMenu::printStatus() {
     Serial.printf("  device id   = %s\n", deviceId_.c_str());
     Serial.printf("  mac         = %s\n", WiFi.macAddress().c_str());
     Serial.printf("  state       = %s\n", net_.stateName());
-    Serial.printf("  wifi        = %s rssi %d dBm ip %s\n",
-                  WiFi.status() == WL_CONNECTED ? "connected" : "down", WiFi.RSSI(),
+    Serial.printf("  wifi        = %s (status %d) rssi %d dBm ip %s\n",
+                  WiFi.status() == WL_CONNECTED ? "connected" : "down", (int)WiFi.status(), WiFi.RSSI(),
                   WiFi.localIP().toString().c_str());
     Serial.printf("  mqtt state  = %d (0 = connected)\n", net_.mqttState());
     Serial.printf("  connect ms  = %u\n", net_.connectDurationMs());
-    Serial.printf("  vcc         = %.2f V\n", ESP.getVcc() / 1024.0f);
     Serial.printf("  state topic = %s\n", net_.topicState().c_str());
-    Serial.printf("  vcc topic   = %s\n", net_.topicVcc().c_str());
+    Serial.printf("  rec topic   = %s\n", net_.topicRecording().c_str());
+    Serial.printf("  audio url   = http://%s/rec.wav\n", WiFi.localIP().toString().c_str());
     Serial.printf("  discovery   = %s\n", net_.topicDiscoveryButton().c_str());
     Serial.printf("  free heap   = %u\n", ESP.getFreeHeap());
 }

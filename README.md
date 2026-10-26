@@ -23,9 +23,11 @@ nothing else to operate.
 | `src/logic/` | Hardware independent logic: debouncer, command parser, settings + CRC |
 | `test/test_logic/` | Unity tests of `src/logic`, run on the host (`pio test -e native`) |
 | `hardware/DESIGN.md` | Electrical and mechanical design decisions, BOM, perfboard placement |
-| `hardware/schematic/` | Schematic and perfboard layout (CADCraft: DXF, SVG, PDF, PNG) |
+| `hardware/schematic/` | Schematic, component-side layout and mirrored solder-side wiring sheet (CADCraft: DXF, SVG, PDF, PNG) |
 | `hardware/enclosure/` | 3D printable enclosure, key cap and the full assembly with every electronic part modelled (SolidCraft: STEP, STL, renders, clearance table in its README) |
 | `hardware/BOM.md` | Bill of materials and netlist |
+| `hardware/BUILD.md` ([italiano](hardware/BUILD.it.md)) | Step-by-step perfboard assembly guide: every lead and wire by hole name (A1..X18) |
+| `hardware/layout/` | `gen_layout.py` → `layout.json`: the generated perfboard layout and wiring that the guide, drawings and 3D model are built from |
 | `homeassistant/` | Automations and setup notes for the Home Assistant side |
 | `docs/superpowers/specs/` | Firmware design spec |
 

@@ -509,8 +509,8 @@
    "command": "parameters.add",
    "params": {
     "name": "usb_x",
-    "expression": "20.8 mm",
-    "comment": "programming micro-USB slot centre, cavity x"
+    "expression": "19.68 mm",
+    "comment": "programming micro-USB slot centre, cavity x (layout.json rev C)"
    }
   },
   {
@@ -549,8 +549,8 @@
    "command": "parameters.add",
    "params": {
     "name": "usbc_z",
-    "expression": "17.7 mm",
-    "comment": "charging USB-C slot centre above inner floor"
+    "expression": "16.2 mm",
+    "comment": "charging USB-C slot centre above inner floor (= centre of the USB4125 shell on the glued M1 module)"
    }
   },
   {
@@ -564,23 +564,23 @@
    "command": "parameters.add",
    "params": {
     "name": "sw_h",
-    "expression": "3.5 mm"
+    "expression": "4 mm"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "sw_y",
-    "expression": "37.5 mm",
-    "comment": "slide switch slot centre, cavity y"
+    "expression": "43.24 mm",
+    "comment": "slide switch slot centre, cavity y (= hole A16, layout.json rev C); slot is in the x = 0 wall"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "sw_z",
-    "expression": "16.8 mm",
-    "comment": "slide switch slot centre above inner floor"
+    "expression": "14.75 mm",
+    "comment": "slide switch slot centre above inner floor = SW2 knob centre (body 4.3 thick on its side resting on the board top 12.6)"
    }
   },
   {
@@ -995,8 +995,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 39 mm",
-     "wall + 4.5 mm",
+     "wall + 36.19 mm",
+     "wall + 5.14 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1012,8 +1012,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 39 mm",
-     "wall + 48.5 mm",
+     "wall + 36.19 mm",
+     "wall + 48.32 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1029,8 +1029,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 11 mm",
-     "wall + 41.5 mm",
+     "wall + 13.33 mm",
+     "wall + 45.78 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1046,8 +1046,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 69 mm",
-     "wall + 22.5 mm",
+     "wall + 66.67 mm",
+     "wall + 30.54 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1061,8 +1061,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     41,
-     6.5,
+     38.19,
+     7.14,
      13
     ],
     "diameter": "1.6 mm",
@@ -1074,8 +1074,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     41,
-     50.5,
+     38.19,
+     50.32,
      13
     ],
     "diameter": "1.6 mm",
@@ -1087,8 +1087,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     13,
-     43.5,
+     15.33,
+     47.78,
      13
     ],
     "diameter": "1.6 mm",
@@ -1100,8 +1100,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     71,
-     24.5,
+     68.67,
+     32.54,
      13
     ],
     "diameter": "1.6 mm",
@@ -1152,7 +1152,7 @@
     "width": "sw_w",
     "height": "sw_h",
     "corner": [
-     "wall + cav_x - 0.5 mm",
+     "-1 mm",
      "wall + sw_y - sw_w/2",
      "floor_t + sw_z - sw_h/2"
     ],

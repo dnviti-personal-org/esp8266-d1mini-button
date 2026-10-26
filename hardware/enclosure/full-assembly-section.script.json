@@ -509,8 +509,8 @@
    "command": "parameters.add",
    "params": {
     "name": "usb_x",
-    "expression": "20.8 mm",
-    "comment": "programming micro-USB slot centre, cavity x"
+    "expression": "19.68 mm",
+    "comment": "programming micro-USB slot centre, cavity x (layout.json rev C)"
    }
   },
   {
@@ -549,8 +549,8 @@
    "command": "parameters.add",
    "params": {
     "name": "usbc_z",
-    "expression": "17.7 mm",
-    "comment": "charging USB-C slot centre above inner floor"
+    "expression": "16.2 mm",
+    "comment": "charging USB-C slot centre above inner floor (= centre of the USB4125 shell on the glued M1 module)"
    }
   },
   {
@@ -564,23 +564,23 @@
    "command": "parameters.add",
    "params": {
     "name": "sw_h",
-    "expression": "3.5 mm"
+    "expression": "4 mm"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "sw_y",
-    "expression": "37.5 mm",
-    "comment": "slide switch slot centre, cavity y"
+    "expression": "43.24 mm",
+    "comment": "slide switch slot centre, cavity y (= hole A16, layout.json rev C); slot is in the x = 0 wall"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "sw_z",
-    "expression": "16.8 mm",
-    "comment": "slide switch slot centre above inner floor"
+    "expression": "14.75 mm",
+    "comment": "slide switch slot centre above inner floor = SW2 knob centre (body 4.3 thick on its side resting on the board top 12.6)"
    }
   },
   {
@@ -995,8 +995,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 39 mm",
-     "wall + 4.5 mm",
+     "wall + 36.19 mm",
+     "wall + 5.14 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1012,8 +1012,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 39 mm",
-     "wall + 48.5 mm",
+     "wall + 36.19 mm",
+     "wall + 48.32 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1029,8 +1029,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 11 mm",
-     "wall + 41.5 mm",
+     "wall + 13.33 mm",
+     "wall + 45.78 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1046,8 +1046,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 69 mm",
-     "wall + 22.5 mm",
+     "wall + 66.67 mm",
+     "wall + 30.54 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1061,8 +1061,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     41,
-     6.5,
+     38.19,
+     7.14,
      13
     ],
     "diameter": "1.6 mm",
@@ -1074,8 +1074,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     41,
-     50.5,
+     38.19,
+     50.32,
      13
     ],
     "diameter": "1.6 mm",
@@ -1087,8 +1087,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     13,
-     43.5,
+     15.33,
+     47.78,
      13
     ],
     "diameter": "1.6 mm",
@@ -1100,8 +1100,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     71,
-     24.5,
+     68.67,
+     32.54,
      13
     ],
     "diameter": "1.6 mm",
@@ -1152,7 +1152,7 @@
     "width": "sw_w",
     "height": "sw_h",
     "corner": [
-     "wall + cav_x - 0.5 mm",
+     "-1 mm",
      "wall + sw_y - sw_w/2",
      "floor_t + sw_z - sw_h/2"
     ],
@@ -1244,16 +1244,16 @@
    "command": "parameters.add",
    "params": {
     "name": "pcb_x0",
-    "expression": "7 mm",
-    "comment": "perfboard origin, world x (= wall 2 + cavity offset 5)"
+    "expression": "4.46 mm",
+    "comment": "perfboard origin, world x (= wall 2 + cavity offset 2.46, layout.json)"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "pcb_y0",
-    "expression": "3.5 mm",
-    "comment": "perfboard origin, world y (= wall 2 + cavity offset 1.5)"
+    "expression": "3.73 mm",
+    "comment": "perfboard origin, world y (= wall 2 + cavity offset 1.73, layout.json)"
    }
   },
   {
@@ -1283,25 +1283,17 @@
   {
    "command": "parameters.add",
    "params": {
-    "name": "lipo_x",
-    "expression": "42 mm",
-    "comment": "LiPo centre, world x (cavity 40)"
+    "name": "hdr_h",
+    "expression": "2.54 mm",
+    "comment": "pin-header plastic = module standoff height"
    }
   },
   {
    "command": "parameters.add",
    "params": {
-    "name": "lipo_y",
-    "expression": "30 mm",
-    "comment": "LiPo centre, world y (cavity 28)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "m2_z",
-    "expression": "25.6 mm",
-    "comment": "INMP441 underside, world z (lid underside 26 - 0.4 protrusion)"
+    "name": "wire_z",
+    "expression": "pcb_z0 - 0.6 mm",
+    "comment": "axis of the solder-side wires (cavity 10.4)"
    }
   },
   {
@@ -1315,7 +1307,7 @@
      "pcb_y0",
      "pcb_z0"
     ],
-    "name": "PCB1",
+    "name": "PCB1_board",
     "operation": "new",
     "body_name": "PCB1"
    }
@@ -1323,8 +1315,8 @@
   {
    "command": "solid.box",
    "params": {
-    "length": "4 mm",
-    "width": "4 mm",
+    "length": "5.0 mm",
+    "width": "5.0 mm",
     "height": "3 mm",
     "corner": [
      "pcb_x0 + 0 mm",
@@ -1341,11 +1333,11 @@
   {
    "command": "solid.box",
    "params": {
-    "length": "4 mm",
-    "width": "4 mm",
+    "length": "5.0 mm",
+    "width": "5.0 mm",
     "height": "3 mm",
     "corner": [
-     "pcb_x0 + 66 mm",
+     "pcb_x0 + 65.0 mm",
      "pcb_y0 + 0 mm",
      "pcb_z0 - 0.5 mm"
     ],
@@ -1359,12 +1351,12 @@
   {
    "command": "solid.box",
    "params": {
-    "length": "4 mm",
-    "width": "4 mm",
+    "length": "5.0 mm",
+    "width": "5.0 mm",
     "height": "3 mm",
     "corner": [
      "pcb_x0 + 0 mm",
-     "pcb_y0 + 46 mm",
+     "pcb_y0 + 45.0 mm",
      "pcb_z0 - 0.5 mm"
     ],
     "operation": "cut",
@@ -1377,12 +1369,12 @@
   {
    "command": "solid.box",
    "params": {
-    "length": "4 mm",
-    "width": "4 mm",
+    "length": "5.0 mm",
+    "width": "5.0 mm",
     "height": "3 mm",
     "corner": [
-     "pcb_x0 + 66 mm",
-     "pcb_y0 + 46 mm",
+     "pcb_x0 + 65.0 mm",
+     "pcb_y0 + 45.0 mm",
      "pcb_z0 - 0.5 mm"
     ],
     "operation": "cut",
@@ -1393,392 +1385,1251 @@
    }
   },
   {
-   "command": "solid.box",
-   "params": {
-    "length": "52 mm",
-    "width": "36 mm",
-    "height": "1.5 mm",
-    "corner": [
-     "pcb_x0 + 9 mm",
-     "pcb_y0 + 7 mm",
-     "pcb_z0 - 1.5 mm"
-    ],
-    "name": "PCB1_pins",
-    "operation": "new",
-    "body_name": "PCB1_pins"
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "2.54 mm",
-    "width": "20.3 mm",
-    "height": "2.5 mm",
-    "corner": [
-     "pcb_x0 + 3.100000000000001 mm",
-     "pcb_y0 + 6.950000000000001 mm",
-     "pcb_top"
-    ],
-    "name": "U1_hdr1",
-    "operation": "new",
-    "body_name": "U1"
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "25.6 mm",
-    "width": "34.2 mm",
-    "height": "1.0 mm",
-    "corner": [
-     "pcb_x0 + 3.0 mm",
-     "pcb_y0 + 0 mm",
-     "pcb_top + 2.5 mm"
-    ],
-    "name": "U1_pcb",
-    "operation": "join",
-    "targets": [
-     "U1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "2.54 mm",
-    "width": "20.3 mm",
-    "height": "2.5 mm",
-    "corner": [
-     "pcb_x0 + 25.96 mm",
-     "pcb_y0 + 6.950000000000001 mm",
-     "pcb_top"
-    ],
-    "name": "U1_hdr2",
-    "operation": "join",
-    "targets": [
-     "U1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "15.5 mm",
-    "width": "24 mm",
-    "height": "3.5 mm",
-    "corner": [
-     "pcb_x0 + 8.05 mm",
-     "pcb_y0 + 8.100000000000001 mm",
-     "pcb_top + 3.5 mm"
-    ],
-    "name": "U1_shield",
-    "operation": "join",
-    "targets": [
-     "U1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "8 mm",
-    "width": "6 mm",
-    "height": "3.5 mm",
-    "corner": [
-     "pcb_x0 + 11.8 mm",
-     "pcb_y0 + -1 mm",
-     "pcb_top + 3.5 mm"
-    ],
-    "name": "U1_usb",
-    "operation": "join",
-    "targets": [
-     "U1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "12 mm",
-    "width": "12 mm",
-    "height": "3.5 mm",
-    "corner": [
-     "pcb_x0 + 29 mm",
-     "pcb_y0 + 20.5 mm",
-     "pcb_top"
-    ],
-    "name": "SW1",
-    "operation": "new",
-    "body_name": "SW1"
-   }
-  },
-  {
    "command": "solid.cylinder",
    "params": {
-    "diameter": "3.5 mm",
-    "height": "3.8 mm",
+    "diameter": "2.2 mm",
+    "height": "3 mm",
     "base": [
-     "pcb_x0 + 35 mm",
-     "pcb_y0 + 26.5 mm",
-     "pcb_top + 3.5 mm"
+     "pcb_x0 + 33.73 mm",
+     "pcb_y0 + 3.41 mm",
+     "pcb_z0 - 0.5 mm"
     ],
     "axis": "Z",
-    "name": "SW1_stem",
-    "operation": "join",
+    "name": "PCB1_mount_L1",
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "2.2 mm",
+    "height": "3 mm",
+    "base": [
+     "pcb_x0 + 33.73 mm",
+     "pcb_y0 + 46.59 mm",
+     "pcb_z0 - 0.5 mm"
+    ],
+    "axis": "Z",
+    "name": "PCB1_mount_L18",
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "2.2 mm",
+    "height": "3 mm",
+    "base": [
+     "pcb_x0 + 10.87 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 0.5 mm"
+    ],
+    "axis": "Z",
+    "name": "PCB1_mount_C17",
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "2.2 mm",
+    "height": "3 mm",
+    "base": [
+     "pcb_x0 + 64.21 mm",
+     "pcb_y0 + 28.81 mm",
+     "pcb_z0 - 0.5 mm"
+    ],
+    "axis": "Z",
+    "name": "PCB1_mount_X11",
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ]
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XY",
+    "offset": "pcb_z0",
+    "name": "PCB1_grid"
+   }
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": [
+     10.25,
+     7.140000000000001
+    ],
+    "diameter": 1.0
+   }
+  },
+  {
+   "command": "sketch.pattern.rectangular",
+   "params": {
+    "entities": [
+     "c1"
+    ],
+    "count": 24,
+    "spacing": 2.54,
+    "count2": 18,
+    "spacing2": 2.54
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "sketch": "PCB1_grid",
+    "distance": "pcb_t",
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ],
+    "profiles": "all",
+    "name": "PCB1_holes"
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/PinHeader_1x08_P2.54mm_Vertical.step",
+    "name": "U1_H1"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "PinHeader_1x08_P254mm_Vertical",
+    "name": "U1_H1"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "U1_H1"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg",
+    "translate": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 8.49 mm",
+     "pcb_top + 2.54 mm"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "5 mm",
+    "width": "25 mm",
+    "height": "pcb_z0 - 1 mm",
+    "corner": [
+     "pcb_x0 + 3.29 mm",
+     "pcb_y0 + 4.99 mm",
+     "0 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "U1_H1"
+    ],
+    "name": "U1_H1_trim"
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/PinHeader_1x08_P2.54mm_Vertical.step",
+    "name": "U1_H2"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "PinHeader_1x08_P254mm_Vertical",
+    "name": "U1_H2"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "U1_H2"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg",
+    "translate": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 8.49 mm",
+     "pcb_top + 2.54 mm"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "5 mm",
+    "width": "25 mm",
+    "height": "pcb_z0 - 1 mm",
+    "corner": [
+     "pcb_x0 + 26.15 mm",
+     "pcb_y0 + 4.99 mm",
+     "0 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "U1_H2"
+    ],
+    "name": "U1_H2_trim"
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/WEMOS_D1_mini_Technariumas.step",
+    "name": "U1",
+    "up": "y"
+   }
+  },
+  {
+   "command": "solid.remove",
+   "params": {
+    "bodies": [
+     "USB Micro"
+    ]
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "PCB",
+    "name": "U1"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "Default (29)",
+    "name": "U1_shield"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "Default (30)",
+    "name": "U1_esp_pcb"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "Default (25)",
+    "name": "U1_CH340"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "Default (28)",
+    "name": "U1_reset"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "U1",
+     "U1_shield",
+     "U1_esp_pcb",
+     "U1_CH340",
+     "U1_reset",
+     "Default",
+     "Default (2)",
+     "Default (3)",
+     "Default (4)",
+     "Default (5)",
+     "Default (6)",
+     "Default (7)",
+     "Default (8)",
+     "Default (9)",
+     "Default (10)",
+     "Default (11)",
+     "Default (12)",
+     "Default (13)",
+     "Default (14)",
+     "Default (15)",
+     "Default (16)",
+     "Default (17)",
+     "Default (18)",
+     "Default (19)",
+     "Default (20)",
+     "Default (21)",
+     "Default (22)",
+     "Default (23)",
+     "Default (24)",
+     "Default (26)",
+     "Default (27)"
+    ],
+    "translate": [
+     34.48,
+     4.01,
+     17.14
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/USB_Micro-B_Molex_47346-0001.step",
+    "name": "U1_USB"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "USB_Micro-B_Molex_47346-0001",
+    "name": "U1_USB"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "U1_USB"
+    ],
+    "translate": [
+     "pcb_x0 + 16.77 mm",
+     "pcb_y0 + 3.05 mm",
+     "pcb_top + 4.28 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/SW_PUSH-12mm_Wuerth-430476085716.step",
+    "name": "SW1"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "SW_PUSH-12mm_Wuerth-430476085716",
+    "name": "SW1"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SW1"
+    ],
+    "translate": [
+     "pcb_x0 + 31.29 mm",
+     "pcb_y0 + 28.77 mm",
+     "pcb_top"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "16 mm",
+    "width": "16 mm",
+    "height": "4 mm",
+    "corner": [
+     "pcb_x0 + 29.54 mm",
+     "pcb_y0 + 18.27 mm",
+     "pcb_top + 7.3 mm"
+    ],
+    "operation": "cut",
     "targets": [
      "SW1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "2.54 mm",
-    "width": "17.5 mm",
-    "height": "2.5 mm",
-    "corner": [
-     "pcb_x0 + 39.5 mm",
-     "pcb_y0 + 0.75 mm",
-     "pcb_top"
     ],
-    "name": "M1_hdr1",
-    "operation": "new",
-    "body_name": "M1"
+    "name": "SW1_actuator_trim"
    }
   },
   {
    "command": "solid.box",
    "params": {
-    "length": "26 mm",
-    "width": "17.5 mm",
+    "length": "17.5 mm",
+    "width": "25.5 mm",
     "height": "1.0 mm",
     "corner": [
-     "pcb_x0 + 39.5 mm",
-     "pcb_y0 + 0.75 mm",
-     "pcb_top + 2.5 mm"
-    ],
-    "name": "M1_pcb",
-    "operation": "join",
-    "targets": [
-     "M1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "2.54 mm",
-    "width": "17.5 mm",
-    "height": "2.5 mm",
-    "corner": [
-     "pcb_x0 + 62.96 mm",
-     "pcb_y0 + 0.75 mm",
+     "pcb_x0 + 46.29 mm",
+     "pcb_y0 + 0 mm",
      "pcb_top"
     ],
-    "name": "M1_hdr2",
-    "operation": "join",
-    "targets": [
-     "M1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "9 mm",
-    "width": "7.3 mm",
-    "height": "3.3 mm",
-    "corner": [
-     "pcb_x0 + 48.0 mm",
-     "pcb_y0 + -0.75 mm",
-     "pcb_top + 3.5 mm"
-    ],
-    "name": "M1_usbc",
-    "operation": "join",
-    "targets": [
-     "M1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "2 mm",
-    "width": "1.2 mm",
-    "height": "0.8 mm",
-    "corner": [
-     "pcb_x0 + 62 mm",
-     "pcb_y0 + 5.9 mm",
-     "pcb_top + 3.5 mm"
-    ],
-    "name": "M1_led1",
-    "operation": "join",
-    "targets": [
-     "M1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "2 mm",
-    "width": "1.2 mm",
-    "height": "0.8 mm",
-    "corner": [
-     "pcb_x0 + 62 mm",
-     "pcb_y0 + 12.5 mm",
-     "pcb_top + 3.5 mm"
-    ],
-    "name": "M1_led2",
-    "operation": "join",
-    "targets": [
-     "M1"
-    ]
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "15.24 mm",
-    "width": "2.54 mm",
-    "height": "2.5 mm",
-    "corner": [
-     "pcb_x0 + 46.38 mm",
-     "pcb_y0 + 38.73 mm",
-     "pcb_top"
-    ],
-    "name": "J2",
+    "name": "M1_foam",
     "operation": "new",
-    "body_name": "J2"
+    "body_name": "M1_foam"
    }
   },
   {
    "command": "solid.box",
    "params": {
-    "length": "15.24 mm",
-    "width": "6 mm",
-    "height": "0.64 mm",
+    "length": "17.5 mm",
+    "width": "26.0 mm",
+    "height": "1.0 mm",
     "corner": [
-     "pcb_x0 + 46.38 mm",
-     "pcb_y0 + 41.27 mm",
-     "pcb_top + 1.3 mm"
+     "pcb_x0 + 46.29 mm",
+     "pcb_y0 + -0.5 mm",
+     "pcb_top + 1.0 mm"
     ],
-    "name": "J2_pins",
-    "operation": "join",
+    "name": "M1_PCB",
+    "operation": "new",
+    "body_name": "M1_PCB"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.5 mm",
+    "height": "0.05 mm",
+    "base": [
+     "pcb_x0 + 49.0 mm",
+     "pcb_y0 + 24.0 mm",
+     "pcb_top + 2.0 mm"
+    ],
+    "axis": "Z",
+    "name": "M1_pad_Bp",
+    "operation": "new",
+    "body_name": "M1_pad_Bp"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.5 mm",
+    "height": "0.05 mm",
+    "base": [
+     "pcb_x0 + 61.0 mm",
+     "pcb_y0 + 24.0 mm",
+     "pcb_top + 2.0 mm"
+    ],
+    "axis": "Z",
+    "name": "M1_pad_Bm",
+    "operation": "new",
+    "body_name": "M1_pad_Bm"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.5 mm",
+    "height": "0.05 mm",
+    "base": [
+     "pcb_x0 + 47.5 mm",
+     "pcb_y0 + 19.0 mm",
+     "pcb_top + 2.0 mm"
+    ],
+    "axis": "Z",
+    "name": "M1_pad_OUTp",
+    "operation": "new",
+    "body_name": "M1_pad_OUTp"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.5 mm",
+    "height": "0.05 mm",
+    "base": [
+     "pcb_x0 + 62.5 mm",
+     "pcb_y0 + 19.0 mm",
+     "pcb_top + 2.0 mm"
+    ],
+    "axis": "Z",
+    "name": "M1_pad_OUTm",
+    "operation": "new",
+    "body_name": "M1_pad_OUTm"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.5 mm",
+    "height": "0.05 mm",
+    "base": [
+     "pcb_x0 + 50.0 mm",
+     "pcb_y0 + 6.0 mm",
+     "pcb_top + 2.0 mm"
+    ],
+    "axis": "Z",
+    "name": "M1_pad_CHRG",
+    "operation": "new",
+    "body_name": "M1_pad_CHRG"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.5 mm",
+    "height": "0.05 mm",
+    "base": [
+     "pcb_x0 + 47.5 mm",
+     "pcb_y0 + 5.0 mm",
+     "pcb_top + 2.0 mm"
+    ],
+    "axis": "Z",
+    "name": "M1_pad_INp",
+    "operation": "new",
+    "body_name": "M1_pad_INp"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.5 mm",
+    "height": "0.05 mm",
+    "base": [
+     "pcb_x0 + 62.5 mm",
+     "pcb_y0 + 5.0 mm",
+     "pcb_top + 2.0 mm"
+    ],
+    "axis": "Z",
+    "name": "M1_pad_INm",
+    "operation": "new",
+    "body_name": "M1_pad_INm"
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal.step",
+    "name": "M1_USBC"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (2)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (3)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (4)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (5)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (6)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (7)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (8)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (9)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (10)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (11)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (12)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (13)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (14)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (15)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (16)"
+    ],
+    "translate": [
+     "pcb_x0 + 55.04 mm",
+     "pcb_y0 + 1.9 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/SOIC-8_3.9x4.9mm_P1.27mm.step",
+    "name": "M1_U1"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "SOIC-8_3.9x4.9mm_P1.27mm",
+    "name": "M1_U1"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_U1"
+    ],
+    "translate": [
+     "pcb_x0 + 55.04 mm",
+     "pcb_y0 + 12.5 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/SOT-23-6.step",
+    "name": "M1_U2"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "SOT-23-6",
+    "name": "M1_U2"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_U2"
+    ],
+    "translate": [
+     "pcb_x0 + 51.5 mm",
+     "pcb_y0 + 19.75 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/TSSOP-8_4.4x3mm_P0.65mm.step",
+    "name": "M1_U3"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "TSSOP-8_4.4x3mm_P0.65mm",
+    "name": "M1_U3"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_U3"
+    ],
+    "translate": [
+     "pcb_x0 + 57.5 mm",
+     "pcb_y0 + 19.75 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/LED_0603_1608Metric.step",
+    "name": "M1_LED_red"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "LED_0603_1608Metric",
+    "name": "M1_LED_red"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_LED_red"
+    ],
+    "translate": [
+     "pcb_x0 + 60.8 mm",
+     "pcb_y0 + 3.5 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/LED_0603_1608Metric.step",
+    "name": "M1_LED_blue"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "LED_0603_1608Metric",
+    "name": "M1_LED_blue"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_LED_blue"
+    ],
+    "translate": [
+     "pcb_x0 + 62.8 mm",
+     "pcb_y0 + 3.5 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/R_0603_1608Metric.step",
+    "name": "M1_R1"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "R_0603_1608Metric",
+    "name": "M1_R1"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_R1"
+    ],
+    "translate": [
+     "pcb_x0 + 60.8 mm",
+     "pcb_y0 + 6.5 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/R_0603_1608Metric.step",
+    "name": "M1_R2"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "R_0603_1608Metric",
+    "name": "M1_R2"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_R2"
+    ],
+    "translate": [
+     "pcb_x0 + 62.8 mm",
+     "pcb_y0 + 6.5 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/R_0603_1608Metric.step",
+    "name": "M1_R3"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "R_0603_1608Metric",
+    "name": "M1_R3"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_R3"
+    ],
+    "translate": [
+     "pcb_x0 + 49.0 mm",
+     "pcb_y0 + 8.0 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/C_0603_1608Metric.step",
+    "name": "M1_C1"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "C_0603_1608Metric",
+    "name": "M1_C1"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_C1"
+    ],
+    "translate": [
+     "pcb_x0 + 49.0 mm",
+     "pcb_y0 + 10.0 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/C_0805_2012Metric.step",
+    "name": "M1_C2"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "C_0805_2012Metric",
+    "name": "M1_C2"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_C2"
+    ],
+    "translate": [
+     "pcb_x0 + 52.5 mm",
+     "pcb_y0 + 16.0 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/C_0805_2012Metric.step",
+    "name": "M1_C3"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "C_0805_2012Metric",
+    "name": "M1_C3"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M1_C3"
+    ],
+    "translate": [
+     "pcb_x0 + 57.5 mm",
+     "pcb_y0 + 16.0 mm",
+     "pcb_top + 2.0 mm"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/PinHeader_1x06_P2.54mm_Horizontal.step",
+    "name": "J2"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "PinHeader_1x06_P254mm_Horizontal",
+    "name": "J2"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "J2"
+    ],
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "angle": "90 deg",
+    "translate": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_top"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "25 mm",
+    "width": "10 mm",
+    "height": "10 mm",
+    "corner": [
+     "pcb_x0 + 40 mm",
+     "pcb_y0 + 49.5 mm",
+     "pcb_top + -4 mm"
+    ],
+    "operation": "cut",
     "targets": [
      "J2"
-    ]
+    ],
+    "name": "J2_trim"
    }
   },
   {
-   "command": "solid.box",
+   "command": "file.insert_step",
    "params": {
-    "length": "6 mm",
-    "width": "4.5 mm",
-    "height": "6 mm",
-    "corner": [
-     "pcb_x0 + 63 mm",
-     "pcb_y0 + 24.75 mm",
+    "path": "C:/Users/daniele/esp-button-cad/models/JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal.step",
+    "name": "J1"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "JST_S2B_PH_K",
+    "name": "J1"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "J1"
+    ],
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "angle": "90 deg",
+    "translate": [
+     "pcb_x0 + 64.21 mm",
+     "pcb_y0 + 36.7 mm",
      "pcb_top"
-    ],
-    "name": "J1",
-    "operation": "new",
-    "body_name": "J1"
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "3.6 mm",
-    "width": "8.6 mm",
-    "height": "5 mm",
-    "corner": [
-     "pcb_x0 + 65.2 mm",
-     "pcb_y0 + 31.7 mm",
-     "pcb_top + 1 mm"
-    ],
-    "name": "SW2",
-    "operation": "new",
-    "body_name": "SW2"
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "2 mm",
-    "width": "2 mm",
-    "height": "2 mm",
-    "corner": [
-     "pcb_x0 + 68.8 mm",
-     "pcb_y0 + 35 mm",
-     "pcb_top + 2.2 mm"
-    ],
-    "name": "SW2_act",
-    "operation": "join",
-    "targets": [
-     "SW2"
     ]
    }
   },
   {
-   "command": "solid.cylinder",
+   "command": "file.insert_step",
    "params": {
-    "diameter": "2.5 mm",
-    "height": "6 mm",
-    "base": [
-     "pcb_x0 + 31 mm",
-     "pcb_y0 + 7 mm",
-     "pcb_top + 1.75 mm"
-    ],
-    "axis": "X",
-    "name": "D2",
-    "operation": "new",
-    "body_name": "D2"
+    "path": "C:/Users/daniele/esp-button-cad/models/SW_Slide_SPDT_Straight_CK_OS102011MS2Q.step",
+    "name": "SW2"
    }
   },
   {
-   "command": "solid.cylinder",
+   "command": "solid.remove",
    "params": {
-    "diameter": "2.5 mm",
-    "height": "6 mm",
-    "base": [
-     "pcb_x0 + 31 mm",
-     "pcb_y0 + 13 mm",
-     "pcb_top + 1.75 mm"
-    ],
-    "axis": "X",
-    "name": "R2",
-    "operation": "new",
-    "body_name": "R2"
+    "bodies": [
+     "SW_Slide_SPDT_Straight_CK_OS102011MS2Q (3)",
+     "SW_Slide_SPDT_Straight_CK_OS102011MS2Q (4)",
+     "SW_Slide_SPDT_Straight_CK_OS102011MS2Q (5)"
+    ]
    }
   },
   {
-   "command": "solid.cylinder",
+   "command": "body.rename",
    "params": {
-    "diameter": "2.5 mm",
-    "height": "6 mm",
-    "base": [
-     "pcb_x0 + 37.5 mm",
-     "pcb_y0 + 47.5 mm",
-     "pcb_top + 1.75 mm"
+    "body": "SW_Slide_SPDT_Straight_CK_OS102011MS2Q",
+    "name": "SW2"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "SW_Slide_SPDT_Straight_CK_OS102011MS2Q (2)",
+    "name": "SW2_frame"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "SW_Slide_SPDT_Straight_CK_OS102011MS2Q (6)",
+    "name": "SW2_knob"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SW2",
+     "SW2_frame",
+     "SW2_knob"
     ],
-    "axis": "X",
-    "name": "R3",
-    "operation": "new",
-    "body_name": "R3"
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SW2",
+     "SW2_frame",
+     "SW2_knob"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "angle": "-90 deg",
+    "translate": [
+     "pcb_x0 + 4.8 mm",
+     "pcb_y0 + 39.51 mm",
+     "pcb_top + 2.15 mm"
+    ]
    }
   },
   {
    "command": "solid.box",
    "params": {
     "length": "4 mm",
-    "width": "2.5 mm",
-    "height": "5 mm",
+    "width": "12 mm",
+    "height": "8 mm",
     "corner": [
-     "pcb_x0 + 34 mm",
-     "pcb_y0 + 33.75 mm",
-     "pcb_top"
+     "pcb_x0 + 4.8 mm",
+     "pcb_y0 + 35.51 mm",
+     "pcb_top + -2 mm"
     ],
+    "operation": "cut",
+    "targets": [
+     "SW2"
+    ],
+    "name": "SW2_tails_trim"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.6 mm",
+    "height": "1.128 mm",
+    "base": [
+     "pcb_x0 + 4.8 mm",
+     "pcb_y0 + 39.51 mm",
+     "pcb_top + 2.15 mm"
+    ],
+    "axis": [
+     0.877896,
+     -0.478852,
+     0.0
+    ],
+    "name": "SW2_pin1",
+    "operation": "new",
+    "body_name": "SW2_pin1"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "5.1 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 38.97 mm",
+     "pcb_z0 - 1 mm"
+    ],
+    "axis": "Z",
+    "name": "SW2_pin1_down",
+    "operation": "join",
+    "targets": [
+     "SW2_pin1"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.6 mm",
+    "height": "0.99 mm",
+    "base": [
+     "pcb_x0 + 4.8 mm",
+     "pcb_y0 + 41.51 mm",
+     "pcb_top + 2.15 mm"
+    ],
+    "axis": [
+     1.0,
+     -0.0,
+     0.0
+    ],
+    "name": "SW2_pin2",
+    "operation": "new",
+    "body_name": "SW2_pin2"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "5.1 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 41.51 mm",
+     "pcb_z0 - 1 mm"
+    ],
+    "axis": "Z",
+    "name": "SW2_pin2_down",
+    "operation": "join",
+    "targets": [
+     "SW2_pin2"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.6 mm",
+    "height": "1.128 mm",
+    "base": [
+     "pcb_x0 + 4.8 mm",
+     "pcb_y0 + 43.51 mm",
+     "pcb_top + 2.15 mm"
+    ],
+    "axis": [
+     0.877896,
+     0.478852,
+     0.0
+    ],
+    "name": "SW2_pin3",
+    "operation": "new",
+    "body_name": "SW2_pin3"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "5.1 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 1 mm"
+    ],
+    "axis": "Z",
+    "name": "SW2_pin3_down",
+    "operation": "join",
+    "targets": [
+     "SW2_pin3"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/D_DO-41_SOD81_P10.16mm_Horizontal.step",
+    "name": "D2"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "D_DO-41_SOD81_P10.16mm_Horizontal",
+    "name": "D2"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "D2"
+    ],
+    "translate": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 8.49 mm",
+     "pcb_top"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step",
+    "name": "R2"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "R_Axial_DIN0207_L63mm_D25mm_P1016mm_Horizontal",
+    "name": "R2"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "R2"
+    ],
+    "translate": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 13.57 mm",
+     "pcb_top"
+    ]
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step",
+    "name": "R3"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "R_Axial_DIN0207_L63mm_D25mm_P1016mm_Horizontal",
+    "name": "R3"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "R3"
+    ],
+    "translate": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 18.65 mm",
+     "pcb_top"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "5.0 mm",
+    "height": "2.5 mm",
+    "base": [
+     "pcb_x0 + 45.18 mm",
+     "pcb_y0 + 30.08 mm",
+     "pcb_top + 4.0 mm"
+    ],
+    "axis": "X",
     "name": "C3",
     "operation": "new",
     "body_name": "C3"
@@ -1787,11 +2638,43 @@
   {
    "command": "solid.cylinder",
    "params": {
-    "diameter": "5 mm",
-    "height": "11 mm",
+    "diameter": "0.5 mm",
+    "height": "6.6 mm",
     "base": [
-     "pcb_x0 + 30.5 mm",
-     "pcb_y0 + 42 mm",
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 28.81 mm",
+     "pcb_z0 - 1 mm"
+    ],
+    "axis": "Z",
+    "name": "C3_lead1",
+    "operation": "new",
+    "body_name": "C3_lead1"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.5 mm",
+    "height": "6.6 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 31.35 mm",
+     "pcb_z0 - 1 mm"
+    ],
+    "axis": "Z",
+    "name": "C3_lead2",
+    "operation": "new",
+    "body_name": "C3_lead2"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "5.0 mm",
+    "height": "11.0 mm",
+    "base": [
+     "pcb_x0 + 47.0 mm",
+     "pcb_y0 + 37.7 mm",
      "pcb_top + 3.0 mm"
     ],
     "axis": "X",
@@ -1801,14 +2684,2232 @@
    }
   },
   {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "5.06 mm",
+    "height": "1.2 mm",
+    "base": [
+     "pcb_x0 + 47.6 mm",
+     "pcb_y0 + 37.7 mm",
+     "pcb_top + 3.0 mm"
+    ],
+    "axis": "X",
+    "name": "C4_stripe",
+    "operation": "new",
+    "body_name": "C4_stripe"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.54 mm",
+    "height": "5.9 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 36.43 mm",
+     "pcb_z0 - 1 mm"
+    ],
+    "axis": "Z",
+    "name": "C4_lead1",
+    "operation": "new",
+    "body_name": "C4_lead1"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.5 mm",
+    "height": "1.37 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 36.43 mm",
+     "pcb_top + 3.0 mm"
+    ],
+    "axis": "X",
+    "name": "C4_lead1_h",
+    "operation": "join",
+    "targets": [
+     "C4_lead1"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.54 mm",
+    "height": "5.9 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 38.97 mm",
+     "pcb_z0 - 1 mm"
+    ],
+    "axis": "Z",
+    "name": "C4_lead2",
+    "operation": "new",
+    "body_name": "C4_lead2"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.5 mm",
+    "height": "1.37 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 38.97 mm",
+     "pcb_top + 3.0 mm"
+    ],
+    "axis": "X",
+    "name": "C4_lead2_h",
+    "operation": "join",
+    "targets": [
+     "C4_lead2"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.6 mm",
+    "height": "2.54 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 8.49 mm",
+     "wire_z"
+    ],
+    "axis": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "name": "W1_5V",
+    "operation": "new",
+    "body_name": "W1_5V"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 8.49 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W1_5V_stub",
+    "operation": "join",
+    "targets": [
+     "W1_5V"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 8.49 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W1_5V_solder",
+    "operation": "join",
+    "targets": [
+     "W1_5V"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 8.49 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W1_5V_stub",
+    "operation": "join",
+    "targets": [
+     "W1_5V"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 8.49 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W1_5V_solder",
+    "operation": "join",
+    "targets": [
+     "W1_5V"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1.6 mm",
+    "width": "4.139999999999999 mm",
+    "height": "0.6 mm",
+    "corner": [
+     "pcb_x0 + 4.99 mm",
+     "pcb_y0 + 25.47 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "name": "W2_RST",
+    "operation": "new",
+    "body_name": "W2_RST"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "10.16 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 13.57 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "name": "W3_BTN",
+    "operation": "new",
+    "body_name": "W3_BTN"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 13.57 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W3_BTN_stub",
+    "operation": "join",
+    "targets": [
+     "W3_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 13.57 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W3_BTN_solder",
+    "operation": "join",
+    "targets": [
+     "W3_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 23.73 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W3_BTN_stub",
+    "operation": "join",
+    "targets": [
+     "W3_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 23.73 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W3_BTN_solder",
+    "operation": "join",
+    "targets": [
+     "W3_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "3.592 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 21.19 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.707107,
+     0.707107,
+     0.0
+    ],
+    "name": "W4_BTN",
+    "operation": "new",
+    "body_name": "W4_BTN"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 21.19 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W4_BTN_stub",
+    "operation": "join",
+    "targets": [
+     "W4_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 21.19 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W4_BTN_solder",
+    "operation": "join",
+    "targets": [
+     "W4_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 23.73 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W4_BTN_stub",
+    "operation": "join",
+    "targets": [
+     "W4_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 23.73 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W4_BTN_solder",
+    "operation": "join",
+    "targets": [
+     "W4_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "5.68 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 28.81 mm",
+     "wire_z"
+    ],
+    "axis": [
+     -0.447214,
+     -0.894427,
+     0.0
+    ],
+    "name": "W5_BTN",
+    "operation": "new",
+    "body_name": "W5_BTN"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 28.81 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W5_BTN_stub",
+    "operation": "join",
+    "targets": [
+     "W5_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 28.81 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W5_BTN_solder",
+    "operation": "join",
+    "targets": [
+     "W5_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 23.73 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W5_BTN_stub",
+    "operation": "join",
+    "targets": [
+     "W5_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 23.73 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W5_BTN_solder",
+    "operation": "join",
+    "targets": [
+     "W5_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "38.437 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 28.81 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.991228,
+     -0.132164,
+     0.0
+    ],
+    "name": "W6_BTN",
+    "operation": "new",
+    "body_name": "W6_BTN"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 28.81 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W6_BTN_stub",
+    "operation": "join",
+    "targets": [
+     "W6_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 28.81 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W6_BTN_solder",
+    "operation": "join",
+    "targets": [
+     "W6_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 23.73 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W6_BTN_stub",
+    "operation": "join",
+    "targets": [
+     "W6_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 23.73 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W6_BTN_solder",
+    "operation": "join",
+    "targets": [
+     "W6_BTN"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "17.961 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 11.03 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.141421,
+     0.989949,
+     0.0
+    ],
+    "name": "W7_GND",
+    "operation": "new",
+    "body_name": "W7_GND"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 11.03 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W7_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W7_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 11.03 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W7_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W7_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 28.81 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W7_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W7_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 28.81 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W7_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W7_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "3.592 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 28.81 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.707107,
+     0.707107,
+     0.0
+    ],
+    "name": "W8_GND",
+    "operation": "new",
+    "body_name": "W8_GND"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 28.81 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W8_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W8_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 28.81 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W8_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W8_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 31.35 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W8_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W8_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 31.35 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W8_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W8_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "5.08 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 31.35 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "name": "W9_GND",
+    "operation": "new",
+    "body_name": "W9_GND"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 31.35 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W9_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W9_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 31.35 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W9_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W9_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 36.43 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W9_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W9_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 36.43 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W9_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W9_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "14.811 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 36.43 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.857493,
+     0.514496,
+     0.0
+    ],
+    "name": "W10_GND",
+    "operation": "new",
+    "body_name": "W10_GND"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 36.43 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W10_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W10_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 36.43 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W10_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W10_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 59.13 mm",
+     "pcb_y0 + 44.05 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W10_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W10_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 59.13 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W10_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W10_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.6 mm",
+    "height": "2.54 mm",
+    "base": [
+     "pcb_x0 + 56.59 mm",
+     "pcb_y0 + 44.05 mm",
+     "wire_z"
+    ],
+    "axis": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "name": "W11_GND",
+    "operation": "new",
+    "body_name": "W11_GND"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 56.59 mm",
+     "pcb_y0 + 44.05 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W11_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W11_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 56.59 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W11_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W11_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 59.13 mm",
+     "pcb_y0 + 44.05 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W11_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W11_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 59.13 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W11_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W11_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "21.037 mm",
+    "base": [
+     "pcb_x0 + 62.5 mm",
+     "pcb_y0 + 19.0 mm",
+     "wire_z"
+    ],
+    "axis": [
+     -0.884619,
+     0.466314,
+     0.0
+    ],
+    "name": "W12_GND",
+    "operation": "new",
+    "body_name": "W12_GND"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1400000000000001 mm",
+    "height": "5.2 mm",
+    "base": [
+     "pcb_x0 + 62.5 mm",
+     "pcb_y0 + 19.0 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W12_GND_up",
+    "operation": "join",
+    "targets": [
+     "W12_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 28.81 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W12_GND_stub",
+    "operation": "join",
+    "targets": [
+     "W12_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 43.89 mm",
+     "pcb_y0 + 28.81 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W12_GND_solder",
+    "operation": "join",
+    "targets": [
+     "W12_GND"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "35.921 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 8.49 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.989949,
+     0.141421,
+     0.0
+    ],
+    "name": "W13_3V3",
+    "operation": "new",
+    "body_name": "W13_3V3"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 8.49 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W13_3V3_stub",
+    "operation": "join",
+    "targets": [
+     "W13_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 8.49 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W13_3V3_solder",
+    "operation": "join",
+    "targets": [
+     "W13_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 13.57 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W13_3V3_stub",
+    "operation": "join",
+    "targets": [
+     "W13_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 13.57 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W13_3V3_solder",
+    "operation": "join",
+    "targets": [
+     "W13_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "5.08 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 13.57 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "name": "W14_3V3",
+    "operation": "new",
+    "body_name": "W14_3V3"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 13.57 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W14_3V3_stub",
+    "operation": "join",
+    "targets": [
+     "W14_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 13.57 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W14_3V3_solder",
+    "operation": "join",
+    "targets": [
+     "W14_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W14_3V3_stub",
+    "operation": "join",
+    "targets": [
+     "W14_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 18.65 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W14_3V3_solder",
+    "operation": "join",
+    "targets": [
+     "W14_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "20.945 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.242536,
+     0.970143,
+     0.0
+    ],
+    "name": "W15_3V3",
+    "operation": "new",
+    "body_name": "W15_3V3"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W15_3V3_stub",
+    "operation": "join",
+    "targets": [
+     "W15_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 18.65 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W15_3V3_solder",
+    "operation": "join",
+    "targets": [
+     "W15_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 38.97 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W15_3V3_stub",
+    "operation": "join",
+    "targets": [
+     "W15_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 38.97 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W15_3V3_solder",
+    "operation": "join",
+    "targets": [
+     "W15_3V3"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "25.527 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 21.19 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.995037,
+     -0.099504,
+     0.0
+    ],
+    "name": "W16_CHRG",
+    "operation": "new",
+    "body_name": "W16_CHRG"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 21.19 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W16_CHRG_stub",
+    "operation": "join",
+    "targets": [
+     "W16_CHRG"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 21.19 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W16_CHRG_solder",
+    "operation": "join",
+    "targets": [
+     "W16_CHRG"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W16_CHRG_stub",
+    "operation": "join",
+    "targets": [
+     "W16_CHRG"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 18.65 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W16_CHRG_solder",
+    "operation": "join",
+    "targets": [
+     "W16_CHRG"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "22.668 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.829804,
+     -0.558055,
+     0.0
+    ],
+    "name": "W17_CHRG",
+    "operation": "new",
+    "body_name": "W17_CHRG"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W17_CHRG_stub",
+    "operation": "join",
+    "targets": [
+     "W17_CHRG"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 31.19 mm",
+     "pcb_y0 + 18.65 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W17_CHRG_solder",
+    "operation": "join",
+    "targets": [
+     "W17_CHRG"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1400000000000001 mm",
+    "height": "5.2 mm",
+    "base": [
+     "pcb_x0 + 50.0 mm",
+     "pcb_y0 + 6.0 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W17_CHRG_up",
+    "operation": "join",
+    "targets": [
+     "W17_CHRG"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "46.835 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 8.49 mm",
+     "wire_z"
+    ],
+    "axis": [
+     -0.759257,
+     0.650791,
+     0.0
+    ],
+    "name": "W18_VSW",
+    "operation": "new",
+    "body_name": "W18_VSW"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 8.49 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W18_VSW_stub",
+    "operation": "join",
+    "targets": [
+     "W18_VSW"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 41.35 mm",
+     "pcb_y0 + 8.49 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W18_VSW_solder",
+    "operation": "join",
+    "targets": [
+     "W18_VSW"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 38.97 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W18_VSW_stub",
+    "operation": "join",
+    "targets": [
+     "W18_VSW"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 38.97 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W18_VSW_solder",
+    "operation": "join",
+    "targets": [
+     "W18_VSW"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "47.396 mm",
+    "base": [
+     "pcb_x0 + 47.5 mm",
+     "pcb_y0 + 19.0 mm",
+     "wire_z"
+    ],
+    "axis": [
+     -0.880024,
+     0.47493,
+     0.0
+    ],
+    "name": "W19_VSW",
+    "operation": "new",
+    "body_name": "W19_VSW"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1400000000000001 mm",
+    "height": "5.2 mm",
+    "base": [
+     "pcb_x0 + 47.5 mm",
+     "pcb_y0 + 19.0 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W19_VSW_up",
+    "operation": "join",
+    "targets": [
+     "W19_VSW"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 41.51 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W19_VSW_stub",
+    "operation": "join",
+    "targets": [
+     "W19_VSW"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 41.51 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W19_VSW_solder",
+    "operation": "join",
+    "targets": [
+     "W19_VSW"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "19.643 mm",
+    "base": [
+     "pcb_x0 + 49.0 mm",
+     "pcb_y0 + 24.0 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.77432,
+     0.632794,
+     0.0
+    ],
+    "name": "W20_VBAT",
+    "operation": "new",
+    "body_name": "W20_VBAT"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1400000000000001 mm",
+    "height": "5.2 mm",
+    "base": [
+     "pcb_x0 + 49.0 mm",
+     "pcb_y0 + 24.0 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W20_VBAT_up",
+    "operation": "join",
+    "targets": [
+     "W20_VBAT"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 64.21 mm",
+     "pcb_y0 + 36.43 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W20_VBAT_stub",
+    "operation": "join",
+    "targets": [
+     "W20_VBAT"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 64.21 mm",
+     "pcb_y0 + 36.43 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W20_VBAT_solder",
+    "operation": "join",
+    "targets": [
+     "W20_VBAT"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "15.31 mm",
+    "base": [
+     "pcb_x0 + 61.0 mm",
+     "pcb_y0 + 24.0 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.209663,
+     0.977774,
+     0.0
+    ],
+    "name": "W21_BATm",
+    "operation": "new",
+    "body_name": "W21_BATm"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1400000000000001 mm",
+    "height": "5.2 mm",
+    "base": [
+     "pcb_x0 + 61.0 mm",
+     "pcb_y0 + 24.0 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W21_BATm_up",
+    "operation": "join",
+    "targets": [
+     "W21_BATm"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 64.21 mm",
+     "pcb_y0 + 38.97 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W21_BATm_stub",
+    "operation": "join",
+    "targets": [
+     "W21_BATm"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 64.21 mm",
+     "pcb_y0 + 38.97 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W21_BATm_solder",
+    "operation": "join",
+    "targets": [
+     "W21_BATm"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "35.921 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.707107,
+     0.707107,
+     0.0
+    ],
+    "name": "W22_MICPWR",
+    "operation": "new",
+    "body_name": "W22_MICPWR"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W22_MICPWR_stub",
+    "operation": "join",
+    "targets": [
+     "W22_MICPWR"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 28.65 mm",
+     "pcb_y0 + 18.65 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W22_MICPWR_solder",
+    "operation": "join",
+    "targets": [
+     "W22_MICPWR"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 54.05 mm",
+     "pcb_y0 + 44.05 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W22_MICPWR_stub",
+    "operation": "join",
+    "targets": [
+     "W22_MICPWR"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 54.05 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W22_MICPWR_solder",
+    "operation": "join",
+    "targets": [
+     "W22_MICPWR"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "50.8 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 13.57 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.8,
+     0.6,
+     0.0
+    ],
+    "name": "W23_I2S_SCK",
+    "operation": "new",
+    "body_name": "W23_I2S_SCK"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 13.57 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W23_I2S_SCK_stub",
+    "operation": "join",
+    "targets": [
+     "W23_I2S_SCK"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 13.57 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W23_I2S_SCK_solder",
+    "operation": "join",
+    "targets": [
+     "W23_I2S_SCK"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 44.05 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W23_I2S_SCK_stub",
+    "operation": "join",
+    "targets": [
+     "W23_I2S_SCK"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 46.43 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W23_I2S_SCK_solder",
+    "operation": "join",
+    "targets": [
+     "W23_I2S_SCK"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "50.097 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.861934,
+     0.50702,
+     0.0
+    ],
+    "name": "W24_I2S_WS",
+    "operation": "new",
+    "body_name": "W24_I2S_WS"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 18.65 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W24_I2S_WS_stub",
+    "operation": "join",
+    "targets": [
+     "W24_I2S_WS"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 18.65 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W24_I2S_WS_solder",
+    "operation": "join",
+    "targets": [
+     "W24_I2S_WS"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 48.97 mm",
+     "pcb_y0 + 44.05 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W24_I2S_WS_stub",
+    "operation": "join",
+    "targets": [
+     "W24_I2S_WS"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 48.97 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W24_I2S_WS_solder",
+    "operation": "join",
+    "targets": [
+     "W24_I2S_WS"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.1 mm",
+    "height": "53.581 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 16.11 mm",
+     "wire_z"
+    ],
+    "axis": [
+     0.853282,
+     0.52145,
+     0.0
+    ],
+    "name": "W25_I2S_SD",
+    "operation": "new",
+    "body_name": "W25_I2S_SD"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 16.11 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W25_I2S_SD_stub",
+    "operation": "join",
+    "targets": [
+     "W25_I2S_SD"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 5.79 mm",
+     "pcb_y0 + 16.11 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W25_I2S_SD_solder",
+    "operation": "join",
+    "targets": [
+     "W25_I2S_SD"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "0.64 mm",
+    "height": "2.7 mm",
+    "base": [
+     "pcb_x0 + 51.51 mm",
+     "pcb_y0 + 44.05 mm",
+     "wire_z - 0.7 mm"
+    ],
+    "axis": "Z",
+    "name": "W25_I2S_SD_stub",
+    "operation": "join",
+    "targets": [
+     "W25_I2S_SD"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.8 mm",
+    "height": "0.6 mm",
+    "base": [
+     "pcb_x0 + 51.51 mm",
+     "pcb_y0 + 44.05 mm",
+     "pcb_z0 - 0.6 mm"
+    ],
+    "axis": "Z",
+    "name": "W25_I2S_SD_solder",
+    "operation": "join",
+    "targets": [
+     "W25_I2S_SD"
+    ]
+   }
+  },
+  {
    "command": "solid.box",
    "params": {
     "length": "40 mm",
     "width": "30 mm",
     "height": "8 mm",
     "corner": [
-     "lipo_x - 20 mm",
-     "lipo_y - 15 mm",
+     "22 mm",
+     "15 mm",
      "2 mm"
     ],
     "operation": "new",
@@ -1817,19 +4918,413 @@
    }
   },
   {
+   "command": "solid.fillet",
+   "params": {
+    "body": "BT1",
+    "edges": [
+     [
+      22,
+      15,
+      6
+     ],
+     [
+      62,
+      15,
+      6
+     ],
+     [
+      62,
+      45,
+      6
+     ],
+     [
+      22,
+      45,
+      6
+     ],
+     [
+      42,
+      15,
+      10
+     ],
+     [
+      62,
+      30,
+      10
+     ],
+     [
+      42,
+      45,
+      10
+     ],
+     [
+      22,
+      30,
+      10
+     ],
+     [
+      42,
+      15,
+      2
+     ],
+     [
+      62,
+      30,
+      2
+     ],
+     [
+      42,
+      45,
+      2
+     ],
+     [
+      22,
+      30,
+      2
+     ]
+    ],
+    "radius": "1 mm",
+    "name": "BT1_fillet"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "6 mm",
+    "width": "30.4 mm",
+    "height": "8.2 mm",
+    "corner": [
+     "56 mm",
+     "14.8 mm",
+     "2 mm"
+    ],
+    "operation": "new",
+    "body_name": "BT1_tape",
+    "name": "BT1_tape"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "BT1_tape",
+    "tools": [
+     "BT1"
+    ],
+    "operation": "cut",
+    "keep_tools": true,
+    "name": "BT1_tape_cut"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.2 mm",
+    "height": "17.02 mm",
+    "base": [
+     62,
+     40.43,
+     6
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "BT1_wire_red",
+    "name": "BT1_wire_red"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.2 mm",
+    "height": "11.1 mm",
+    "base": [
+     79.02,
+     40.43,
+     6
+    ],
+    "axis": "Z",
+    "operation": "join",
+    "targets": [
+     "BT1_wire_red"
+    ],
+    "name": "BT1_wire_red_up"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.2 mm",
+    "height": "2.5 mm",
+    "base": [
+     79.02,
+     40.43,
+     17.1
+    ],
+    "axis": [
+     -1,
+     0,
+     0
+    ],
+    "operation": "join",
+    "targets": [
+     "BT1_wire_red"
+    ],
+    "name": "BT1_wire_red_in"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.2 mm",
+    "height": "17.02 mm",
+    "base": [
+     62,
+     42.43,
+     6
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "BT1_wire_black",
+    "name": "BT1_wire_black"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.2 mm",
+    "height": "11.1 mm",
+    "base": [
+     79.02,
+     42.43,
+     6
+    ],
+    "axis": "Z",
+    "operation": "join",
+    "targets": [
+     "BT1_wire_black"
+    ],
+    "name": "BT1_wire_black_up"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1.2 mm",
+    "height": "2.5 mm",
+    "base": [
+     79.02,
+     42.43,
+     17.1
+    ],
+    "axis": [
+     -1,
+     0,
+     0
+    ],
+    "operation": "join",
+    "targets": [
+     "BT1_wire_black"
+    ],
+    "name": "BT1_wire_black_in"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "6 mm",
+    "width": "4.75 mm",
+    "height": "4 mm",
+    "corner": [
+     "pcb_x0 + 66.96 mm",
+     "pcb_y0 + 35.325 mm",
+     "pcb_top + 0.5 mm"
+    ],
+    "operation": "new",
+    "body_name": "BT1_plug",
+    "name": "BT1_plug"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "BT1_plug",
+    "tools": [
+     "J1"
+    ],
+    "operation": "cut",
+    "keep_tools": true,
+    "name": "BT1_plug_cut"
+   }
+  },
+  {
    "command": "solid.box",
    "params": {
     "length": "11 mm",
     "width": "14 mm",
-    "height": "1.6 mm",
+    "height": "1 mm",
     "corner": [
-     "76 mm - 5.5 mm",
-     "30 mm - 7 mm",
-     "m2_z"
+     "70.5 mm",
+     "23 mm",
+     "26.2 mm"
     ],
     "operation": "new",
     "body_name": "M2",
     "name": "M2"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1 mm",
+    "height": "3 mm",
+    "base": [
+     76,
+     30,
+     25.5
+    ],
+    "operation": "cut",
+    "targets": [
+     "M2"
+    ],
+    "name": "M2_port"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "4.72 mm",
+    "width": "3.76 mm",
+    "height": "1 mm",
+    "corner": [
+     "73.64 mm",
+     "28.12 mm",
+     "25.2 mm"
+    ],
+    "operation": "new",
+    "body_name": "M2_mic",
+    "name": "M2_mic"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1 mm",
+    "height": "0.05 mm",
+    "base": [
+     71.5,
+     23.65,
+     26.15
+    ],
+    "operation": "new",
+    "body_name": "M2_pad1",
+    "name": "M2_pad1"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1 mm",
+    "height": "0.05 mm",
+    "base": [
+     71.5,
+     26.189999999999998,
+     26.15
+    ],
+    "operation": "new",
+    "body_name": "M2_pad2",
+    "name": "M2_pad2"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1 mm",
+    "height": "0.05 mm",
+    "base": [
+     71.5,
+     28.729999999999997,
+     26.15
+    ],
+    "operation": "new",
+    "body_name": "M2_pad3",
+    "name": "M2_pad3"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1 mm",
+    "height": "0.05 mm",
+    "base": [
+     71.5,
+     31.27,
+     26.15
+    ],
+    "operation": "new",
+    "body_name": "M2_pad4",
+    "name": "M2_pad4"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1 mm",
+    "height": "0.05 mm",
+    "base": [
+     71.5,
+     33.81,
+     26.15
+    ],
+    "operation": "new",
+    "body_name": "M2_pad5",
+    "name": "M2_pad5"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "1 mm",
+    "height": "0.05 mm",
+    "base": [
+     71.5,
+     36.349999999999994,
+     26.15
+    ],
+    "operation": "new",
+    "body_name": "M2_pad6",
+    "name": "M2_pad6"
+   }
+  },
+  {
+   "command": "file.insert_step",
+   "params": {
+    "path": "C:/Users/daniele/esp-button-cad/models/C_0603_1608Metric.step",
+    "name": "M2_C1"
+   }
+  },
+  {
+   "command": "body.rename",
+   "params": {
+    "body": "C_0603_1608Metric",
+    "name": "M2_C1"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "M2_C1"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg",
+    "translate": [
+     76,
+     33.5,
+     26.2
+    ]
    }
   },
   {
@@ -1845,54 +5340,122 @@
    "command": "appearance.assign",
    "params": {
     "bodies": [
-     "PCB1_pins"
-    ],
-    "color": "#9e9e9e"
-   }
-  },
-  {
-   "command": "appearance.assign",
-   "params": {
-    "bodies": [
      "U1"
     ],
-    "color": "#424242"
+    "color": "#15265f"
    }
   },
   {
    "command": "appearance.assign",
    "params": {
     "bodies": [
-     "SW1"
+     "U1_shield"
     ],
-    "color": "#212121"
+    "color": "#b4b8bc",
+    "pbr": {
+     "metallic": 0.9,
+     "roughness": 0.35,
+     "dielectric_ior": 1.5
+    }
    }
   },
   {
    "command": "appearance.assign",
    "params": {
     "bodies": [
-     "M1"
+     "M1_foam"
     ],
-    "color": "#1565c0"
+    "color": "#e8e8e8"
    }
   },
   {
    "command": "appearance.assign",
    "params": {
     "bodies": [
-     "J2"
+     "M1_PCB"
     ],
-    "color": "#212121"
+    "color": "#1e4fa3"
    }
   },
   {
    "command": "appearance.assign",
    "params": {
     "bodies": [
-     "J1"
+     "M1_pad_Bp"
     ],
-    "color": "#eeeeee"
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M1_pad_Bm"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M1_pad_OUTp"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M1_pad_OUTm"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M1_pad_CHRG"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M1_pad_INp"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M1_pad_INm"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M1_LED_red"
+    ],
+    "color": "#e53935"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M1_LED_blue"
+    ],
+    "color": "#1e88e5"
    }
   },
   {
@@ -1901,34 +5464,52 @@
     "bodies": [
      "SW2"
     ],
-    "color": "#37474f"
+    "color": "#2b2b2b"
    }
   },
   {
    "command": "appearance.assign",
    "params": {
     "bodies": [
-     "D2"
+     "SW2_knob"
     ],
-    "color": "#212121"
+    "color": "#111111"
    }
   },
   {
    "command": "appearance.assign",
    "params": {
     "bodies": [
-     "R2"
+     "SW2_frame"
     ],
-    "color": "#d7ccc8"
+    "color": "#9e9e9e"
    }
   },
   {
    "command": "appearance.assign",
    "params": {
     "bodies": [
-     "R3"
+     "SW2_pin1"
     ],
-    "color": "#d7ccc8"
+    "color": "#c0c0c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "SW2_pin2"
+    ],
+    "color": "#c0c0c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "SW2_pin3"
+    ],
+    "color": "#c0c0c0"
    }
   },
   {
@@ -1937,7 +5518,25 @@
     "bodies": [
      "C3"
     ],
-    "color": "#fdd835"
+    "color": "#d9a066"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "C3_lead1"
+    ],
+    "color": "#c0c0c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "C3_lead2"
+    ],
+    "color": "#c0c0c0"
    }
   },
   {
@@ -1946,7 +5545,259 @@
     "bodies": [
      "C4"
     ],
-    "color": "#283593"
+    "color": "#1a237e"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "C4_stripe"
+    ],
+    "color": "#eceff1"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "C4_lead1"
+    ],
+    "color": "#c0c0c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "C4_lead2"
+    ],
+    "color": "#c0c0c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W1_5V"
+    ],
+    "color": "#c0c0c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W2_RST"
+    ],
+    "color": "#c0c0c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W3_BTN"
+    ],
+    "color": "#f5f5f5"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W4_BTN"
+    ],
+    "color": "#f5f5f5"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W5_BTN"
+    ],
+    "color": "#f5f5f5"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W6_BTN"
+    ],
+    "color": "#f5f5f5"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W7_GND"
+    ],
+    "color": "#212121"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W8_GND"
+    ],
+    "color": "#212121"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W9_GND"
+    ],
+    "color": "#212121"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W10_GND"
+    ],
+    "color": "#212121"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W11_GND"
+    ],
+    "color": "#c0c0c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W12_GND"
+    ],
+    "color": "#212121"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W13_3V3"
+    ],
+    "color": "#d32f2f"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W14_3V3"
+    ],
+    "color": "#d32f2f"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W15_3V3"
+    ],
+    "color": "#d32f2f"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W16_CHRG"
+    ],
+    "color": "#8A2BE2"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W17_CHRG"
+    ],
+    "color": "#8A2BE2"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W18_VSW"
+    ],
+    "color": "#fdd835"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W19_VSW"
+    ],
+    "color": "#fdd835"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W20_VBAT"
+    ],
+    "color": "#6d4c41"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W21_BATm"
+    ],
+    "color": "#9e9e9e"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W22_MICPWR"
+    ],
+    "color": "#43a047"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W23_I2S_SCK"
+    ],
+    "color": "#1e88e5"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W24_I2S_WS"
+    ],
+    "color": "#FF69B4"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "W25_I2S_SD"
+    ],
+    "color": "#30D5C8"
    }
   },
   {
@@ -1955,7 +5806,43 @@
     "bodies": [
      "BT1"
     ],
-    "color": "#90a4ae"
+    "color": "#9aa5ad"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "BT1_tape"
+    ],
+    "color": "#e6b800"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "BT1_wire_red"
+    ],
+    "color": "#d32f2f"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "BT1_wire_black"
+    ],
+    "color": "#212121"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "BT1_plug"
+    ],
+    "color": "#f5f5f5"
    }
   },
   {
@@ -1964,14 +5851,85 @@
     "bodies": [
      "M2"
     ],
-    "color": "#6a1b9a"
+    "color": "#4a148c"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M2_mic"
+    ],
+    "color": "#b0bec5"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M2_pad1"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M2_pad2"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M2_pad3"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M2_pad4"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M2_pad5"
+    ],
+    "color": "#b87333"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "M2_pad6"
+    ],
+    "color": "#b87333"
    }
   },
   {
    "command": "solid.move",
    "params": {
     "bodies": [
-     "M2"
+     "M2",
+     "M2_mic",
+     "M2_pad1",
+     "M2_pad2",
+     "M2_pad3",
+     "M2_pad4",
+     "M2_pad5",
+     "M2_pad6",
+     "M2_C1"
     ],
     "translate": [
      "0 mm",
@@ -1984,9 +5942,125 @@
    "command": "solid.remove",
    "params": {
     "bodies": [
-     "M1",
+     "U1_H1",
+     "U1_H2",
+     "U1_CH340",
+     "U1_reset",
+     "Default",
+     "Default (2)",
+     "Default (3)",
+     "Default (4)",
+     "Default (5)",
+     "Default (6)",
+     "Default (7)",
+     "Default (8)",
+     "Default (9)",
+     "Default (10)",
+     "Default (11)",
+     "Default (12)",
+     "Default (13)",
+     "Default (14)",
+     "Default (15)",
+     "Default (16)",
+     "Default (17)",
+     "Default (18)",
+     "Default (19)",
+     "Default (20)",
+     "Default (21)",
+     "Default (22)",
+     "Default (23)",
+     "Default (24)",
+     "Default (26)",
+     "Default (27)",
+     "U1_USB",
+     "M1_pad_Bp",
+     "M1_pad_Bm",
+     "M1_pad_OUTp",
+     "M1_pad_OUTm",
+     "M1_pad_CHRG",
+     "M1_pad_INp",
+     "M1_pad_INm",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (2)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (3)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (4)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (5)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (6)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (7)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (8)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (9)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (10)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (11)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (12)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (13)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (14)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (15)",
+     "USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal (16)",
+     "M1_U1",
+     "M1_U2",
+     "M1_U3",
+     "M1_LED_red",
+     "M1_LED_blue",
+     "M1_R1",
+     "M1_R2",
+     "M1_R3",
+     "M1_C1",
+     "M1_C2",
+     "M1_C3",
+     "J2",
+     "J1",
+     "SW2",
+     "SW2_frame",
+     "SW2_knob",
+     "SW2_pin1",
+     "SW2_pin2",
+     "SW2_pin3",
      "D2",
-     "R2"
+     "R2",
+     "R3",
+     "C3",
+     "C3_lead1",
+     "C3_lead2",
+     "C4",
+     "C4_stripe",
+     "C4_lead1",
+     "C4_lead2",
+     "W1_5V",
+     "W2_RST",
+     "W3_BTN",
+     "W4_BTN",
+     "W5_BTN",
+     "W6_BTN",
+     "W7_GND",
+     "W8_GND",
+     "W9_GND",
+     "W10_GND",
+     "W11_GND",
+     "W12_GND",
+     "W13_3V3",
+     "W14_3V3",
+     "W15_3V3",
+     "W16_CHRG",
+     "W17_CHRG",
+     "W18_VSW",
+     "W19_VSW",
+     "W20_VBAT",
+     "W21_BATm",
+     "W22_MICPWR",
+     "W23_I2S_SCK",
+     "W24_I2S_WS",
+     "W25_I2S_SD",
+     "BT1_wire_red",
+     "BT1_wire_black",
+     "BT1_plug",
+     "M2_mic",
+     "M2_pad1",
+     "M2_pad2",
+     "M2_pad3",
+     "M2_pad4",
+     "M2_pad5",
+     "M2_pad6",
+     "M2_C1"
     ]
    }
   },
@@ -2075,9 +6149,9 @@
     ],
     "operation": "cut",
     "targets": [
-     "PCB1_pins"
+     "BT1"
     ],
-    "name": "Section_PCB1_pins"
+    "name": "Section_BT1"
    }
   },
   {
@@ -2093,9 +6167,9 @@
     ],
     "operation": "cut",
     "targets": [
-     "U1"
+     "BT1_tape"
     ],
-    "name": "Section_U1"
+    "name": "Section_BT1_tape"
    }
   },
   {
@@ -2129,9 +6203,9 @@
     ],
     "operation": "cut",
     "targets": [
-     "J1"
+     "U1"
     ],
-    "name": "Section_J1"
+    "name": "Section_U1"
    }
   },
   {
@@ -2147,9 +6221,63 @@
     ],
     "operation": "cut",
     "targets": [
-     "BT1"
+     "U1_shield"
     ],
-    "name": "Section_BT1"
+    "name": "Section_U1_shield"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "100 mm",
+    "width": "34 mm",
+    "height": "60 mm",
+    "corner": [
+     "-5 mm",
+     "-5 mm",
+     "-5 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "U1_esp_pcb"
+    ],
+    "name": "Section_U1_esp_pcb"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "100 mm",
+    "width": "34 mm",
+    "height": "60 mm",
+    "corner": [
+     "-5 mm",
+     "-5 mm",
+     "-5 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "M1_PCB"
+    ],
+    "name": "Section_M1_PCB"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "100 mm",
+    "width": "34 mm",
+    "height": "60 mm",
+    "corner": [
+     "-5 mm",
+     "-5 mm",
+     "-5 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "M1_foam"
+    ],
+    "name": "Section_M1_foam"
    }
   },
   {

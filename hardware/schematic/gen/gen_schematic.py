@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generates schematic.scr (CADCraft script) for the ESP8266 D1 mini MQTT button, hardware rev B.1 (LiPo + I2S audio)."""
+"""Generates schematic.scr (CADCraft script) for the ESP8266 D1 mini MQTT button, hardware rev C (LiPo + I2S audio, perfboard wiring per layout/layout.json)."""
 import json, sys
 
-out = ["; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev B.3 (CADCraft script, mm).",
+out = ["; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev C (CADCraft script, mm).",
        "; Replay: cadcraft-cli run --metric --script-file schematic.scr --save schematic.dxf --export schematic.png",
        "; Circuit per hardware/DESIGN.md sections 1-4. Layers: frame, symbols, wires, text, nets, notes."]
 def cmd(id_, **p): out.append(f"{id_} {json.dumps(p, ensure_ascii=False)}")
@@ -107,13 +107,14 @@ XSW1, XSW2 = 160, 180                 # SW2
 XD1, XD2 = 185, 199                   # D2
 UX1, UY1, UX2, UY2 = 240, 100, 300, 212
 P3V3, P5V, PD0, PD4, PG = 204, 190, 150, 125, 110                 # U1 left pins
-PRST, PD1, PA0, PD2, PD7, PD5, PD6 = 200, 188, 172, 140, 128, 118, 108  # U1 right pins
+PRST, PD1, PA0, PD7, PD5, PD6, PD2 = 200, 188, 172, 140, 130, 120, 110  # U1 right pins (I2S pins grouped in J2 order)
 YBUS = 225; XBUS = 215; XC4 = 205; XR3 = 195
 XJP1, XJP2 = 318, 332; XJPD = 340
 XR2, XC3, XSW = 350, 365, 385
 XJ2 = 325; XGM = 312                                             # J2 mic header, mic ground
 M2X1, M2Y1, M2X2, M2Y2 = 345, 80, 395, 145
-YVDD, YSCK, YWS, YSD, YLR, YGNDM = PD2, PD7, PD5, PD6, 98, 88
+YSCK, YWS, YSD, YVDD, YLR, YGNDM = PD7, PD5, PD6, PD2, 100, 90          # J2 pins 1..6: SCK WS SD VDD L/R GND
+J2PINS = [(1, "SCK", YSCK), (2, "WS", YWS), (3, "SD", YSD), (4, "VDD", YVDD), (5, "L/R", YLR), (6, "GND", YGNDM)]
 
 # ---------- frame & title block ----------
 layer("frame")
@@ -121,9 +122,9 @@ rect(10, 10, 430, 270)
 rect(270, 10, 430, 40); line((270, 28), (430, 28)); line((360, 10), (360, 28)); line((400, 10), (400, 28))
 layer("text")
 text(350, 34, "ESP8266 D1 mini MQTT battery button", 4.5)
-text(275, 21.5, "Rev B.3: LiPo, button, I2S mic", 3, "L")
+text(275, 21.5, "Rev C: LiPo, button, I2S mic", 3, "L")
 text(275, 14, "Date: 2026-10-26", 3, "L")
-text(380, 21.5, "Rev B.3", 3); text(380, 14, "CADCraft", 3)
+text(380, 21.5, "Rev C", 3); text(380, 14, "CADCraft", 3)
 text(415, 21.5, "Sheet", 3); text(415, 14, "1 / 1", 3)
 
 # ---------- battery, connector, charger ----------
@@ -154,7 +155,7 @@ layer("text"); text(100, 126, "GND", 2.5)
 slide_switch_h(XSW1, XSW2, YOUT)
 layer("text"); text(170, 205, "SW2", 3.5); text(170, 200.5, "POWER", 3)
 diode_h(XD1, XD2, YOUT)
-layer("text"); text(192, 200.5, "D2", 3.5); text(192, 196, "SS14", 2.8)
+layer("text"); text(192, 200.5, "D2", 3.5); text(192, 196, "1N5819", 2.8)
 layer("wires"); line((XSW2, YOUT), (XD1, YOUT)); line((XD2, YOUT), (UX1, P5V))
 layer("nets"); text(182.5, 184, "VSW", 3); text(222, 194, "5V", 3.5)
 
@@ -213,9 +214,11 @@ layer("wires"); line((XSW, PD1), (XSW, 178.8)); line((XSW, 161.2), (XSW, 158)); 
 layer("text"); text(XSW+4, 174, "SW1", 3.5, "L"); text(XSW+4, 169.5, "tactile", 2.8, "L"); text(XSW+4, 165.5, "100 gf", 2.8, "L")
 
 # ---------- audio: J2 header + M2 INMP441 (in the lid) ----------
-layer("symbols"); rect(XJ2-4, YGNDM-6, XJ2+4, YVDD+6)
+layer("symbols"); rect(XJ2-4, YGNDM-6, XJ2+4, YSCK+6)
 for y in (YVDD, YSCK, YWS, YSD, YLR, YGNDM):
     circle(XJ2, y, 1.3)
+layer("text")
+for num, nm, y in J2PINS: text(XJ2, y+2.6, str(num), 1.8)
 layer("wires")
 for py, my in ((PD2, YVDD), (PD7, YSCK), (PD5, YWS), (PD6, YSD)):
     line((UX2, py), (XJ2-1.3, my)); line((XJ2+1.3, my), (M2X1, my))
@@ -225,12 +228,12 @@ layer("symbols"); rect(M2X1, M2Y1, M2X2, M2Y2)
 layer("nets")
 text(337, YVDD+2.6, "MICPWR", 2.2); text(337, YSCK+2.6, "I2S_SCK", 2.2); text(337, YWS+2.6, "I2S_WS", 2.2); text(337, YSD+2.6, "I2S_SD", 2.2)
 layer("text")
-text(XJ2, 151, "J2", 3); text(XJ2, 155.5, "6-pin header", 2.2)
+text(XJ2, 151, "J2", 3); text(XJ2, 155.5, "1x6 header", 2.2); text(XJ2, 159.5, "pins 1-6", 2.2)
 text(XGM, 64, "GND", 2.5)
 text(M2X1+3, YVDD, "VDD", 2.6, "ML"); text(M2X1+3, YSCK, "SCK", 2.6, "ML"); text(M2X1+3, YWS, "WS", 2.6, "ML")
 text(M2X1+3, YSD, "SD", 2.6, "ML"); text(M2X1+3, YLR, "L/R", 2.6, "ML"); text(M2X1+3, YGNDM, "GND", 2.6, "ML")
 text(376, 131, "M2", 4); text(376, 124, "INMP441", 3); text(376, 118.5, "I2S MEMS mic", 2.3); text(376, 113.5, "11 × 14 mm breakout", 2.2)
-text(376, 108.5, "under the lid,", 2.2); text(376, 104, "6 wires to J2", 2.2); text(376, 96, "L/R = GND: left ch.", 2.1)
+text(376, 108.5, "under the lid,", 2.2); text(376, 104, "6-wire lead to J2", 2.2); text(376, 96, "L/R = GND: left ch.", 2.1)
 
 # ---------- notes ----------
 layer("notes")
@@ -238,11 +241,12 @@ notes = ("NOTES\\P"
  "1. Rev B: LiPo 1000 mAh replaces the CR2032 of rev A (audio recording needs about 75 mA for minutes).\\P"
  "2. Charge only via M1's USB-C port (TP4056, 1 A default; R_PROG 2.4 k for 0.5 A). DW01 protects the cell.\\P"
  "3. D2 blocks USB back-feed into the LiPo: USB programming is allowed at any time, with SW2 in any position.\\P"
- "4. A0 n.c.; I2S mic on GPIO12/13/14 (the ESP8266's fixed I2S RX pins): SCK = D7, WS = D5, SD = D6, L/R to GND (left channel).\\P"
+ "4. A0 n.c.; I2S mic on GPIO12/13/14 (the ESP8266's fixed I2S RX pins): SCK = D7, WS = D5, SD = D6. J2 pins 1-6 = SCK, WS, SD, VDD, L/R, GND; L/R tied to GND (left channel).\\P"
  "5. M2 VDD power-gated by D2/GPIO4 (1.4 mA). M1 CHRG (open drain, low = charging) -> D0/GPIO16, R3 10 k pull-up to 3V3.\\P"
  "6. JP1 (solder bridge) closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. Open = always_on (USB).\\P"
  "7. GPIO2 drives the LED already on the D1 mini (active-low): on while recording. SW1 pressed = GPIO5 LOW.\\P"
- "8. Rev B.1: M2 INMP441 (11 x 14 mm) sits in a pocket under the lid, sound port over a 2 mm hole; 6 wires to header J2.")
+ "8. M2 INMP441 (11 x 14 mm) sits in a pocket under the lid, sound port over a 2 mm hole; 6-wire lead to header J2.\\P"
+ "9. Rev C: D2 is THT (1N5819 DO-41); M1 glued with foam tape and wired from its pads; every lead/wire position is in hardware/layout/layout.json (perfboard-layout + perfboard-solder-side sheets, BUILD.md).")
 cmd("mtext", at=[15, 76], text=notes, height=2.5, width=250, attach=1, lineSpacing=1.15)
 
 cmd("zoom", mode="extents")

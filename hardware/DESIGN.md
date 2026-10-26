@@ -13,18 +13,18 @@ collapses above a few mA continuous). The supercapacitor bank, R1 and the
 ## 1. Power architecture (LiPo 3.7 V, 1000 mAh)
 
 ```
-BT1 LiPo 803040 ─ M1 TP4056 charger + DW01 protection (USB-C) ─ OUT+ ─ SW2 ─ D2 SS14 ─ D1 mini "5V" pin
+BT1 LiPo 803040 ─ M1 TP4056 charger + DW01 protection (USB-C) ─ OUT+ ─ SW2 ─ D2 1N5819 ─ D1 mini "5V" pin
                                                                                            └─ on-board ME6211 LDO → 3V3
 GND ─────────────────────────────────────────────────────────────────────────────────────── D1 mini "G"
 ```
 
 - The battery enters the D1 mini on its **5V pin** through Schottky D2
-  (SS14, Vf ≈ 0.3 V). The on-board LDO regulates to 3.3 V (it simply passes
+  (1N5819 DO-41, Vf ≈ 0.3 V). The on-board LDO regulates to 3.3 V (it simply passes
   through when the LiPo is nearly empty; the ESP works down to 2.5 V).
 - USB programming puts 5 V on the same rail; D2 blocks any current into the
   LiPo. USB may be plugged at any time, with SW2 in any position.
 - Charging only through the TP4056's own USB-C port. Its CHRG output (open
-  drain, low while charging) goes to D6/GPIO12 so the firmware can publish a
+  drain, low while charging) goes to D0/GPIO16 (10 kΩ pull-up R3) so the firmware can publish a
   "charging" sensor.
 - Budget: deep-sleep standby ≈ 0.25 mA (D1 mini LDO + CH340 leakage, TP4056
   idle < 10 µA) ⇒ **≈ 4 months**. Recording ≈ 75 mA ⇒ 1000 mAh ≈ 13 h of
@@ -83,53 +83,67 @@ M1 TP4056 CHRG ──┬── D0 (GPIO16)   (open drain, low = charging)
 | U1 | Wemos / LOLIN D1 mini (ESP8266, CH340, 4 MB flash) | 34.2 × 25.6 mm, 2 × 8 pins 2.54 mm, rows 22.86 mm apart |
 | PCB1 | Perfboard 50 × 70 mm, 2.54 mm pitch, single side | 18 × 24 holes, FR-4 1.6 mm |
 | BT1 | LiPo 3.7 V 1000 mAh 803040 with JST-PH 2.0 plug | 8 × 30 × 40 mm, lies under the perfboard |
-| M1 | TP4056 charger module with DW01/FS8205 protection, USB-C (03962A) | 26 × 17.5 mm, 1.0 A default (R_PROG 1.2 kΩ); change R_PROG to 2.4 kΩ for 0.5 A |
+| M1 | TP4056 charger module with DW01/FS8205 protection, USB-C (03962A) | 17.5 × 26 mm (USB-C on the short edge), 1.0 A default (R_PROG 1.2 kΩ); change R_PROG to 2.4 kΩ for 0.5 A |
 | M2 | INMP441 I2S MEMS microphone breakout | 11 × 14 mm, 6 pins (VDD GND SD WS SCK L/R), 1.4 mA, mounted under the lid, 6 wires to the perfboard |
 | R3 | 10 kΩ 1/4 W (pull-up for CHRG on GPIO16) | axial |
 | J1 | JST-PH 2-pin right-angle header (battery) | 2.0 mm pitch |
 | J2 | 1×6 right-angle pin header 2.54 mm (microphone wires) | 2.5 mm tall; or solder the wires directly |
 | SW1 | Tactile switch 12 × 12 mm, THT, 7.3 mm actuator, **low force 100 gf** (e.g. Omron B3F-4000) | standard 12×12 footprint |
 | SW2 | SPDT slide switch SS12D00 (power) | 8.6 × 3.6 mm body, 3 pins 3.0 mm pitch, actuator 2 mm |
-| D2 | Schottky diode SS14 / 1N5819 (battery → 5V pin) | axial / SMA on pads |
+| D2 | Schottky diode 1N5819 DO-41 (battery → 5V pin) | axial, through-hole (no SMD parts anywhere on the perfboard) |
 | C3 | 100 nF ceramic X7R | 2.54 mm pitch |
 | C4 | 100 µF 6.3 V low-ESR electrolytic (3V3 rail) | Ø5 × 11 mm radial |
 | R2 | 10 kΩ 1/4 W | axial |
 | JP1 | Solder bridge (two pads 2.54 mm apart); closed = battery mode | no header: nothing tall under the key cap |
 | — | 4 × M2 × 8 mm self-tapping screws (PCB), 4 × M2.5 × 10 mm (lid), 4 × Ø8 mm adhesive rubber feet, double-sided foam tape for the LiPo | |
 
-## 5. Perfboard placement (mm, origin = perfboard bottom-left corner, X along 70 mm, Y along 50 mm, top view)
+## 5. Perfboard placement — rev C, on the 2.54 mm hole grid
 
-Revision B.3 (after the full 3D assembly check): the perfboard sits at cavity
-offset **(5, 1.5)** so the D1 mini's micro-USB reaches the wall; the board
-corners are **notched 4 × 4 mm** to clear the Ø6 lid bosses; the four mounting
-holes moved to spots not covered by modules; J2 is a right-angle header and
-JP1 a solder bridge so nothing tall sits under the key-cap flange.
+Generated layout: **`hardware/layout/gen_layout.py` → `layout.json`** is the
+single source of truth for every lead position and every wire; the build
+guide (`hardware/BUILD.md`, Italian `BUILD.it.md`), the 2D drawings and the
+3D model are derived from it. Do not edit the tables below by hand: change
+the generator and rerun it.
 
-| Ref | Center (x, y) | Footprint | Orientation / notes |
-|---|---|---|---|
-| U1 D1 mini | (15.8, 17.1) | 25.6 (X) × 34.2 (Y), PCB y 0 → 34.2 | micro-USB on the **y = 0** edge, receptacle protrudes 1 mm past the board edge; antenna toward y = 50 |
-| SW1 button | (35.0, 26.5) | 12 × 12 | = cavity (40, 28), the lid centre |
-| M1 TP4056 | (52.5, 9.5) | 26 (X) × 17.5 (Y), x 39.5 → 65.5, y 0.75 → 18.25 | USB-C on the **y = 0** edge, protrudes ≈ 1.5 mm past the module; on male header pins; LEDs near the USB-C end |
-| J2 mic header | (54.0, 40.0) | right-angle 1×6, body 15.24 (X) × 2.54 (Y) × 2.5, bent pins 6 mm toward y = 50 (reach y ≈ 47.3) | wires to M2 in the lid (SCK WS SD L/R VDD GND); or solder the wires directly |
-| J1 battery | (66.0, 27.0) | JST-PH 2-pin right-angle 6 (X) × 4.5 (Y) × 6 | opening toward x = 70, wires go under the board |
-| D2 | (34.0, 7.0) | axial, 10 mm along X | cathode (band) toward U1 |
-| R2 | (34.0, 13.0) | axial, 10 mm along X | |
-| R3 | (40.5, 47.5) | axial, 10 mm along X (pads 35.5 / 45.5) | |
-| C3 | (36.0, 35.0) | 2.54 pitch | |
-| C4 | (36.0, 42.0) | Ø5 × 11 lying flat along X | |
-| JP1 | (30.0, 47.5) | **solder bridge**, two pads 2.54 apart along X | closed = battery mode |
-| SW2 slide | (67.0, 36.0) | 3.6 (X) × 8.6 (Y), body 5 mm tall on 1 mm pins, actuator centre ≈ 3.2 mm above the board | actuator points to the **x = 70** edge |
-| BT1 LiPo | cavity (40, 28) **under the board** | 40 (X) × 30 (Y) × 8 | taped to the floor |
-| M2 INMP441 | in the lid pocket | 11 × 14 × 1.6 | 6 wires to J2 |
-| Mounting holes | (34, 3) (34, 47) (6, 40) (64, 21) | Ø2.2 | all four are free of modules and reachable with a screwdriver |
-| Corner notches | 4 × 4 at all four corners | | clear the Ø6 lid bosses |
+Grid: 24 columns **A..X** along X and 18 rows **1..18** along Y, pitch 2.54 mm,
+hole A1 at (5.79, 3.41) from the board's bottom-left corner, component-side
+view, USB edge at y = 0 (col X = x 64.21, row 18 = y 46.59). Perfboard
+70 × 50 × 1.6, corners notched **5 × 5**, mounting holes = grid holes
+**L1, L18, C17, X11** drilled Ø2.2 (nothing soldered on the 8 holes around
+each: the Ø5 standoff is underneath). Perfboard origin at cavity
+**(2.46, 1.73)**, chosen so that SW1's actuator lands exactly under the key
+cap at cavity (40, 28).
 
-Solder pins protrude ≈ 1.5 mm below the perfboard. Tallest parts above the
-perfboard top surface: U1 stack ≈ 7.0 mm (header 2.5 + PCB 1.0 + shield/USB
-3.5), M1 ≈ 6.8 (header 2.5 + PCB 1.0 + USB-C 3.3), SW2 6 mm, J1 6 mm, SW1
-actuator top 7.3 mm, C4 5.5 mm, J2 right-angle 2.5 mm. micro-USB receptacle
-centre ≈ 5.2 mm above the perfboard at x = 15.8 on the y = 0 edge; USB-C
-receptacle centre ≈ 5.2 mm above the perfboard at x = 52.5 on the y = 0 edge.
+| Ref | Leads in holes | Notes |
+|---|---|---|
+| U1 D1 mini | A3..A10 (3V3 D8 D7 D6 D5 D0 A0 RST), J3..J10 (5V GND D4 D3 D2 D1 RX TX) | PCB x 4.42 → 30.02, y 0.28 → 34.48; micro-USB on the y = 0 edge (face ≈ 1 mm inside the wall); headers long side down, trimmed flush |
+| SW1 B3F-4000 | K9 P9 (contact 1), K11 P11 (contact 2) | body 31.54 → 43.54 × 20.27 → 32.27; 12.5 mm pins spread to 12.7 |
+| D2 1N5819 | K3 (cathode, band) – O3 | row 3 |
+| R2 10 k | K5 – O5 | BTN pull-up |
+| R3 10 k | K7 – O7 | CHRG pull-up |
+| C3 100 nF | Q11 – Q12 | |
+| C4 100 µF | Q14 (−) – Q15 (+) | lying flat toward +x, body 47 → 58.5 |
+| J2 1×6 right-angle | Q17..V17 = SCK WS SD VDD L/R GND | bent pins toward row 18 |
+| J1 JST-PH | X14 (+) – X15 (−) | mouth toward +x; the plug lives in the 7.5 mm gap between board edge (cavity 72.46) and wall |
+| SW2 SS12D00G4 | A15 (ON) A16 (COM) A17 (NC) | laid on its side at the **x = 0** edge, lever through the x = 0 wall; pins bent 90° |
+| M1 TP4056 USB-C | glued (1 mm foam tape), x 46.29 → 63.79, y −0.5 → 25.5 | USB-C centred x 55.04 = cavity 57.5; wired from its pads B+ B− OUT+ OUT− CHRG |
+| JP1 | solder bridge A10–A11 | closed = battery mode |
+| BT1 LiPo | cavity (40, 28) under the board | leads + plug in the right-hand gap to J1 |
+| M2 INMP441 | lid pocket at cavity (74, 28) | 6-wire lead to J2 |
+
+Wiring: 2 bare links (K3–J3, U17–V17), 1 solder bridge (A10–A11) and 22
+insulated 26 AWG wires on the solder side, one colour per net (GND black,
+3V3 red, 5V orange, VSW yellow, VBAT brown, BAT− grey, BTN white, CHRG
+violet, MICPWR green, SCK blue, WS pink, SD turquoise); full list with
+lengths in `BUILD.md`. Max two wire ends per hole. The wires lie flat under
+the board (≈ 1.5 mm incl. solder) above the LiPo.
+
+Solder pins protrude ≤ 1 mm below the perfboard: **mount U1 with the long
+(6 mm) side of its header pins down through the perfboard and trim the tails
+flush after soldering**; the short 3 mm side goes through the D1 mini board.
+Tallest parts above the perfboard: U1 stack ≈ 7.3 mm (spacer 2.5 + PCB 1.5 +
+shield/USB 3.3), SW1 actuator 7.3, J1 6, SW2 3.6 (on its side), C4 5.5, M1 ≈
+5.5 (foam 1 + PCB 1 + USB-C 3.3), J2 2.5.
 
 ## 6. Enclosure (3D print, PETG or PLA, 0.2 mm layers) — designed for an elderly user
 
@@ -142,26 +156,28 @@ edges, rubber feet so the box does not slide when pressed.
   pocket, charge-LED window), **key cap / plunger**.
 - Cavity: **80 × 56 × 24 mm** (7 mm taller than rev. A for the LiPo under the
   board: 8 mm cell + 1.5 mm solder pins under the perfboard + 1.5 mm air).
-  The perfboard (70 × 50, corners notched 4 × 4) sits at cavity offset
-  **(5, 1.5)**: x 5 → 75, y 1.5 → 51.5, so the USB receptacles are ≈ 0.5 mm
-  from the inner face of the y = 0 wall. Walls 2 mm, floor 2 mm, lid 2 mm ⇒ outer **84 × 60 × 28 mm**.
+  The perfboard (70 × 50, corners notched 5 × 5) sits at cavity offset
+  **(2.46, 1.73)** (see §5): x 2.46 → 72.46, y 1.73 → 51.73. Walls 2 mm, floor 2 mm, lid 2 mm ⇒ outer **84 × 60 × 28 mm**.
   Outer vertical edges rounded r = 4 mm, bottom and lid-top edges r = 1.5 mm.
 - PCB standoffs: Ø5 mm × **11 mm** tall, Ø1.6 mm pilot hole, at cavity
-  **(39, 4.5), (39, 48.5), (11, 41.5), (69, 22.5)** (= perfboard holes +
-  offset). The LiPo (40 × 30 × 8) lies on the floor
+  **(36.19, 5.14), (36.19, 48.32), (13.33, 45.78), (66.67, 30.54)** (= grid
+  holes L1, L18, C17, X11 + offset). The LiPo (40 × 30 × 8) lies on the floor
   between them, centred at cavity (40, 28).
 - Lid bosses: Ø6 mm in the four inner corners (centres 3 mm from each wall),
   full cavity height, Ø2.0 mm pilot holes for M2.5 self-tapping screws; the
   lid has matching Ø2.8 mm countersunk holes.
 - Programming micro-USB slot through the **y = 0 wall**: **14 mm wide × 9 mm
   tall** (the plug's overmold enters the wall so the shell seats fully),
-  centre at cavity x = 20.8, z = 17.7 above the inner floor (11 standoff +
-  1.6 perfboard + 5.2).
+  centre at cavity x = 19.68 (U1's micro-USB), z = 17.7 above the inner
+  floor (11 standoff + 1.6 perfboard + 5.2).
 - Charging USB-C slot through the **y = 0 wall**: **12 mm wide × 8 mm tall**,
-  centre at cavity x = 57.5, z = 17.7.
-- Slide-switch slot through the **x = 80 wall**: 8 mm wide (along y) × 3.5 mm
-  tall, centre at cavity y = 37.5, z = 16.8 above the inner floor (board top
-  12.6 + 1 mm pins + actuator centre 3.2).
+  centre at cavity x = 57.5, z = 16.2 (M1 is glued flat: foam 1 + PCB 1 +
+  receptacle centre 1.6 above the board top at 12.6).
+- Slide-switch slot through the **x = 0 wall**: 8 mm wide (along y) × 4 mm
+  tall, centre at cavity y = 43.24 (SW2's common pin A16), z = 14.75 (knob
+  of the side-laid switch resting on the board top). The 4 mm lever ends
+  inside the slot, ≈ 0.5 mm below the outer wall face: it is operated with a
+  fingertip and cannot be knocked by accident.
 - Rubber-foot recesses under the floor: Ø8 × 0.8 mm, 6 mm in from each corner.
 - Key-cap hole in the lid: **Ø52.6 mm**, centred at cavity (40, 28) — the lid
   centre.

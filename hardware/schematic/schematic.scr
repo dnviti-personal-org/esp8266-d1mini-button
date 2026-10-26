@@ -1,4 +1,4 @@
-; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev B.3 (CADCraft script, mm).
+; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev C (CADCraft script, mm).
 ; Replay: cadcraft-cli run --metric --script-file schematic.scr --save schematic.dxf --export schematic.png
 ; Circuit per hardware/DESIGN.md sections 1-4. Layers: frame, symbols, wires, text, nets, notes.
 lwdisplay {"on": true}
@@ -16,9 +16,9 @@ line {"points": [[360, 10], [360, 28]]}
 line {"points": [[400, 10], [400, 28]]}
 layer.current {"name": "text"}
 text {"at": [350, 34], "text": "ESP8266 D1 mini MQTT battery button", "height": 4.5, "justify": "MC"}
-text {"at": [275, 21.5], "text": "Rev B.3: LiPo, button, I2S mic", "height": 3, "justify": "L"}
+text {"at": [275, 21.5], "text": "Rev C: LiPo, button, I2S mic", "height": 3, "justify": "L"}
 text {"at": [275, 14], "text": "Date: 2026-10-26", "height": 3, "justify": "L"}
-text {"at": [380, 21.5], "text": "Rev B.3", "height": 3, "justify": "MC"}
+text {"at": [380, 21.5], "text": "Rev C", "height": 3, "justify": "MC"}
 text {"at": [380, 14], "text": "CADCraft", "height": 3, "justify": "MC"}
 text {"at": [415, 21.5], "text": "Sheet", "height": 3, "justify": "MC"}
 text {"at": [415, 14], "text": "1 / 1", "height": 3, "justify": "MC"}
@@ -89,7 +89,7 @@ pline {"vertices": [[188, 193.5], [196, 190], [188, 186.5]], "closed": true}
 pline {"vertices": [[196, 193.5], [196, 186.5]], "width": 0.6}
 layer.current {"name": "text"}
 text {"at": [192, 200.5], "text": "D2", "height": 3.5, "justify": "MC"}
-text {"at": [192, 196], "text": "SS14", "height": 2.8, "justify": "MC"}
+text {"at": [192, 196], "text": "1N5819", "height": 2.8, "justify": "MC"}
 layer.current {"name": "wires"}
 line {"points": [[180, 190], [185, 190]]}
 line {"points": [[199, 190], [240, 190]]}
@@ -157,10 +157,10 @@ text {"at": [243, 110], "text": "G", "height": 3, "justify": "ML"}
 text {"at": [297, 200], "text": "RST", "height": 3, "justify": "MR"}
 text {"at": [297, 188], "text": "D1 GPIO5", "height": 2.6, "justify": "MR"}
 text {"at": [297, 172], "text": "A0", "height": 2.6, "justify": "MR"}
-text {"at": [297, 140], "text": "D2 GPIO4", "height": 2.6, "justify": "MR"}
-text {"at": [297, 128], "text": "D7 GPIO13", "height": 2.6, "justify": "MR"}
-text {"at": [297, 118], "text": "D5 GPIO14", "height": 2.6, "justify": "MR"}
-text {"at": [297, 108], "text": "D6 GPIO12", "height": 2.6, "justify": "MR"}
+text {"at": [297, 110], "text": "D2 GPIO4", "height": 2.6, "justify": "MR"}
+text {"at": [297, 140], "text": "D7 GPIO13", "height": 2.6, "justify": "MR"}
+text {"at": [297, 130], "text": "D5 GPIO14", "height": 2.6, "justify": "MR"}
+text {"at": [297, 120], "text": "D6 GPIO12", "height": 2.6, "justify": "MR"}
 text {"at": [270, 178], "text": "U1", "height": 4.5, "justify": "MC"}
 text {"at": [270, 171], "text": "D1 mini", "height": 3.5, "justify": "MC"}
 text {"at": [270, 165], "text": "ESP8266 / CH340", "height": 3, "justify": "MC"}
@@ -235,56 +235,64 @@ text {"at": [389, 174], "text": "SW1", "height": 3.5, "justify": "L"}
 text {"at": [389, 169.5], "text": "tactile", "height": 2.8, "justify": "L"}
 text {"at": [389, 165.5], "text": "100 gf", "height": 2.8, "justify": "L"}
 layer.current {"name": "symbols"}
-rectang {"p1": [321, 82], "p2": [329, 146]}
+rectang {"p1": [321, 84], "p2": [329, 146]}
+circle {"center": [325, 110], "radius": 1.3}
 circle {"center": [325, 140], "radius": 1.3}
-circle {"center": [325, 128], "radius": 1.3}
-circle {"center": [325, 118], "radius": 1.3}
-circle {"center": [325, 108], "radius": 1.3}
-circle {"center": [325, 98], "radius": 1.3}
-circle {"center": [325, 88], "radius": 1.3}
+circle {"center": [325, 130], "radius": 1.3}
+circle {"center": [325, 120], "radius": 1.3}
+circle {"center": [325, 100], "radius": 1.3}
+circle {"center": [325, 90], "radius": 1.3}
+layer.current {"name": "text"}
+text {"at": [325, 142.6], "text": "1", "height": 1.8, "justify": "MC"}
+text {"at": [325, 132.6], "text": "2", "height": 1.8, "justify": "MC"}
+text {"at": [325, 122.6], "text": "3", "height": 1.8, "justify": "MC"}
+text {"at": [325, 112.6], "text": "4", "height": 1.8, "justify": "MC"}
+text {"at": [325, 102.6], "text": "5", "height": 1.8, "justify": "MC"}
+text {"at": [325, 92.6], "text": "6", "height": 1.8, "justify": "MC"}
 layer.current {"name": "wires"}
+line {"points": [[300, 110], [323.7, 110]]}
+line {"points": [[326.3, 110], [345, 110]]}
 line {"points": [[300, 140], [323.7, 140]]}
 line {"points": [[326.3, 140], [345, 140]]}
-line {"points": [[300, 128], [323.7, 128]]}
-line {"points": [[326.3, 128], [345, 128]]}
-line {"points": [[300, 118], [323.7, 118]]}
-line {"points": [[326.3, 118], [345, 118]]}
-line {"points": [[300, 108], [323.7, 108]]}
-line {"points": [[326.3, 108], [345, 108]]}
-line {"points": [[323.7, 98], [312, 98], [312, 78]]}
-line {"points": [[323.7, 88], [312, 88]]}
-donut {"center": [312, 88], "inside": 0, "outside": 1.6}
+line {"points": [[300, 130], [323.7, 130]]}
+line {"points": [[326.3, 130], [345, 130]]}
+line {"points": [[300, 120], [323.7, 120]]}
+line {"points": [[326.3, 120], [345, 120]]}
+line {"points": [[323.7, 100], [312, 100], [312, 78]]}
+line {"points": [[323.7, 90], [312, 90]]}
+donut {"center": [312, 90], "inside": 0, "outside": 1.6}
 layer.current {"name": "symbols"}
 line {"points": [[312, 78], [312, 72]]}
 line {"points": [[307, 72], [317, 72]]}
 line {"points": [[309, 70], [315, 70]]}
 line {"points": [[310.8, 68], [313.2, 68]]}
-line {"points": [[326.3, 98], [345, 98]]}
-line {"points": [[326.3, 88], [345, 88]]}
+line {"points": [[326.3, 100], [345, 100]]}
+line {"points": [[326.3, 90], [345, 90]]}
 layer.current {"name": "symbols"}
 rectang {"p1": [345, 80], "p2": [395, 145]}
 layer.current {"name": "nets"}
-text {"at": [337, 142.6], "text": "MICPWR", "height": 2.2, "justify": "MC"}
-text {"at": [337, 130.6], "text": "I2S_SCK", "height": 2.2, "justify": "MC"}
-text {"at": [337, 120.6], "text": "I2S_WS", "height": 2.2, "justify": "MC"}
-text {"at": [337, 110.6], "text": "I2S_SD", "height": 2.2, "justify": "MC"}
+text {"at": [337, 112.6], "text": "MICPWR", "height": 2.2, "justify": "MC"}
+text {"at": [337, 142.6], "text": "I2S_SCK", "height": 2.2, "justify": "MC"}
+text {"at": [337, 132.6], "text": "I2S_WS", "height": 2.2, "justify": "MC"}
+text {"at": [337, 122.6], "text": "I2S_SD", "height": 2.2, "justify": "MC"}
 layer.current {"name": "text"}
 text {"at": [325, 151], "text": "J2", "height": 3, "justify": "MC"}
-text {"at": [325, 155.5], "text": "6-pin header", "height": 2.2, "justify": "MC"}
+text {"at": [325, 155.5], "text": "1x6 header", "height": 2.2, "justify": "MC"}
+text {"at": [325, 159.5], "text": "pins 1-6", "height": 2.2, "justify": "MC"}
 text {"at": [312, 64], "text": "GND", "height": 2.5, "justify": "MC"}
-text {"at": [348, 140], "text": "VDD", "height": 2.6, "justify": "ML"}
-text {"at": [348, 128], "text": "SCK", "height": 2.6, "justify": "ML"}
-text {"at": [348, 118], "text": "WS", "height": 2.6, "justify": "ML"}
-text {"at": [348, 108], "text": "SD", "height": 2.6, "justify": "ML"}
-text {"at": [348, 98], "text": "L/R", "height": 2.6, "justify": "ML"}
-text {"at": [348, 88], "text": "GND", "height": 2.6, "justify": "ML"}
+text {"at": [348, 110], "text": "VDD", "height": 2.6, "justify": "ML"}
+text {"at": [348, 140], "text": "SCK", "height": 2.6, "justify": "ML"}
+text {"at": [348, 130], "text": "WS", "height": 2.6, "justify": "ML"}
+text {"at": [348, 120], "text": "SD", "height": 2.6, "justify": "ML"}
+text {"at": [348, 100], "text": "L/R", "height": 2.6, "justify": "ML"}
+text {"at": [348, 90], "text": "GND", "height": 2.6, "justify": "ML"}
 text {"at": [376, 131], "text": "M2", "height": 4, "justify": "MC"}
 text {"at": [376, 124], "text": "INMP441", "height": 3, "justify": "MC"}
 text {"at": [376, 118.5], "text": "I2S MEMS mic", "height": 2.3, "justify": "MC"}
 text {"at": [376, 113.5], "text": "11 × 14 mm breakout", "height": 2.2, "justify": "MC"}
 text {"at": [376, 108.5], "text": "under the lid,", "height": 2.2, "justify": "MC"}
-text {"at": [376, 104], "text": "6 wires to J2", "height": 2.2, "justify": "MC"}
+text {"at": [376, 104], "text": "6-wire lead to J2", "height": 2.2, "justify": "MC"}
 text {"at": [376, 96], "text": "L/R = GND: left ch.", "height": 2.1, "justify": "MC"}
 layer.current {"name": "notes"}
-mtext {"at": [15, 76], "text": "NOTES\\P1. Rev B: LiPo 1000 mAh replaces the CR2032 of rev A (audio recording needs about 75 mA for minutes).\\P2. Charge only via M1's USB-C port (TP4056, 1 A default; R_PROG 2.4 k for 0.5 A). DW01 protects the cell.\\P3. D2 blocks USB back-feed into the LiPo: USB programming is allowed at any time, with SW2 in any position.\\P4. A0 n.c.; I2S mic on GPIO12/13/14 (the ESP8266's fixed I2S RX pins): SCK = D7, WS = D5, SD = D6, L/R to GND (left channel).\\P5. M2 VDD power-gated by D2/GPIO4 (1.4 mA). M1 CHRG (open drain, low = charging) -> D0/GPIO16, R3 10 k pull-up to 3V3.\\P6. JP1 (solder bridge) closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. Open = always_on (USB).\\P7. GPIO2 drives the LED already on the D1 mini (active-low): on while recording. SW1 pressed = GPIO5 LOW.\\P8. Rev B.1: M2 INMP441 (11 x 14 mm) sits in a pocket under the lid, sound port over a 2 mm hole; 6 wires to header J2.", "height": 2.5, "width": 250, "attach": 1, "lineSpacing": 1.15}
+mtext {"at": [15, 76], "text": "NOTES\\P1. Rev B: LiPo 1000 mAh replaces the CR2032 of rev A (audio recording needs about 75 mA for minutes).\\P2. Charge only via M1's USB-C port (TP4056, 1 A default; R_PROG 2.4 k for 0.5 A). DW01 protects the cell.\\P3. D2 blocks USB back-feed into the LiPo: USB programming is allowed at any time, with SW2 in any position.\\P4. A0 n.c.; I2S mic on GPIO12/13/14 (the ESP8266's fixed I2S RX pins): SCK = D7, WS = D5, SD = D6. J2 pins 1-6 = SCK, WS, SD, VDD, L/R, GND; L/R tied to GND (left channel).\\P5. M2 VDD power-gated by D2/GPIO4 (1.4 mA). M1 CHRG (open drain, low = charging) -> D0/GPIO16, R3 10 k pull-up to 3V3.\\P6. JP1 (solder bridge) closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. Open = always_on (USB).\\P7. GPIO2 drives the LED already on the D1 mini (active-low): on while recording. SW1 pressed = GPIO5 LOW.\\P8. M2 INMP441 (11 x 14 mm) sits in a pocket under the lid, sound port over a 2 mm hole; 6-wire lead to header J2.\\P9. Rev C: D2 is THT (1N5819 DO-41); M1 glued with foam tape and wired from its pads; every lead/wire position is in hardware/layout/layout.json (perfboard-layout + perfboard-solder-side sheets, BUILD.md).", "height": 2.5, "width": 250, "attach": 1, "lineSpacing": 1.15}
 zoom {"mode": "extents"}

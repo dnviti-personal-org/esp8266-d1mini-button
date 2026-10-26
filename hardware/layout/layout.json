@@ -1,0 +1,1088 @@
+{
+ "rev": "C",
+ "grid": {
+  "pitch": 2.54,
+  "x0": 5.79,
+  "y0": 3.41,
+  "cols": "ABCDEFGHIJKLMNOPQRSTUVWX",
+  "rows": 18,
+  "hole_d": 1.0
+ },
+ "board": {
+  "size": [
+   70.0,
+   50.0,
+   1.6
+  ],
+  "notch": 5.0,
+  "cavity_offset": [
+   2.46,
+   1.73
+  ]
+ },
+ "mount": [
+  {
+   "name": "L1",
+   "xy": [
+    33.73,
+    3.41
+   ],
+   "d": 2.2,
+   "cavity": [
+    36.19,
+    5.14
+   ]
+  },
+  {
+   "name": "L18",
+   "xy": [
+    33.73,
+    46.59
+   ],
+   "d": 2.2,
+   "cavity": [
+    36.19,
+    48.32
+   ]
+  },
+  {
+   "name": "C17",
+   "xy": [
+    10.87,
+    44.05
+   ],
+   "d": 2.2,
+   "cavity": [
+    13.33,
+    45.78
+   ]
+  },
+  {
+   "name": "X11",
+   "xy": [
+    64.21,
+    28.81
+   ],
+   "d": 2.2,
+   "cavity": [
+    66.67,
+    30.54
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "ref": "U1",
+   "value": "WEMOS D1 mini",
+   "kind": "module",
+   "pins": {
+    "3V3": "A3",
+    "D8": "A4",
+    "D7": "A5",
+    "D6": "A6",
+    "D5": "A7",
+    "D0": "A8",
+    "A0": "A9",
+    "RST": "A10",
+    "5V": "J3",
+    "GND": "J4",
+    "D4": "J5",
+    "D3": "J6",
+    "D2": "J7",
+    "D1": "J8",
+    "RX": "J9",
+    "TX": "J10"
+   },
+   "body": [
+    4.42,
+    0.28,
+    30.02,
+    34.48
+   ],
+   "note": "micro-USB on the y = 0 edge, antenna toward row 18; header pins: LONG side down through the perfboard, trim flush after soldering",
+   "holes": {
+    "3V3": {
+     "name": "A3",
+     "xy": [
+      5.79,
+      8.49
+     ]
+    },
+    "D8": {
+     "name": "A4",
+     "xy": [
+      5.79,
+      11.03
+     ]
+    },
+    "D7": {
+     "name": "A5",
+     "xy": [
+      5.79,
+      13.57
+     ]
+    },
+    "D6": {
+     "name": "A6",
+     "xy": [
+      5.79,
+      16.11
+     ]
+    },
+    "D5": {
+     "name": "A7",
+     "xy": [
+      5.79,
+      18.65
+     ]
+    },
+    "D0": {
+     "name": "A8",
+     "xy": [
+      5.79,
+      21.19
+     ]
+    },
+    "A0": {
+     "name": "A9",
+     "xy": [
+      5.79,
+      23.73
+     ]
+    },
+    "RST": {
+     "name": "A10",
+     "xy": [
+      5.79,
+      26.27
+     ]
+    },
+    "5V": {
+     "name": "J3",
+     "xy": [
+      28.65,
+      8.49
+     ]
+    },
+    "GND": {
+     "name": "J4",
+     "xy": [
+      28.65,
+      11.03
+     ]
+    },
+    "D4": {
+     "name": "J5",
+     "xy": [
+      28.65,
+      13.57
+     ]
+    },
+    "D3": {
+     "name": "J6",
+     "xy": [
+      28.65,
+      16.11
+     ]
+    },
+    "D2": {
+     "name": "J7",
+     "xy": [
+      28.65,
+      18.65
+     ]
+    },
+    "D1": {
+     "name": "J8",
+     "xy": [
+      28.65,
+      21.19
+     ]
+    },
+    "RX": {
+     "name": "J9",
+     "xy": [
+      28.65,
+      23.73
+     ]
+    },
+    "TX": {
+     "name": "J10",
+     "xy": [
+      28.65,
+      26.27
+     ]
+    }
+   }
+  },
+  {
+   "ref": "SW1",
+   "value": "tactile 12x12, 7.3 mm actuator (B3F-4000)",
+   "kind": "tht",
+   "pins": {
+    "1a": "K9",
+    "1b": "P9",
+    "2a": "K11",
+    "2b": "P11"
+   },
+   "body": [
+    31.54,
+    20.27,
+    43.54,
+    32.27
+   ],
+   "note": "pins 12.5 mm apart go into holes 12.7 mm apart: spread them 0.1 mm each; pins on the same row are joined inside the switch",
+   "holes": {
+    "1a": {
+     "name": "K9",
+     "xy": [
+      31.19,
+      23.73
+     ]
+    },
+    "1b": {
+     "name": "P9",
+     "xy": [
+      43.89,
+      23.73
+     ]
+    },
+    "2a": {
+     "name": "K11",
+     "xy": [
+      31.19,
+      28.81
+     ]
+    },
+    "2b": {
+     "name": "P11",
+     "xy": [
+      43.89,
+      28.81
+     ]
+    }
+   }
+  },
+  {
+   "ref": "D2",
+   "value": "1N5819 Schottky, DO-41",
+   "kind": "tht",
+   "pins": {
+    "A": "O3",
+    "K": "K3"
+   },
+   "body": [
+    33.0,
+    7.24,
+    40.0,
+    9.74
+   ],
+   "note": "band (cathode) toward column K, next to U1's 5V pin",
+   "holes": {
+    "A": {
+     "name": "O3",
+     "xy": [
+      41.35,
+      8.49
+     ]
+    },
+    "K": {
+     "name": "K3",
+     "xy": [
+      31.19,
+      8.49
+     ]
+    }
+   }
+  },
+  {
+   "ref": "R2",
+   "value": "10 k\u03a9 1/4 W",
+   "kind": "tht",
+   "pins": {
+    "1": "K5",
+    "2": "O5"
+   },
+   "body": [
+    33.0,
+    12.32,
+    40.0,
+    14.82
+   ],
+   "note": "BTN pull-up",
+   "holes": {
+    "1": {
+     "name": "K5",
+     "xy": [
+      31.19,
+      13.57
+     ]
+    },
+    "2": {
+     "name": "O5",
+     "xy": [
+      41.35,
+      13.57
+     ]
+    }
+   }
+  },
+  {
+   "ref": "R3",
+   "value": "10 k\u03a9 1/4 W",
+   "kind": "tht",
+   "pins": {
+    "1": "K7",
+    "2": "O7"
+   },
+   "body": [
+    33.0,
+    17.4,
+    40.0,
+    19.9
+   ],
+   "note": "CHRG pull-up",
+   "holes": {
+    "1": {
+     "name": "K7",
+     "xy": [
+      31.19,
+      18.65
+     ]
+    },
+    "2": {
+     "name": "O7",
+     "xy": [
+      41.35,
+      18.65
+     ]
+    }
+   }
+  },
+  {
+   "ref": "C3",
+   "value": "100 nF ceramic disc, 2.54 mm",
+   "kind": "tht",
+   "pins": {
+    "1": "Q11",
+    "2": "Q12"
+   },
+   "body": [
+    45.18,
+    27.54,
+    47.68,
+    32.62
+   ],
+   "note": "any orientation",
+   "holes": {
+    "1": {
+     "name": "Q11",
+     "xy": [
+      46.43,
+      28.81
+     ]
+    },
+    "2": {
+     "name": "Q12",
+     "xy": [
+      46.43,
+      31.35
+     ]
+    }
+   }
+  },
+  {
+   "ref": "C4",
+   "value": "100 \u00b5F 10 V electrolytic \u00d85x11",
+   "kind": "tht",
+   "pins": {
+    "-": "Q14",
+    "+": "Q15"
+   },
+   "body": [
+    47.0,
+    35.2,
+    58.5,
+    40.2
+   ],
+   "note": "leads bent 90\u00b0, body lying flat toward column X; stripe (\u2212) toward row 14",
+   "holes": {
+    "-": {
+     "name": "Q14",
+     "xy": [
+      46.43,
+      36.43
+     ]
+    },
+    "+": {
+     "name": "Q15",
+     "xy": [
+      46.43,
+      38.97
+     ]
+    }
+   }
+  },
+  {
+   "ref": "J2",
+   "value": "1x6 right-angle male header",
+   "kind": "tht",
+   "pins": {
+    "SCK": "Q17",
+    "WS": "R17",
+    "SD": "S17",
+    "VDD": "T17",
+    "L/R": "U17",
+    "GND": "V17"
+   },
+   "body": [
+    45.16,
+    42.78,
+    60.4,
+    45.32
+   ],
+   "note": "bent pins point toward row 18 (board edge), plastic body on rows 17",
+   "holes": {
+    "SCK": {
+     "name": "Q17",
+     "xy": [
+      46.43,
+      44.05
+     ]
+    },
+    "WS": {
+     "name": "R17",
+     "xy": [
+      48.97,
+      44.05
+     ]
+    },
+    "SD": {
+     "name": "S17",
+     "xy": [
+      51.51,
+      44.05
+     ]
+    },
+    "VDD": {
+     "name": "T17",
+     "xy": [
+      54.05,
+      44.05
+     ]
+    },
+    "L/R": {
+     "name": "U17",
+     "xy": [
+      56.59,
+      44.05
+     ]
+    },
+    "GND": {
+     "name": "V17",
+     "xy": [
+      59.13,
+      44.05
+     ]
+    }
+   }
+  },
+  {
+   "ref": "J1",
+   "value": "JST-PH 2-pin right-angle (S2B-PH-K-S)",
+   "kind": "tht",
+   "pins": {
+    "1 (+)": "X14",
+    "2 (\u2212)": "X15"
+   },
+   "body": [
+    62.7,
+    33.7,
+    70.0,
+    41.6
+   ],
+   "note": "opening toward the board edge (column X side); 2.0 mm pins spread to 2.54 mm",
+   "holes": {
+    "1 (+)": {
+     "name": "X14",
+     "xy": [
+      64.21,
+      36.43
+     ]
+    },
+    "2 (\u2212)": {
+     "name": "X15",
+     "xy": [
+      64.21,
+      38.97
+     ]
+    }
+   }
+  },
+  {
+   "ref": "SW2",
+   "value": "SS12D00G4 slide switch (4 mm lever)",
+   "kind": "tht",
+   "pins": {
+    "ON": "A15",
+    "COM": "A16",
+    "NC": "A17"
+   },
+   "body": [
+    1.1,
+    37.21,
+    4.8,
+    45.81
+   ],
+   "note": "laid on its side at the board edge, lever toward the edge; the three pins (3 mm pitch) are bent 90\u00b0 down into column A",
+   "holes": {
+    "ON": {
+     "name": "A15",
+     "xy": [
+      5.79,
+      38.97
+     ]
+    },
+    "COM": {
+     "name": "A16",
+     "xy": [
+      5.79,
+      41.51
+     ]
+    },
+    "NC": {
+     "name": "A17",
+     "xy": [
+      5.79,
+      44.05
+     ]
+    }
+   }
+  },
+  {
+   "ref": "M1",
+   "value": "TP4056 USB-C charger module 03962A",
+   "kind": "module",
+   "pins": {},
+   "body": [
+    46.29,
+    -0.5,
+    63.79,
+    25.5
+   ],
+   "note": "stuck flat on the perfboard with 1 mm double-sided foam tape, USB-C over the board edge; covers columns R..X rows 1..9",
+   "holes": {}
+  },
+  {
+   "ref": "JP1",
+   "value": "solder bridge",
+   "kind": "bridge",
+   "pins": {
+    "RST": "A10",
+    "BTN": "A11"
+   },
+   "body": null,
+   "note": "bridge the two pads on the solder side = battery mode",
+   "holes": {
+    "RST": {
+     "name": "A10",
+     "xy": [
+      5.79,
+      26.27
+     ]
+    },
+    "BTN": {
+     "name": "A11",
+     "xy": [
+      5.79,
+      28.81
+     ]
+    }
+   }
+  }
+ ],
+ "m1_pads": {
+  "B+": [
+   49.0,
+   24.0
+  ],
+  "B-": [
+   61.0,
+   24.0
+  ],
+  "OUT+": [
+   47.5,
+   19.0
+  ],
+  "OUT-": [
+   62.5,
+   19.0
+  ],
+  "CHRG": [
+   50.0,
+   6.0
+  ]
+ },
+ "wires": [
+  {
+   "n": 1,
+   "net": "5V",
+   "frm": "K3",
+   "to": "J3",
+   "kind": "link",
+   "colour": "bare",
+   "a": [
+    31.19,
+    8.49
+   ],
+   "b": [
+    28.65,
+    8.49
+   ],
+   "mm": 2.5,
+   "cut_mm": 2.5
+  },
+  {
+   "n": 2,
+   "net": "RST",
+   "frm": "A10",
+   "to": "A11",
+   "kind": "bridge",
+   "colour": "bare",
+   "a": [
+    5.79,
+    26.27
+   ],
+   "b": [
+    5.79,
+    28.81
+   ],
+   "mm": 2.5,
+   "cut_mm": 2.5
+  },
+  {
+   "n": 3,
+   "net": "BTN",
+   "frm": "K5",
+   "to": "K9",
+   "kind": "wire",
+   "colour": "white",
+   "a": [
+    31.19,
+    13.57
+   ],
+   "b": [
+    31.19,
+    23.73
+   ],
+   "mm": 10.2,
+   "cut_mm": 18.0
+  },
+  {
+   "n": 4,
+   "net": "BTN",
+   "frm": "J8",
+   "to": "K9",
+   "kind": "wire",
+   "colour": "white",
+   "a": [
+    28.65,
+    21.19
+   ],
+   "b": [
+    31.19,
+    23.73
+   ],
+   "mm": 3.6,
+   "cut_mm": 12.0
+  },
+  {
+   "n": 5,
+   "net": "BTN",
+   "frm": "Q11",
+   "to": "P9",
+   "kind": "wire",
+   "colour": "white",
+   "a": [
+    46.43,
+    28.81
+   ],
+   "b": [
+    43.89,
+    23.73
+   ],
+   "mm": 5.7,
+   "cut_mm": 14.0
+  },
+  {
+   "n": 6,
+   "net": "BTN",
+   "frm": "A11",
+   "to": "P9",
+   "kind": "wire",
+   "colour": "white",
+   "a": [
+    5.79,
+    28.81
+   ],
+   "b": [
+    43.89,
+    23.73
+   ],
+   "mm": 38.4,
+   "cut_mm": 46.0
+  },
+  {
+   "n": 7,
+   "net": "GND",
+   "frm": "J4",
+   "to": "K11",
+   "kind": "wire",
+   "colour": "black",
+   "a": [
+    28.65,
+    11.03
+   ],
+   "b": [
+    31.19,
+    28.81
+   ],
+   "mm": 18.0,
+   "cut_mm": 26.0
+  },
+  {
+   "n": 8,
+   "net": "GND",
+   "frm": "P11",
+   "to": "Q12",
+   "kind": "wire",
+   "colour": "black",
+   "a": [
+    43.89,
+    28.81
+   ],
+   "b": [
+    46.43,
+    31.35
+   ],
+   "mm": 3.6,
+   "cut_mm": 12.0
+  },
+  {
+   "n": 9,
+   "net": "GND",
+   "frm": "Q12",
+   "to": "Q14",
+   "kind": "wire",
+   "colour": "black",
+   "a": [
+    46.43,
+    31.35
+   ],
+   "b": [
+    46.43,
+    36.43
+   ],
+   "mm": 5.1,
+   "cut_mm": 13.0
+  },
+  {
+   "n": 10,
+   "net": "GND",
+   "frm": "Q14",
+   "to": "V17",
+   "kind": "wire",
+   "colour": "black",
+   "a": [
+    46.43,
+    36.43
+   ],
+   "b": [
+    59.13,
+    44.05
+   ],
+   "mm": 14.8,
+   "cut_mm": 23.0
+  },
+  {
+   "n": 11,
+   "net": "GND",
+   "frm": "U17",
+   "to": "V17",
+   "kind": "link",
+   "colour": "bare",
+   "a": [
+    56.59,
+    44.05
+   ],
+   "b": [
+    59.13,
+    44.05
+   ],
+   "mm": 2.5,
+   "cut_mm": 2.5
+  },
+  {
+   "n": 12,
+   "net": "GND",
+   "frm": "M1:OUT-",
+   "to": "P11",
+   "kind": "wire",
+   "colour": "black",
+   "a": [
+    62.5,
+    19.0
+   ],
+   "b": [
+    43.89,
+    28.81
+   ],
+   "mm": 21.0,
+   "cut_mm": 29.0
+  },
+  {
+   "n": 13,
+   "net": "3V3",
+   "frm": "A3",
+   "to": "O5",
+   "kind": "wire",
+   "colour": "red",
+   "a": [
+    5.79,
+    8.49
+   ],
+   "b": [
+    41.35,
+    13.57
+   ],
+   "mm": 35.9,
+   "cut_mm": 44.0
+  },
+  {
+   "n": 14,
+   "net": "3V3",
+   "frm": "O5",
+   "to": "O7",
+   "kind": "wire",
+   "colour": "red",
+   "a": [
+    41.35,
+    13.57
+   ],
+   "b": [
+    41.35,
+    18.65
+   ],
+   "mm": 5.1,
+   "cut_mm": 13.0
+  },
+  {
+   "n": 15,
+   "net": "3V3",
+   "frm": "O7",
+   "to": "Q15",
+   "kind": "wire",
+   "colour": "red",
+   "a": [
+    41.35,
+    18.65
+   ],
+   "b": [
+    46.43,
+    38.97
+   ],
+   "mm": 20.9,
+   "cut_mm": 29.0
+  },
+  {
+   "n": 16,
+   "net": "CHRG",
+   "frm": "A8",
+   "to": "K7",
+   "kind": "wire",
+   "colour": "violet",
+   "a": [
+    5.79,
+    21.19
+   ],
+   "b": [
+    31.19,
+    18.65
+   ],
+   "mm": 25.5,
+   "cut_mm": 34.0
+  },
+  {
+   "n": 17,
+   "net": "CHRG",
+   "frm": "K7",
+   "to": "M1:CHRG",
+   "kind": "wire",
+   "colour": "violet",
+   "a": [
+    31.19,
+    18.65
+   ],
+   "b": [
+    50.0,
+    6.0
+   ],
+   "mm": 22.7,
+   "cut_mm": 31.0
+  },
+  {
+   "n": 18,
+   "net": "VSW",
+   "frm": "O3",
+   "to": "A15",
+   "kind": "wire",
+   "colour": "yellow",
+   "a": [
+    41.35,
+    8.49
+   ],
+   "b": [
+    5.79,
+    38.97
+   ],
+   "mm": 46.8,
+   "cut_mm": 55.0
+  },
+  {
+   "n": 19,
+   "net": "VSW",
+   "frm": "M1:OUT+",
+   "to": "A16",
+   "kind": "wire",
+   "colour": "yellow",
+   "a": [
+    47.5,
+    19.0
+   ],
+   "b": [
+    5.79,
+    41.51
+   ],
+   "mm": 47.4,
+   "cut_mm": 55.0
+  },
+  {
+   "n": 20,
+   "net": "VBAT",
+   "frm": "M1:B+",
+   "to": "X14",
+   "kind": "wire",
+   "colour": "brown",
+   "a": [
+    49.0,
+    24.0
+   ],
+   "b": [
+    64.21,
+    36.43
+   ],
+   "mm": 19.6,
+   "cut_mm": 28.0
+  },
+  {
+   "n": 21,
+   "net": "BAT-",
+   "frm": "M1:B-",
+   "to": "X15",
+   "kind": "wire",
+   "colour": "grey",
+   "a": [
+    61.0,
+    24.0
+   ],
+   "b": [
+    64.21,
+    38.97
+   ],
+   "mm": 15.3,
+   "cut_mm": 23.0
+  },
+  {
+   "n": 22,
+   "net": "MICPWR",
+   "frm": "J7",
+   "to": "T17",
+   "kind": "wire",
+   "colour": "green",
+   "a": [
+    28.65,
+    18.65
+   ],
+   "b": [
+    54.05,
+    44.05
+   ],
+   "mm": 35.9,
+   "cut_mm": 44.0
+  },
+  {
+   "n": 23,
+   "net": "I2S_SCK",
+   "frm": "A5",
+   "to": "Q17",
+   "kind": "wire",
+   "colour": "blue",
+   "a": [
+    5.79,
+    13.57
+   ],
+   "b": [
+    46.43,
+    44.05
+   ],
+   "mm": 50.8,
+   "cut_mm": 59.0
+  },
+  {
+   "n": 24,
+   "net": "I2S_WS",
+   "frm": "A7",
+   "to": "R17",
+   "kind": "wire",
+   "colour": "pink",
+   "a": [
+    5.79,
+    18.65
+   ],
+   "b": [
+    48.97,
+    44.05
+   ],
+   "mm": 50.1,
+   "cut_mm": 58.0
+  },
+  {
+   "n": 25,
+   "net": "I2S_SD",
+   "frm": "A6",
+   "to": "S17",
+   "kind": "wire",
+   "colour": "turquoise",
+   "a": [
+    5.79,
+    16.11
+   ],
+   "b": [
+    51.51,
+    44.05
+   ],
+   "mm": 53.6,
+   "cut_mm": 62.0
+  }
+ ],
+ "enclosure": {
+  "usb_micro_slot_x": 19.68,
+  "usb_c_slot_x": 57.5,
+  "sw2_wall": "x = 0",
+  "sw2_slot_y": 43.24,
+  "keycap_centre": [
+   40.0,
+   28.0
+  ]
+ }
+}

@@ -1,4 +1,4 @@
-# Bill of materials — ESP8266 D1 mini MQTT battery button (rev B.1, LiPo + I2S audio)
+# Bill of materials — ESP8266 D1 mini MQTT battery button (rev B.3, LiPo + I2S audio)
 
 Expanded from [DESIGN.md](DESIGN.md) section 4. Reference designators match
 `schematic/schematic.svg` and `schematic/perfboard-layout.svg`. Manufacturer
@@ -13,7 +13,7 @@ part numbers are examples: any part with the same package and ratings works.
 | BT1 | 1 | LiPo cell 803040 with protection-less JST-PH 2.0 plug (M1 provides the protection) | 3.7 V 1000 mAh | 8 × 30 × 40 mm, taped to the enclosure floor under the perfboard | generic 803040 1000 mAh (e.g. EEMB LP803040, Adafruit 2011-class) |
 | M1 | 1 | TP4056 Li-ion charger module with DW01A + FS8205A protection, USB-C | 1.0 A default (R_PROG 1.2 kΩ); fit 2.4 kΩ for 0.5 A | 26 × 17.5 mm module "03962A" (USB-C variant), soldered on male header pins; pads B+ B− OUT+ OUT− IN+ IN−, CHRG/STDBY LED pads | TP4056 03962A USB-C (generic) |
 | M2 | 1 | INMP441 I2S MEMS microphone breakout | 1.8–3.3 V, 1.4 mA, 24-bit I2S | 11 × 14 mm, 6 pins VDD GND SD WS SCK L/R; mounted in a pocket under the lid, sound port over a Ø2 mm hole; 6 wires to J2 | generic INMP441 breakout (TDK InvenSense INMP441 capsule) |
-| J2 | 1 | 6-pin header 2.54 mm (microphone wires) | — | 1 × 6 along Y; mates a 6-way DuPont / pre-crimped lead to M2 | generic 1 × 6 male pin header (or JST-XH B6B-XH-A) |
+| J2 | 1 | Right-angle 1 × 6 male header 2.54 mm (microphone wires) | — | body 15.24 × 2.54 mm at (54, 40), bent pins toward y = 50; mates a 6-way DuPont / pre-crimped lead to M2 | Harwin M20-9730646, generic 1 × 6 right-angle header |
 | R3 | 1 | Resistor, axial (CHRG pull-up on GPIO16) | 10 kΩ 1/4 W 5 % | axial, 10 mm along X | Yageo CFR-25JB-52-10K |
 | J1 | 1 | JST-PH 2-pin right-angle header (battery) | 2.0 mm pitch | mates with the BT1 plug | JST S2B-PH-K-S |
 | SW1 | 1 | Tactile switch 12 × 12 mm, THT | 7.3 mm actuator, **low force 100 gf** | standard 12 × 12 footprint, 4 pins | Omron B3F-4000 (alt. B3F-4055 160 gf) |
@@ -22,7 +22,7 @@ part numbers are examples: any part with the same package and ratings works.
 | C3 | 1 | Ceramic capacitor X7R | 100 nF 50 V | 2.54 mm pitch | Vishay K104K15X7RF53H5, generic |
 | C4 | 1 | Electrolytic capacitor, low ESR (3V3 rail) | 100 µF 6.3 V (10 V ok) | Ø5 × 11 mm radial, lying flat along X | Panasonic EEUFR1A101 (10 V), Nichicon UPW |
 | R2 | 1 | Resistor, axial | 10 kΩ 1/4 W 5 % | axial, 10 mm along X | Yageo CFR-25JB-52-10K |
-| JP1 | 1 | 2-pin header 2.54 mm + shunt (or a solder bridge) | — | 2 pins along X | generic 1 × 2 male header + 2.54 mm jumper cap |
+| JP1 | — | Solder bridge (no part): two adjacent perfboard pads at (30, 47.5), 2.54 mm apart | — | bridged with solder = battery mode (RST wake); open = `always_on` | — |
 | — | 4 | Screw M2 × 8 mm self-tapping | — | PCB to base standoffs | generic |
 | — | 4 | Screw M2.5 × 10 mm self-tapping | — | lid to base bosses | generic |
 | — | 4 | Adhesive rubber foot Ø8 mm | — | under the base, so the box does not slide when pressed | 3M SJ5302 / generic bumpon |
@@ -49,8 +49,8 @@ Perfboard top view, origin at the bottom-left corner (see
 | **5V** | D2 cathode (band), U1 pin `5V` (on-board ME6211 LDO → 3V3); USB programming puts 5 V here too, D2 blocks back-feed |
 | **3V3** | U1 pin `3V3`, C4 (+), R2 pin 1, R3 pin 1 |
 | **GND** | M1 `OUT−`, U1 pin `G`, C4 (−), C3 pin 2, SW1 pins 3-4, J2 pin 6 → M2 `GND`, J2 pin 4 → M2 `L/R` (left channel) |
-| **BTN** | R2 pin 2, C3 pin 1, SW1 pins 1-2, U1 pin `D1` (GPIO5), JP1 pin 1 |
-| **RST** | JP1 pin 2, U1 pin `RST` |
+| **BTN** | R2 pin 2, C3 pin 1, SW1 pins 1-2, U1 pin `D1` (GPIO5), JP1 pad 1 |
+| **RST** | JP1 pad 2, U1 pin `RST` (JP1 = solder bridge between the two pads) |
 | **MICPWR** | U1 pin `D2` (GPIO4, output) → J2 pin 5 → M2 `VDD` (power gated, 1.4 mA when on) |
 | **I2S_SCK** | U1 pin `D7` (GPIO13, I2S bit clock out) → J2 pin 1 → M2 `SCK` |
 | **I2S_WS** | U1 pin `D5` (GPIO14, I2S word select out) → J2 pin 2 → M2 `WS` |
@@ -62,8 +62,10 @@ Perfboard top view, origin at the bottom-left corner (see
 Notes:
 
 - Mind the polarity of C4 and the orientation of D2 (band toward U1).
-- JP1 closed = battery mode (a press pulls RST low and wakes U1 from deep
-  sleep). JP1 open = `always_on` mode (USB powered, GPIO5 polled).
+- JP1 is a solder bridge: bridged = battery mode (a press pulls RST low and
+  wakes U1 from deep sleep); open = `always_on` mode (USB powered, GPIO5 polled).
+- Rev B.3: the perfboard has 4 × 4 mm corner notches and mounting holes at
+  (34, 3), (34, 47), (6, 40), (64, 21); the LiPo outline is centred (35, 26.5).
 - Battery voltage is **not** measured; A0 is left unconnected. GPIO12/13/14 are
   the ESP8266's fixed I2S RX pins, which is why CHRG moved to GPIO16 and the
   mic power to GPIO4.

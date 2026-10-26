@@ -82,14 +82,14 @@
    "command": "parameters.add",
    "params": {
     "name": "usb_w",
-    "expression": "12 mm"
+    "expression": "14 mm"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "usb_h",
-    "expression": "7 mm"
+    "expression": "9 mm"
    }
   },
   {
@@ -112,7 +112,7 @@
    "command": "parameters.add",
    "params": {
     "name": "usbc_w",
-    "expression": "10 mm",
+    "expression": "12 mm",
     "comment": "charging USB-C slot width"
    }
   },
@@ -120,7 +120,7 @@
    "command": "parameters.add",
    "params": {
     "name": "usbc_h",
-    "expression": "5 mm",
+    "expression": "8 mm",
     "comment": "charging USB-C slot height"
    }
   },
@@ -158,7 +158,7 @@
    "command": "parameters.add",
    "params": {
     "name": "sw_y",
-    "expression": "39 mm",
+    "expression": "37.5 mm",
     "comment": "slide switch slot centre, cavity y"
    }
   },
@@ -166,7 +166,7 @@
    "command": "parameters.add",
    "params": {
     "name": "sw_z",
-    "expression": "14.8 mm",
+    "expression": "16.8 mm",
     "comment": "slide switch slot centre above inner floor"
    }
   },
@@ -429,8 +429,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 8 mm",
-     "wall + 6 mm",
+     "wall + 39 mm",
+     "wall + 4.5 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -446,8 +446,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 72 mm",
-     "wall + 6 mm",
+     "wall + 39 mm",
+     "wall + 48.5 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -463,8 +463,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 8 mm",
-     "wall + 50 mm",
+     "wall + 11 mm",
+     "wall + 41.5 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -480,8 +480,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 72 mm",
-     "wall + 50 mm",
+     "wall + 69 mm",
+     "wall + 22.5 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -495,8 +495,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     10,
-     8,
+     41,
+     6.5,
      13
     ],
     "diameter": "1.6 mm",
@@ -508,8 +508,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     74,
-     8,
+     41,
+     50.5,
      13
     ],
     "diameter": "1.6 mm",
@@ -521,8 +521,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     10,
-     52,
+     13,
+     43.5,
      13
     ],
     "diameter": "1.6 mm",
@@ -534,8 +534,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     74,
-     52,
+     71,
+     24.5,
      13
     ],
     "diameter": "1.6 mm",

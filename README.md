@@ -24,7 +24,7 @@ nothing else to operate.
 | `test/test_logic/` | Unity tests of `src/logic`, run on the host (`pio test -e native`) |
 | `hardware/DESIGN.md` | Electrical and mechanical design decisions, BOM, perfboard placement |
 | `hardware/schematic/` | Schematic and perfboard layout (CADCraft: DXF, SVG, PDF, PNG) |
-| `hardware/enclosure/` | 3D printable enclosure and key cap (SolidCraft: STEP, STL, renders) |
+| `hardware/enclosure/` | 3D printable enclosure, key cap and the full assembly with every electronic part modelled (SolidCraft: STEP, STL, renders, clearance table in its README) |
 | `hardware/BOM.md` | Bill of materials and netlist |
 | `homeassistant/` | Automations and setup notes for the Home Assistant side |
 | `docs/superpowers/specs/` | Firmware design spec |

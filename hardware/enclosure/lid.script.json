@@ -151,7 +151,7 @@
    "command": "parameters.add",
    "params": {
     "name": "led_w",
-    "expression": "6 mm",
+    "expression": "10 mm",
     "comment": "charge-LED window size along x"
    }
   },
@@ -159,7 +159,7 @@
    "command": "parameters.add",
    "params": {
     "name": "led_l",
-    "expression": "3 mm",
+    "expression": "2.5 mm",
     "comment": "charge-LED window size along y"
    }
   },
@@ -167,16 +167,16 @@
    "command": "parameters.add",
    "params": {
     "name": "led_x",
-    "expression": "66.5 mm",
-    "comment": "LED window centre, cavity x (DESIGN says 59: inside the key-cap hole, see README)"
+    "expression": "62 mm",
+    "comment": "LED window centre, cavity x (DESIGN B.3 says 57.5: its NE corner would be 2 mm under the key-cap flange; 62 gives 0.5 mm clearance)"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "led_y",
-    "expression": "11 mm",
-    "comment": "LED window centre, cavity y (DESIGN says 16)"
+    "expression": "4.5 mm",
+    "comment": "LED window centre, cavity y"
    }
   },
   {

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generates perfboard-layout.scr (CADCraft script): 70x50 mm perfboard, top view, DESIGN.md section 5 (rev B)."""
+"""Generates perfboard-layout.scr (CADCraft script): 70x50 mm perfboard, top view, DESIGN.md section 5 (rev B.3)."""
 import json, sys
 
-out = ["; perfboard-layout.scr - 70 x 50 mm perfboard placement rev B.1, top view (CADCraft script, mm, origin = board bottom-left).",
+out = ["; perfboard-layout.scr - 70 x 50 mm perfboard placement rev B.3, top view (CADCraft script, mm, origin = board bottom-left).",
        "; Replay: cadcraft-cli run --metric --script-file perfboard-layout.scr --save perfboard-layout.dxf --export perfboard-layout.png",
        "; Centres per hardware/DESIGN.md section 5. The hole grid is one circle (handle 100) replicated with arrayrect 24 x 18 @ 2.54 mm."]
 def cmd(id_, **p): out.append(f"{id_} {json.dumps(p, ensure_ascii=False)}")
@@ -42,20 +42,22 @@ cmd("layer.new", name="refdes", color="255,140,0")
 cmd("layer.new", name="dims", color="0,200,0")
 cmd("layer.new", name="notes", color="0,170,230")
 
-# --- BT1 LiPo 803040 under the board, 40 (X) x 30 (Y), centred (35, 25): drawn first so parts overlay it ---
-layer("under"); dashed_rect(15, 10, 55, 40)
-layer("refdes"); text(35, 9.3, "BT1 (under)", 1.2)
+# --- BT1 LiPo 803040 under the board, 40 (X) x 30 (Y), centred (35, 26.5) = cavity (40, 28) minus the (5, 1.5) offset ---
+layer("under"); dashed_rect(15, 11.5, 55, 41.5)
+layer("refdes"); text(35, 18.2, "BT1 under", 1.2)
 
-# --- board outline + mounting holes ---
-layer("board"); rect(0, 0, 70, 50)
-for (x, y) in [(3, 3), (67, 3), (3, 47), (67, 47)]:
-    circle(x, y, 1.1); line((x-1.8, y), (x+1.8, y)); line((x, y-1.8), (x, y+1.8))
-layer("refdes"); text(5, 2.2, "4× Ø2.2", 1.5, "L")
+# --- board outline with 4 x 4 mm corner notches + mounting holes ---
+layer("board")
+N = 4
+cmd("pline", vertices=[[N, 0], [70-N, 0], [70-N, N], [70, N], [70, 50-N], [70-N, 50-N], [70-N, 50], [N, 50], [N, 50-N], [0, 50-N], [0, N], [N, N]], closed=True)
+for (x, y) in [(34, 3), (34, 47), (6, 40), (64, 21)]:
+    circle(x, y, 1.1); line((x-1.4, y), (x+1.4, y)); line((x, y-1.4), (x, y+1.4))
+layer("refdes"); text(8.2, 40, "4× Ø2.2", 1.3, "ML")
 
-# --- U1 D1 mini: 25.6 (X) x 34.2 (Y) at (15.8, 25); USB toward y=0, antenna toward y=50 ---
-cx, cy = 15.8, 25.0
+# --- U1 D1 mini: 25.6 (X) x 34.2 (Y) at (15.8, 17.1): PCB y 0 -> 34.2, USB on the y = 0 edge, antenna toward y = 50 ---
+cx, cy = 15.8, 17.1
 layer("components"); rect(cx-12.8, cy-17.1, cx+12.8, cy+17.1)
-rect(cx-4, cy-17.1-1.0, cx+4, cy-17.1+5.0)                      # micro-USB receptacle, protrudes 1 mm
+rect(cx-4, cy-17.1-1.0, cx+4, cy-17.1+5.0)                      # micro-USB receptacle, protrudes 1 mm past the edge
 layer("refdes"); text(cx, cy-17.1+2.2, "USB", 1.6)
 layer("components")
 ax1, ay1, ax2, ay2 = cx-6, cy+17.1-5.5, cx+6, cy+17.1-0.8    # PCB antenna (meander) at the far edge
@@ -75,8 +77,8 @@ text(cx, cy+2, "U1", 3); text(cx, cy-1.8, "D1 mini", 2); text(cx, cy-4.6, "ESP82
 text(cx-11.43, cy+9.5, "RST", 1.2, "L", 90); text(cx+11.43, cy+9.5, "TX", 1.2, "L", 90)
 text(cx-11.43, cy-9.5, "3V3", 1.2, "R", 90); text(cx+11.43, cy-9.5, "5V", 1.2, "R", 90)
 
-# --- SW1 tactile 12x12 at (35, 25): exact centre of the enclosure ---
-cx, cy = 35.0, 25.0
+# --- SW1 tactile 12x12 at (35, 26.5): centre of the enclosure cavity ---
+cx, cy = 35.0, 26.5
 layer("components"); rect(cx-6, cy-6, cx+6, cy+6); circle(cx, cy, 3.65)   # body + 7.3 mm actuator
 layer("pins")
 for dx in (-3.25, 3.25):
@@ -99,35 +101,34 @@ text(cx-10, cy+3.5, "OUT+", 1.2, "L"); text(cx+10, cy+3.5, "OUT-", 1.2, "R")
 text(cx-10, cy-6.5, "IN+", 1.2, "L"); text(cx+10, cy-6.5, "IN-", 1.2, "R")
 text(cx-10, cy+5.2, "CHRG pad", 1.0, "L")
 
-# --- J2 microphone header, 6 pins 2.54 along Y at (54, 36): wires to M2 INMP441 in the lid ---
-cx, cy = 54.0, 36.0
-layer("components"); rect(cx-1.3, cy-3*PITCH, cx+1.3, cy+3*PITCH)
-layer("pins")
+# --- J2 microphone header: right-angle 1x6 at (54, 40), body 15.24 (X) x 2.54 (Y), bent pins 6 mm toward y = 50 ---
+cx, cy = 54.0, 40.0
+layer("components"); rect(cx-3*PITCH, cy-PITCH/2, cx+3*PITCH, cy+PITCH/2)
 j2 = ["SCK", "WS", "SD", "L/R", "VDD", "GND"]
 for k, nm in enumerate(j2):
-    pin(cx, cy + (2.5-k)*PITCH, 0.5)
-layer("refdes")
-for k, nm in enumerate(j2):
-    text(cx+2.0, cy + (2.5-k)*PITCH, nm, 1.0, "ML")
-text(cx-2.2, cy, "J2 mic", 1.4, "MR", 90)
+    x = round(cx + (k-2.5)*PITCH, 3)
+    layer("pins"); pin(x, cy, 0.5)
+    layer("components"); line((x, cy+PITCH/2), (x, cy+PITCH/2+6))     # bent pin, wires plug in from y = 50
+    layer("refdes"); text(x+0.9, cy+PITCH/2+0.6, nm, 0.8, "L", 90)
+layer("refdes"); text(cx, cy-2.7, "J2 mic (right-angle)", 1.3)
 
-# --- R3 10 k (CHRG pull-up) at (44, 47.5): axial, 10 mm along X (pads at x 39 and 49) ---
-cx, cy = 44.0, 47.5
+# --- R3 10 k (CHRG pull-up) at (40.5, 47.5): axial, 10 mm along X, pads at x 35.5 and 45.5 ---
+cx, cy = 40.5, 47.5
 layer("components"); rect(cx-3, cy-1.2, cx+3, cy+1.2); line((cx-5, cy), (cx-3, cy)); line((cx+3, cy), (cx+5, cy))
 layer("pins"); pin(cx-5, cy, 0.5); pin(cx+5, cy, 0.5)
-layer("refdes"); text(cx, cy-2.9, "R3 10 k", 1.3)
+layer("refdes"); text(cx, cy-2.0, "R3 10 k", 1.1)
 
-# --- J1 JST-PH 2-pin right-angle header 6 (X) x 5 (Y) at (66, 24), wires leave toward x = 70 ---
-cx, cy = 66.0, 24.0
+# --- J1 JST-PH 2-pin right-angle header 6 (X) x 5 (Y) at (66, 27), wires leave toward x = 70 ---
+cx, cy = 66.0, 27.0
 layer("components"); rect(cx-3, cy-2.5, cx+3, cy+2.5); line((cx+3, cy-1.8), (cx+5, cy-1.8)); line((cx+3, cy+1.8), (cx+5, cy+1.8))
 layer("pins"); pin(cx-1.0, cy, 0.5); pin(cx+1.0, cy, 0.5)
-layer("refdes"); text(cx, cy-4.2, "J1 BAT", 1.4)
+layer("refdes"); text(cx, cy+3.6, "J1 BAT", 1.2)
 
 # --- D2 Schottky SS14 / 1N5819 at (34, 7): axial, 10 mm along X, cathode band toward U1 (-x) ---
 cx, cy = 34.0, 7.0
 layer("components"); rect(cx-3, cy-1.3, cx+3, cy+1.3); line((cx-2.2, cy-1.3), (cx-2.2, cy+1.3)); line((cx-5, cy), (cx-3, cy)); line((cx+3, cy), (cx+5, cy))
 layer("pins"); pin(cx-5, cy, 0.5); pin(cx+5, cy, 0.5)
-layer("refdes"); text(cx, cy-3.0, "D2 SS14", 1.5)
+layer("refdes"); text(cx, cy+2.9, "D2 SS14", 1.4)
 
 # --- R2 10 k at (34, 13): axial, 10 mm along X ---
 cx, cy = 34.0, 13.0
@@ -147,38 +148,39 @@ layer("components"); rect(cx-5.5, cy-2.5, cx+5.5, cy+2.5); line((cx-4, cy-2.5), 
 layer("pins"); pin(cx-6.6, cy-1); pin(cx-6.6, cy+1)
 layer("refdes"); text(cx+1.2, cy, "C4 100µF", 1.25)
 
-# --- JP1 2-pin header at (34, 47.5), pins along X ---
-cx, cy = 34.0, 47.5
-layer("components"); rect(cx-2.54, cy-1.27, cx+2.54, cy+1.27)
-layer("pins"); pin(cx-1.27, cy, 0.5); pin(cx+1.27, cy, 0.5)
-layer("refdes"); text(cx-3.5, cy, "JP1", 1.6, "R")
+# --- JP1: two solder-bridge pads at (30, 47.5), 2.54 apart along X (bridged = battery mode) ---
+cx, cy = 30.0, 47.5
+layer("pins"); pin(cx-1.27, cy, 0.7); pin(cx+1.27, cy, 0.7)
+layer("components"); cmd("pline", vertices=[[cx-0.6, cy], [cx+0.6, cy]], width=0.9)
+layer("refdes"); text(cx-2.6, cy, "JP1 bridge", 1.2, "MR")
 
 # --- SW2 slide switch SS12D00 at (67, 36): body x 65.2 -> 68.8, y 31.7 -> 40.3, actuator toward x = 70 ---
 cx, cy = 67.0, 36.0
 layer("components"); rect(cx-1.8, cy-4.3, cx+1.8, cy+4.3); rect(cx+1.8, cy-1, cx+1.8+2.2, cy+1)   # body + actuator
 layer("pins")
 for dy in (-3, 0, 3): pin(cx, cy+dy, 0.5)
-layer("refdes"); text(cx+0.6, cy-6.0, "SW2", 1.6)
+layer("refdes"); text(cx, cy+6.0, "SW2", 1.6)
 
 # --- dimensions, axes, scale bar, title, legend ---
 layer("dims")
 cmd("dimstyle", name="PCB", current=True, DIMTXT=2.2, DIMASZ=1.8, DIMEXO=1, DIMEXE=1.2, DIMDEC=1, DIMPOST="<> mm", DIMGAP=0.6)
 cmd("dimlinear", p1=[0, 0], p2=[70, 0], at=[35, -7])
 cmd("dimlinear", p1=[0, 0], p2=[0, 50], at=[-7, 25])
-xp = X0 + 23*PITCH; yp = Y0 + 15*PITCH   # hole pitch callout on the right edge (manual, keeps the text horizontal)
-line((xp+0.8, yp), (72.5, yp)); line((xp+0.8, yp+PITCH), (72.5, yp+PITCH)); line((72, yp), (72, yp+PITCH))
-line((71.6, yp+0.6), (72.4, yp-0.6)); line((71.6, yp+PITCH+0.6), (72.4, yp+PITCH-0.6))
-text(73, yp+PITCH/2, "pitch 2.54", 1.4, "ML")
+xa = X0 + 21*PITCH; xb = X0 + 22*PITCH; yt = Y0 + 17*PITCH   # hole pitch callout on the top row (manual, text horizontal)
+line((xa, yt+0.8), (xa, 52.5)); line((xb, yt+0.8), (xb, 52.5)); line((xa, 52), (xb, 52))
+line((xa-0.6, 51.6), (xa+0.6, 52.4)); line((xb-0.6, 51.6), (xb+0.6, 52.4))
+text((xa+xb)/2, 53.6, "pitch 2.54", 1.4)
 line((0, -14), (10, -14)); line((0, -15), (0, -13)); line((5, -15), (5, -13)); line((10, -15), (10, -13))
 text(12, -14, "10 mm", 2, "ML")
 text(0, -3, "origin (0,0)", 1.5, "R"); line((0, 0), (-3, -2.2))
 layer("notes")
-text(35, 60, "Perfboard 70 × 50 mm, top view (component side), rev B.1", 2.5)
-text(35, 56.5, "2.54 mm grid, 24 × 18 holes Ø1.0; SW2 actuator points to the x = 70 edge", 1.8)
+text(35, 60, "Perfboard 70 × 50 mm, top view (component side), rev B.3", 2.5)
+text(35, 56.5, "2.54 mm grid, 24 × 18 holes Ø1.0; 4 × 4 mm corner notches; SW2 actuator points to the x = 70 edge", 1.8)
 text(15.8, -3, "micro-USB edge (y = 0)", 1.6); text(52.5, -3.2, "USB-C (charge)", 1.6); text(15.8, 51.5, "antenna edge (y = 50)", 1.6)
 text(72.5, 36, "actuator", 1.3, "ML")
 layer("under"); line((0, -10.5), (2.5, -10.5)); line((3.7, -10.5), (6.2, -10.5))
-layer("notes"); text(8, -10.5, "BT1 LiPo 803040 (40 × 30 × 8) taped to the floor under the perfboard, centred (35, 25)", 1.4, "ML")
-text(24, -14, "M2 INMP441 I2S mic sits under the lid, 6 wires to header J2; D2 band (cathode) toward U1", 1.4, "ML")
+layer("notes"); text(8, -10.5, "BT1 LiPo 803040 (40 × 30 × 8) taped to the floor under the perfboard, centred (35, 26.5)", 1.4, "ML")
+text(24, -14, "M2 INMP441 I2S mic under the lid, 6 wires into J2 from y = 50", 1.4, "ML")
+text(24, -17.5, "D2 band (cathode) toward U1; JP1 = solder bridge (closed = battery mode)", 1.4, "ML")
 cmd("zoom", mode="extents")
 sys.stdout.write("\n".join(out) + "\n")

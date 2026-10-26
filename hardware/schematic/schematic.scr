@@ -1,4 +1,4 @@
-; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev B.1 (CADCraft script, mm).
+; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev B.3 (CADCraft script, mm).
 ; Replay: cadcraft-cli run --metric --script-file schematic.scr --save schematic.dxf --export schematic.png
 ; Circuit per hardware/DESIGN.md sections 1-4. Layers: frame, symbols, wires, text, nets, notes.
 lwdisplay {"on": true}
@@ -16,9 +16,9 @@ line {"points": [[360, 10], [360, 28]]}
 line {"points": [[400, 10], [400, 28]]}
 layer.current {"name": "text"}
 text {"at": [350, 34], "text": "ESP8266 D1 mini MQTT battery button", "height": 4.5, "justify": "MC"}
-text {"at": [275, 21.5], "text": "Rev B.1: LiPo, button, I2S mic", "height": 3, "justify": "L"}
+text {"at": [275, 21.5], "text": "Rev B.3: LiPo, button, I2S mic", "height": 3, "justify": "L"}
 text {"at": [275, 14], "text": "Date: 2026-10-26", "height": 3, "justify": "L"}
-text {"at": [380, 21.5], "text": "Rev B.1", "height": 3, "justify": "MC"}
+text {"at": [380, 21.5], "text": "Rev B.3", "height": 3, "justify": "MC"}
 text {"at": [380, 14], "text": "CADCraft", "height": 3, "justify": "MC"}
 text {"at": [415, 21.5], "text": "Sheet", "height": 3, "justify": "MC"}
 text {"at": [415, 14], "text": "1 / 1", "height": 3, "justify": "MC"}
@@ -183,11 +183,12 @@ line {"points": [[300, 188], [385, 188]]}
 donut {"center": [340, 188], "inside": 0, "outside": 1.6}
 layer.current {"name": "symbols"}
 rectang {"p1": [318, 197], "p2": [332, 203]}
-circle {"center": [321, 200], "radius": 1}
-circle {"center": [329, 200], "radius": 1}
-pline {"vertices": [[322, 200], [328, 200]], "width": 1.2}
+donut {"center": [321.5, 200], "inside": 0, "outside": 1.6}
+donut {"center": [328.5, 200], "inside": 0, "outside": 1.6}
+pline {"vertices": [[321.5, 200], [328.5, 200]], "width": 1.2}
 layer.current {"name": "text"}
 text {"at": [325, 207], "text": "JP1", "height": 3.5, "justify": "MC"}
+text {"at": [325, 193.5], "text": "solder bridge", "height": 2.2, "justify": "MC"}
 layer.current {"name": "nets"}
 text {"at": [357, 191.5], "text": "BTN", "height": 3.5, "justify": "MC"}
 layer.current {"name": "symbols"}
@@ -285,5 +286,5 @@ text {"at": [376, 108.5], "text": "under the lid,", "height": 2.2, "justify": "M
 text {"at": [376, 104], "text": "6 wires to J2", "height": 2.2, "justify": "MC"}
 text {"at": [376, 96], "text": "L/R = GND: left ch.", "height": 2.1, "justify": "MC"}
 layer.current {"name": "notes"}
-mtext {"at": [15, 76], "text": "NOTES\\P1. Rev B: LiPo 1000 mAh replaces the CR2032 of rev A (audio recording needs about 75 mA for minutes).\\P2. Charge only via M1's USB-C port (TP4056, 1 A default; R_PROG 2.4 k for 0.5 A). DW01 protects the cell.\\P3. D2 blocks USB back-feed into the LiPo: USB programming is allowed at any time, with SW2 in any position.\\P4. A0 n.c.; I2S mic on GPIO12/13/14 (the ESP8266's fixed I2S RX pins): SCK = D7, WS = D5, SD = D6, L/R to GND (left channel).\\P5. M2 VDD power-gated by D2/GPIO4 (1.4 mA). M1 CHRG (open drain, low = charging) -> D0/GPIO16, R3 10 k pull-up to 3V3.\\P6. JP1 closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. JP1 open = always_on (USB).\\P7. GPIO2 drives the LED already on the D1 mini (active-low): on while recording. SW1 pressed = GPIO5 LOW.\\P8. Rev B.1: M2 INMP441 (11 x 14 mm) sits in a pocket under the lid, sound port over a 2 mm hole; 6 wires to header J2.", "height": 2.5, "width": 250, "attach": 1, "lineSpacing": 1.15}
+mtext {"at": [15, 76], "text": "NOTES\\P1. Rev B: LiPo 1000 mAh replaces the CR2032 of rev A (audio recording needs about 75 mA for minutes).\\P2. Charge only via M1's USB-C port (TP4056, 1 A default; R_PROG 2.4 k for 0.5 A). DW01 protects the cell.\\P3. D2 blocks USB back-feed into the LiPo: USB programming is allowed at any time, with SW2 in any position.\\P4. A0 n.c.; I2S mic on GPIO12/13/14 (the ESP8266's fixed I2S RX pins): SCK = D7, WS = D5, SD = D6, L/R to GND (left channel).\\P5. M2 VDD power-gated by D2/GPIO4 (1.4 mA). M1 CHRG (open drain, low = charging) -> D0/GPIO16, R3 10 k pull-up to 3V3.\\P6. JP1 (solder bridge) closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. Open = always_on (USB).\\P7. GPIO2 drives the LED already on the D1 mini (active-low): on while recording. SW1 pressed = GPIO5 LOW.\\P8. Rev B.1: M2 INMP441 (11 x 14 mm) sits in a pocket under the lid, sound port over a 2 mm hole; 6 wires to header J2.", "height": 2.5, "width": 250, "attach": 1, "lineSpacing": 1.15}
 zoom {"mode": "extents"}

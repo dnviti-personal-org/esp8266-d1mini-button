@@ -159,7 +159,7 @@
    "command": "parameters.add",
    "params": {
     "name": "led_w",
-    "expression": "6 mm",
+    "expression": "10 mm",
     "comment": "charge-LED window size along x"
    }
   },
@@ -167,7 +167,7 @@
    "command": "parameters.add",
    "params": {
     "name": "led_l",
-    "expression": "3 mm",
+    "expression": "2.5 mm",
     "comment": "charge-LED window size along y"
    }
   },
@@ -175,16 +175,16 @@
    "command": "parameters.add",
    "params": {
     "name": "led_x",
-    "expression": "66.5 mm",
-    "comment": "LED window centre, cavity x (DESIGN says 59: inside the key-cap hole, see README)"
+    "expression": "62 mm",
+    "comment": "LED window centre, cavity x (DESIGN B.3 says 57.5: its NE corner would be 2 mm under the key-cap flange; 62 gives 0.5 mm clearance)"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "led_y",
-    "expression": "11 mm",
-    "comment": "LED window centre, cavity y (DESIGN says 16)"
+    "expression": "4.5 mm",
+    "comment": "LED window centre, cavity y"
    }
   },
   {
@@ -495,14 +495,14 @@
    "command": "parameters.add",
    "params": {
     "name": "usb_w",
-    "expression": "12 mm"
+    "expression": "14 mm"
    }
   },
   {
    "command": "parameters.add",
    "params": {
     "name": "usb_h",
-    "expression": "7 mm"
+    "expression": "9 mm"
    }
   },
   {
@@ -525,7 +525,7 @@
    "command": "parameters.add",
    "params": {
     "name": "usbc_w",
-    "expression": "10 mm",
+    "expression": "12 mm",
     "comment": "charging USB-C slot width"
    }
   },
@@ -533,7 +533,7 @@
    "command": "parameters.add",
    "params": {
     "name": "usbc_h",
-    "expression": "5 mm",
+    "expression": "8 mm",
     "comment": "charging USB-C slot height"
    }
   },
@@ -571,7 +571,7 @@
    "command": "parameters.add",
    "params": {
     "name": "sw_y",
-    "expression": "39 mm",
+    "expression": "37.5 mm",
     "comment": "slide switch slot centre, cavity y"
    }
   },
@@ -579,7 +579,7 @@
    "command": "parameters.add",
    "params": {
     "name": "sw_z",
-    "expression": "14.8 mm",
+    "expression": "16.8 mm",
     "comment": "slide switch slot centre above inner floor"
    }
   },
@@ -995,8 +995,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 8 mm",
-     "wall + 6 mm",
+     "wall + 39 mm",
+     "wall + 4.5 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1012,8 +1012,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 72 mm",
-     "wall + 6 mm",
+     "wall + 39 mm",
+     "wall + 48.5 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1029,8 +1029,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 8 mm",
-     "wall + 50 mm",
+     "wall + 11 mm",
+     "wall + 41.5 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1046,8 +1046,8 @@
     "diameter": "standoff_d",
     "height": "standoff_h",
     "base": [
-     "wall + 72 mm",
-     "wall + 50 mm",
+     "wall + 69 mm",
+     "wall + 22.5 mm",
      "floor_t"
     ],
     "operation": "join",
@@ -1061,8 +1061,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     10,
-     8,
+     41,
+     6.5,
      13
     ],
     "diameter": "1.6 mm",
@@ -1074,8 +1074,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     74,
-     8,
+     41,
+     50.5,
      13
     ],
     "diameter": "1.6 mm",
@@ -1087,8 +1087,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     10,
-     52,
+     13,
+     43.5,
      13
     ],
     "diameter": "1.6 mm",
@@ -1100,8 +1100,8 @@
    "command": "solid.hole",
    "params": {
     "position": [
-     74,
-     52,
+     71,
+     24.5,
      13
     ],
     "diameter": "1.6 mm",
@@ -1252,8 +1252,8 @@
    "command": "parameters.add",
    "params": {
     "name": "pcb_y0",
-    "expression": "5 mm",
-    "comment": "perfboard origin, world y (= wall 2 + cavity offset 3)"
+    "expression": "3.5 mm",
+    "comment": "perfboard origin, world y (= wall 2 + cavity offset 1.5)"
    }
   },
   {
@@ -1323,12 +1323,84 @@
   {
    "command": "solid.box",
    "params": {
-    "length": "60 mm",
-    "width": "40 mm",
+    "length": "4 mm",
+    "width": "4 mm",
+    "height": "3 mm",
+    "corner": [
+     "pcb_x0 + 0 mm",
+     "pcb_y0 + 0 mm",
+     "pcb_z0 - 0.5 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ],
+    "name": "PCB1_notch1"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "4 mm",
+    "width": "4 mm",
+    "height": "3 mm",
+    "corner": [
+     "pcb_x0 + 66 mm",
+     "pcb_y0 + 0 mm",
+     "pcb_z0 - 0.5 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ],
+    "name": "PCB1_notch2"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "4 mm",
+    "width": "4 mm",
+    "height": "3 mm",
+    "corner": [
+     "pcb_x0 + 0 mm",
+     "pcb_y0 + 46 mm",
+     "pcb_z0 - 0.5 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ],
+    "name": "PCB1_notch3"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "4 mm",
+    "width": "4 mm",
+    "height": "3 mm",
+    "corner": [
+     "pcb_x0 + 66 mm",
+     "pcb_y0 + 46 mm",
+     "pcb_z0 - 0.5 mm"
+    ],
+    "operation": "cut",
+    "targets": [
+     "PCB1"
+    ],
+    "name": "PCB1_notch4"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "52 mm",
+    "width": "36 mm",
     "height": "1.5 mm",
     "corner": [
-     "pcb_x0 + 5 mm",
-     "pcb_y0 + 5 mm",
+     "pcb_x0 + 9 mm",
+     "pcb_y0 + 7 mm",
      "pcb_z0 - 1.5 mm"
     ],
     "name": "PCB1_pins",
@@ -1344,7 +1416,7 @@
     "height": "2.5 mm",
     "corner": [
      "pcb_x0 + 3.100000000000001 mm",
-     "pcb_y0 + 14.85 mm",
+     "pcb_y0 + 6.950000000000001 mm",
      "pcb_top"
     ],
     "name": "U1_hdr1",
@@ -1360,7 +1432,7 @@
     "height": "1.0 mm",
     "corner": [
      "pcb_x0 + 3.0 mm",
-     "pcb_y0 + 7.899999999999999 mm",
+     "pcb_y0 + 0 mm",
      "pcb_top + 2.5 mm"
     ],
     "name": "U1_pcb",
@@ -1378,7 +1450,7 @@
     "height": "2.5 mm",
     "corner": [
      "pcb_x0 + 25.96 mm",
-     "pcb_y0 + 14.85 mm",
+     "pcb_y0 + 6.950000000000001 mm",
      "pcb_top"
     ],
     "name": "U1_hdr2",
@@ -1396,7 +1468,7 @@
     "height": "3.5 mm",
     "corner": [
      "pcb_x0 + 8.05 mm",
-     "pcb_y0 + 16 mm",
+     "pcb_y0 + 8.100000000000001 mm",
      "pcb_top + 3.5 mm"
     ],
     "name": "U1_shield",
@@ -1414,7 +1486,7 @@
     "height": "3.5 mm",
     "corner": [
      "pcb_x0 + 11.8 mm",
-     "pcb_y0 + 6.899999999999999 mm",
+     "pcb_y0 + -1 mm",
      "pcb_top + 3.5 mm"
     ],
     "name": "U1_usb",
@@ -1432,7 +1504,7 @@
     "height": "3.5 mm",
     "corner": [
      "pcb_x0 + 29 mm",
-     "pcb_y0 + 19 mm",
+     "pcb_y0 + 20.5 mm",
      "pcb_top"
     ],
     "name": "SW1",
@@ -1447,7 +1519,7 @@
     "height": "3.8 mm",
     "base": [
      "pcb_x0 + 35 mm",
-     "pcb_y0 + 25 mm",
+     "pcb_y0 + 26.5 mm",
      "pcb_top + 3.5 mm"
     ],
     "axis": "Z",
@@ -1567,12 +1639,12 @@
   {
    "command": "solid.box",
    "params": {
-    "length": "2.54 mm",
-    "width": "15.24 mm",
-    "height": "8.5 mm",
+    "length": "15.24 mm",
+    "width": "2.54 mm",
+    "height": "2.5 mm",
     "corner": [
-     "pcb_x0 + 52.73 mm",
-     "pcb_y0 + 28.38 mm",
+     "pcb_x0 + 46.38 mm",
+     "pcb_y0 + 38.73 mm",
      "pcb_top"
     ],
     "name": "J2",
@@ -1583,12 +1655,30 @@
   {
    "command": "solid.box",
    "params": {
+    "length": "15.24 mm",
+    "width": "6 mm",
+    "height": "0.64 mm",
+    "corner": [
+     "pcb_x0 + 46.38 mm",
+     "pcb_y0 + 41.27 mm",
+     "pcb_top + 1.3 mm"
+    ],
+    "name": "J2_pins",
+    "operation": "join",
+    "targets": [
+     "J2"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
     "length": "6 mm",
     "width": "4.5 mm",
     "height": "6 mm",
     "corner": [
      "pcb_x0 + 63 mm",
-     "pcb_y0 + 21.75 mm",
+     "pcb_y0 + 24.75 mm",
      "pcb_top"
     ],
     "name": "J1",
@@ -1668,7 +1758,7 @@
     "diameter": "2.5 mm",
     "height": "6 mm",
     "base": [
-     "pcb_x0 + 41 mm",
+     "pcb_x0 + 37.5 mm",
      "pcb_y0 + 47.5 mm",
      "pcb_top + 1.75 mm"
     ],
@@ -1708,22 +1798,6 @@
     "name": "C4",
     "operation": "new",
     "body_name": "C4"
-   }
-  },
-  {
-   "command": "solid.box",
-   "params": {
-    "length": "5 mm",
-    "width": "2.54 mm",
-    "height": "8.5 mm",
-    "corner": [
-     "pcb_x0 + 31.5 mm",
-     "pcb_y0 + 46.23 mm",
-     "pcb_top"
-    ],
-    "name": "JP1",
-    "operation": "new",
-    "body_name": "JP1"
    }
   },
   {
@@ -1873,15 +1947,6 @@
      "C4"
     ],
     "color": "#283593"
-   }
-  },
-  {
-   "command": "appearance.assign",
-   "params": {
-    "bodies": [
-     "JP1"
-    ],
-    "color": "#212121"
    }
   },
   {

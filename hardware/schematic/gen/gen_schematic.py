@@ -2,7 +2,7 @@
 """Generates schematic.scr (CADCraft script) for the ESP8266 D1 mini MQTT button, hardware rev B.1 (LiPo + I2S audio)."""
 import json, sys
 
-out = ["; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev B.1 (CADCraft script, mm).",
+out = ["; schematic.scr - ESP8266 D1 mini MQTT battery button, schematic rev B.3 (CADCraft script, mm).",
        "; Replay: cadcraft-cli run --metric --script-file schematic.scr --save schematic.dxf --export schematic.png",
        "; Circuit per hardware/DESIGN.md sections 1-4. Layers: frame, symbols, wires, text, nets, notes."]
 def cmd(id_, **p): out.append(f"{id_} {json.dumps(p, ensure_ascii=False)}")
@@ -71,10 +71,11 @@ def pushbutton_v(x, y_top, y_bot):
     line((x-5, ym), (x-9, ym)); line((x-9, ym-2), (x-9, ym+2))
 
 def jumper_h(x1, x2, y):
+    """JP1 solder bridge: two pads, bridged (battery mode)"""
     layer("symbols")
     rect(x1, y-3, x2, y+3)
-    circle(x1+3, y, 1); circle(x2-3, y, 1)
-    thick((x1+4, y), (x2-4, y), w=1.2)              # shunt fitted
+    dot(x1+3.5, y); dot(x2-3.5, y)
+    thick((x1+3.5, y), (x2-3.5, y), w=1.2)          # solder bridge closed
 
 def connector_v(x, y_top, y_bot):
     """2-pin connector drawn on two horizontal wires"""
@@ -120,9 +121,9 @@ rect(10, 10, 430, 270)
 rect(270, 10, 430, 40); line((270, 28), (430, 28)); line((360, 10), (360, 28)); line((400, 10), (400, 28))
 layer("text")
 text(350, 34, "ESP8266 D1 mini MQTT battery button", 4.5)
-text(275, 21.5, "Rev B.1: LiPo, button, I2S mic", 3, "L")
+text(275, 21.5, "Rev B.3: LiPo, button, I2S mic", 3, "L")
 text(275, 14, "Date: 2026-10-26", 3, "L")
-text(380, 21.5, "Rev B.1", 3); text(380, 14, "CADCraft", 3)
+text(380, 21.5, "Rev B.3", 3); text(380, 14, "CADCraft", 3)
 text(415, 21.5, "Sheet", 3); text(415, 14, "1 / 1", 3)
 
 # ---------- battery, connector, charger ----------
@@ -196,7 +197,7 @@ layer("wires")
 line((UX2, PRST), (XJP1, PRST)); line((XJP2, PRST), (XJPD, PRST), (XJPD, PD1))
 line((UX2, PD1), (XSW, PD1)); dot(XJPD, PD1)
 jumper_h(XJP1, XJP2, PRST)
-layer("text"); text(325, 207, "JP1", 3.5)
+layer("text"); text(325, 207, "JP1", 3.5); text(325, 193.5, "solder bridge", 2.2)
 layer("nets"); text(357, PD1+3.5, "BTN", 3.5)
 
 resistor_v(XR2, 206.5)
@@ -239,7 +240,7 @@ notes = ("NOTES\\P"
  "3. D2 blocks USB back-feed into the LiPo: USB programming is allowed at any time, with SW2 in any position.\\P"
  "4. A0 n.c.; I2S mic on GPIO12/13/14 (the ESP8266's fixed I2S RX pins): SCK = D7, WS = D5, SD = D6, L/R to GND (left channel).\\P"
  "5. M2 VDD power-gated by D2/GPIO4 (1.4 mA). M1 CHRG (open drain, low = charging) -> D0/GPIO16, R3 10 k pull-up to 3V3.\\P"
- "6. JP1 closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. JP1 open = always_on (USB).\\P"
+ "6. JP1 (solder bridge) closed = battery mode: a press pulls RST low and wakes U1 from deep sleep. Open = always_on (USB).\\P"
  "7. GPIO2 drives the LED already on the D1 mini (active-low): on while recording. SW1 pressed = GPIO5 LOW.\\P"
  "8. Rev B.1: M2 INMP441 (11 x 14 mm) sits in a pocket under the lid, sound port over a 2 mm hole; 6 wires to header J2.")
 cmd("mtext", at=[15, 76], text=notes, height=2.5, width=250, attach=1, lineSpacing=1.15)

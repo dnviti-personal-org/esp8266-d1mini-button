@@ -1,4 +1,4 @@
-; perfboard-layout.scr - 70 x 50 mm perfboard placement rev B.1, top view (CADCraft script, mm, origin = board bottom-left).
+; perfboard-layout.scr - 70 x 50 mm perfboard placement rev B.3, top view (CADCraft script, mm, origin = board bottom-left).
 ; Replay: cadcraft-cli run --metric --script-file perfboard-layout.scr --save perfboard-layout.dxf --export perfboard-layout.png
 ; Centres per hardware/DESIGN.md section 5. The hole grid is one circle (handle 100) replicated with arrayrect 24 x 18 @ 2.54 mm.
 layer.new {"name": "holes", "color": "128,128,128", "current": true}
@@ -13,109 +13,109 @@ layer.new {"name": "refdes", "color": "255,140,0"}
 layer.new {"name": "dims", "color": "0,200,0"}
 layer.new {"name": "notes", "color": "0,170,230"}
 layer.current {"name": "under"}
-line {"points": [[15.0, 10.0], [17.5, 10.0]]}
-line {"points": [[18.7, 10.0], [21.2, 10.0]]}
-line {"points": [[22.4, 10.0], [24.9, 10.0]]}
-line {"points": [[26.1, 10.0], [28.6, 10.0]]}
-line {"points": [[29.8, 10.0], [32.3, 10.0]]}
-line {"points": [[33.5, 10.0], [36.0, 10.0]]}
-line {"points": [[37.2, 10.0], [39.7, 10.0]]}
-line {"points": [[40.9, 10.0], [43.4, 10.0]]}
-line {"points": [[44.6, 10.0], [47.1, 10.0]]}
-line {"points": [[48.3, 10.0], [50.8, 10.0]]}
-line {"points": [[52.0, 10.0], [54.5, 10.0]]}
-line {"points": [[55.0, 10.0], [55.0, 12.5]]}
-line {"points": [[55.0, 13.7], [55.0, 16.2]]}
-line {"points": [[55.0, 17.4], [55.0, 19.9]]}
-line {"points": [[55.0, 21.1], [55.0, 23.6]]}
-line {"points": [[55.0, 24.8], [55.0, 27.3]]}
-line {"points": [[55.0, 28.5], [55.0, 31.0]]}
-line {"points": [[55.0, 32.2], [55.0, 34.7]]}
-line {"points": [[55.0, 35.9], [55.0, 38.4]]}
-line {"points": [[55.0, 39.6], [55.0, 40.0]]}
-line {"points": [[55.0, 40.0], [52.5, 40.0]]}
-line {"points": [[51.3, 40.0], [48.8, 40.0]]}
-line {"points": [[47.6, 40.0], [45.1, 40.0]]}
-line {"points": [[43.9, 40.0], [41.4, 40.0]]}
-line {"points": [[40.2, 40.0], [37.7, 40.0]]}
-line {"points": [[36.5, 40.0], [34.0, 40.0]]}
-line {"points": [[32.8, 40.0], [30.3, 40.0]]}
-line {"points": [[29.1, 40.0], [26.6, 40.0]]}
-line {"points": [[25.4, 40.0], [22.9, 40.0]]}
-line {"points": [[21.7, 40.0], [19.2, 40.0]]}
-line {"points": [[18.0, 40.0], [15.5, 40.0]]}
-line {"points": [[15.0, 40.0], [15.0, 37.5]]}
-line {"points": [[15.0, 36.3], [15.0, 33.8]]}
-line {"points": [[15.0, 32.6], [15.0, 30.1]]}
-line {"points": [[15.0, 28.9], [15.0, 26.4]]}
-line {"points": [[15.0, 25.2], [15.0, 22.7]]}
-line {"points": [[15.0, 21.5], [15.0, 19.0]]}
-line {"points": [[15.0, 17.8], [15.0, 15.3]]}
-line {"points": [[15.0, 14.1], [15.0, 11.6]]}
-line {"points": [[15.0, 10.4], [15.0, 10.0]]}
+line {"points": [[15.0, 11.5], [17.5, 11.5]]}
+line {"points": [[18.7, 11.5], [21.2, 11.5]]}
+line {"points": [[22.4, 11.5], [24.9, 11.5]]}
+line {"points": [[26.1, 11.5], [28.6, 11.5]]}
+line {"points": [[29.8, 11.5], [32.3, 11.5]]}
+line {"points": [[33.5, 11.5], [36.0, 11.5]]}
+line {"points": [[37.2, 11.5], [39.7, 11.5]]}
+line {"points": [[40.9, 11.5], [43.4, 11.5]]}
+line {"points": [[44.6, 11.5], [47.1, 11.5]]}
+line {"points": [[48.3, 11.5], [50.8, 11.5]]}
+line {"points": [[52.0, 11.5], [54.5, 11.5]]}
+line {"points": [[55.0, 11.5], [55.0, 14.0]]}
+line {"points": [[55.0, 15.2], [55.0, 17.7]]}
+line {"points": [[55.0, 18.9], [55.0, 21.4]]}
+line {"points": [[55.0, 22.6], [55.0, 25.1]]}
+line {"points": [[55.0, 26.3], [55.0, 28.8]]}
+line {"points": [[55.0, 30.0], [55.0, 32.5]]}
+line {"points": [[55.0, 33.7], [55.0, 36.2]]}
+line {"points": [[55.0, 37.4], [55.0, 39.9]]}
+line {"points": [[55.0, 41.1], [55.0, 41.5]]}
+line {"points": [[55.0, 41.5], [52.5, 41.5]]}
+line {"points": [[51.3, 41.5], [48.8, 41.5]]}
+line {"points": [[47.6, 41.5], [45.1, 41.5]]}
+line {"points": [[43.9, 41.5], [41.4, 41.5]]}
+line {"points": [[40.2, 41.5], [37.7, 41.5]]}
+line {"points": [[36.5, 41.5], [34.0, 41.5]]}
+line {"points": [[32.8, 41.5], [30.3, 41.5]]}
+line {"points": [[29.1, 41.5], [26.6, 41.5]]}
+line {"points": [[25.4, 41.5], [22.9, 41.5]]}
+line {"points": [[21.7, 41.5], [19.2, 41.5]]}
+line {"points": [[18.0, 41.5], [15.5, 41.5]]}
+line {"points": [[15.0, 41.5], [15.0, 39.0]]}
+line {"points": [[15.0, 37.8], [15.0, 35.3]]}
+line {"points": [[15.0, 34.1], [15.0, 31.6]]}
+line {"points": [[15.0, 30.4], [15.0, 27.9]]}
+line {"points": [[15.0, 26.7], [15.0, 24.2]]}
+line {"points": [[15.0, 23.0], [15.0, 20.5]]}
+line {"points": [[15.0, 19.3], [15.0, 16.8]]}
+line {"points": [[15.0, 15.6], [15.0, 13.1]]}
+line {"points": [[15.0, 11.9], [15.0, 11.5]]}
 layer.current {"name": "refdes"}
-text {"at": [35, 9.3], "text": "BT1 (under)", "height": 1.2, "justify": "MC"}
+text {"at": [35, 18.2], "text": "BT1 under", "height": 1.2, "justify": "MC"}
 layer.current {"name": "board"}
-rectang {"p1": [0, 0], "p2": [70, 50]}
-circle {"center": [3, 3], "radius": 1.1}
-line {"points": [[1.2, 3], [4.8, 3]]}
-line {"points": [[3, 1.2], [3, 4.8]]}
-circle {"center": [67, 3], "radius": 1.1}
-line {"points": [[65.2, 3], [68.8, 3]]}
-line {"points": [[67, 1.2], [67, 4.8]]}
-circle {"center": [3, 47], "radius": 1.1}
-line {"points": [[1.2, 47], [4.8, 47]]}
-line {"points": [[3, 45.2], [3, 48.8]]}
-circle {"center": [67, 47], "radius": 1.1}
-line {"points": [[65.2, 47], [68.8, 47]]}
-line {"points": [[67, 45.2], [67, 48.8]]}
+pline {"vertices": [[4, 0], [66, 0], [66, 4], [70, 4], [70, 46], [66, 46], [66, 50], [4, 50], [4, 46], [0, 46], [0, 4], [4, 4]], "closed": true}
+circle {"center": [34, 3], "radius": 1.1}
+line {"points": [[32.6, 3], [35.4, 3]]}
+line {"points": [[34, 1.6], [34, 4.4]]}
+circle {"center": [34, 47], "radius": 1.1}
+line {"points": [[32.6, 47], [35.4, 47]]}
+line {"points": [[34, 45.6], [34, 48.4]]}
+circle {"center": [6, 40], "radius": 1.1}
+line {"points": [[4.6, 40], [7.4, 40]]}
+line {"points": [[6, 38.6], [6, 41.4]]}
+circle {"center": [64, 21], "radius": 1.1}
+line {"points": [[62.6, 21], [65.4, 21]]}
+line {"points": [[64, 19.6], [64, 22.4]]}
 layer.current {"name": "refdes"}
-text {"at": [5, 2.2], "text": "4× Ø2.2", "height": 1.5, "justify": "L"}
+text {"at": [8.2, 40], "text": "4× Ø2.2", "height": 1.3, "justify": "ML"}
 layer.current {"name": "components"}
-rectang {"p1": [3.0, 7.899999999999999], "p2": [28.6, 42.1]}
-rectang {"p1": [11.8, 6.899999999999999], "p2": [19.8, 12.899999999999999]}
+rectang {"p1": [3.0, 0.0], "p2": [28.6, 34.2]}
+rectang {"p1": [11.8, -1.0], "p2": [19.8, 5.0]}
 layer.current {"name": "refdes"}
-text {"at": [15.8, 10.099999999999998], "text": "USB", "height": 1.6, "justify": "MC"}
+text {"at": [15.8, 2.2], "text": "USB", "height": 1.6, "justify": "MC"}
 layer.current {"name": "components"}
-rectang {"p1": [9.8, 36.6], "p2": [21.8, 41.300000000000004]}
-line {"points": [[10.8, 37.4], [10.8, 40.50000000000001], [12.466666666666667, 40.50000000000001], [12.466666666666667, 37.4], [14.133333333333335, 37.4], [14.133333333333335, 40.50000000000001], [15.8, 40.50000000000001], [15.8, 37.4], [17.46666666666667, 37.4], [17.46666666666667, 40.50000000000001], [19.133333333333333, 40.50000000000001], [19.133333333333333, 37.4], [20.8, 37.4], [20.8, 40.50000000000001]]}
+rectang {"p1": [9.8, 28.700000000000003], "p2": [21.8, 33.400000000000006]}
+line {"points": [[10.8, 29.500000000000004], [10.8, 32.60000000000001], [12.466666666666667, 32.60000000000001], [12.466666666666667, 29.500000000000004], [14.133333333333335, 29.500000000000004], [14.133333333333335, 32.60000000000001], [15.8, 32.60000000000001], [15.8, 29.500000000000004], [17.46666666666667, 29.500000000000004], [17.46666666666667, 32.60000000000001], [19.133333333333333, 32.60000000000001], [19.133333333333333, 29.500000000000004], [20.8, 29.500000000000004], [20.8, 32.60000000000001]]}
 layer.current {"name": "refdes"}
-text {"at": [15.8, 34.800000000000004], "text": "antenna", "height": 1.4, "justify": "MC"}
+text {"at": [15.8, 26.900000000000002], "text": "antenna", "height": 1.4, "justify": "MC"}
 layer.current {"name": "pins"}
-circle {"center": [4.370000000000001, 16.11], "radius": 0.6}
-circle {"center": [27.23, 16.11], "radius": 0.6}
-circle {"center": [4.370000000000001, 18.65], "radius": 0.6}
-circle {"center": [27.23, 18.65], "radius": 0.6}
-circle {"center": [4.370000000000001, 21.19], "radius": 0.6}
-circle {"center": [27.23, 21.19], "radius": 0.6}
-circle {"center": [4.370000000000001, 23.73], "radius": 0.6}
-circle {"center": [27.23, 23.73], "radius": 0.6}
-circle {"center": [4.370000000000001, 26.27], "radius": 0.6}
-circle {"center": [27.23, 26.27], "radius": 0.6}
-circle {"center": [4.370000000000001, 28.81], "radius": 0.6}
-circle {"center": [27.23, 28.81], "radius": 0.6}
-circle {"center": [4.370000000000001, 31.35], "radius": 0.6}
-circle {"center": [27.23, 31.35], "radius": 0.6}
-circle {"center": [4.370000000000001, 33.89], "radius": 0.6}
-circle {"center": [27.23, 33.89], "radius": 0.6}
+circle {"center": [4.370000000000001, 8.21], "radius": 0.6}
+circle {"center": [27.23, 8.21], "radius": 0.6}
+circle {"center": [4.370000000000001, 10.750000000000002], "radius": 0.6}
+circle {"center": [27.23, 10.750000000000002], "radius": 0.6}
+circle {"center": [4.370000000000001, 13.290000000000001], "radius": 0.6}
+circle {"center": [27.23, 13.290000000000001], "radius": 0.6}
+circle {"center": [4.370000000000001, 15.830000000000002], "radius": 0.6}
+circle {"center": [27.23, 15.830000000000002], "radius": 0.6}
+circle {"center": [4.370000000000001, 18.37], "radius": 0.6}
+circle {"center": [27.23, 18.37], "radius": 0.6}
+circle {"center": [4.370000000000001, 20.91], "radius": 0.6}
+circle {"center": [27.23, 20.91], "radius": 0.6}
+circle {"center": [4.370000000000001, 23.450000000000003], "radius": 0.6}
+circle {"center": [27.23, 23.450000000000003], "radius": 0.6}
+circle {"center": [4.370000000000001, 25.990000000000002], "radius": 0.6}
+circle {"center": [27.23, 25.990000000000002], "radius": 0.6}
 layer.current {"name": "refdes"}
-text {"at": [15.8, 27.0], "text": "U1", "height": 3, "justify": "MC"}
-text {"at": [15.8, 23.2], "text": "D1 mini", "height": 2, "justify": "MC"}
-text {"at": [15.8, 20.4], "text": "ESP8266", "height": 1.6, "justify": "MC"}
-text {"at": [4.370000000000001, 34.5], "text": "RST", "height": 1.2, "justify": "L", "rotation": 90}
-text {"at": [27.23, 34.5], "text": "TX", "height": 1.2, "justify": "L", "rotation": 90}
-text {"at": [4.370000000000001, 15.5], "text": "3V3", "height": 1.2, "justify": "R", "rotation": 90}
-text {"at": [27.23, 15.5], "text": "5V", "height": 1.2, "justify": "R", "rotation": 90}
+text {"at": [15.8, 19.1], "text": "U1", "height": 3, "justify": "MC"}
+text {"at": [15.8, 15.3], "text": "D1 mini", "height": 2, "justify": "MC"}
+text {"at": [15.8, 12.500000000000002], "text": "ESP8266", "height": 1.6, "justify": "MC"}
+text {"at": [4.370000000000001, 26.6], "text": "RST", "height": 1.2, "justify": "L", "rotation": 90}
+text {"at": [27.23, 26.6], "text": "TX", "height": 1.2, "justify": "L", "rotation": 90}
+text {"at": [4.370000000000001, 7.600000000000001], "text": "3V3", "height": 1.2, "justify": "R", "rotation": 90}
+text {"at": [27.23, 7.600000000000001], "text": "5V", "height": 1.2, "justify": "R", "rotation": 90}
 layer.current {"name": "components"}
-rectang {"p1": [29.0, 19.0], "p2": [41.0, 31.0]}
-circle {"center": [35.0, 25.0], "radius": 3.65}
+rectang {"p1": [29.0, 20.5], "p2": [41.0, 32.5]}
+circle {"center": [35.0, 26.5], "radius": 3.65}
 layer.current {"name": "pins"}
-circle {"center": [31.75, 18.75], "radius": 0.6}
-circle {"center": [31.75, 31.25], "radius": 0.6}
-circle {"center": [38.25, 18.75], "radius": 0.6}
-circle {"center": [38.25, 31.25], "radius": 0.6}
+circle {"center": [31.75, 20.25], "radius": 0.6}
+circle {"center": [31.75, 32.75], "radius": 0.6}
+circle {"center": [38.25, 20.25], "radius": 0.6}
+circle {"center": [38.25, 32.75], "radius": 0.6}
 layer.current {"name": "refdes"}
-text {"at": [35.0, 25.0], "text": "SW1", "height": 2.2, "justify": "MC"}
+text {"at": [35.0, 26.5], "text": "SW1", "height": 2.2, "justify": "MC"}
 layer.current {"name": "components"}
 rectang {"p1": [39.5, 0.75], "p2": [65.5, 18.25]}
 rectang {"p1": [48.0, -0.75], "p2": [57.0, 4.25]}
@@ -141,40 +141,63 @@ text {"at": [42.5, 3.0], "text": "IN+", "height": 1.2, "justify": "L"}
 text {"at": [62.5, 3.0], "text": "IN-", "height": 1.2, "justify": "R"}
 text {"at": [42.5, 14.7], "text": "CHRG pad", "height": 1.0, "justify": "L"}
 layer.current {"name": "components"}
-rectang {"p1": [52.7, 28.38], "p2": [55.3, 43.62]}
+rectang {"p1": [46.38, 38.73], "p2": [61.62, 41.27]}
 layer.current {"name": "pins"}
-circle {"center": [54.0, 42.35], "radius": 0.5}
-circle {"center": [54.0, 39.81], "radius": 0.5}
-circle {"center": [54.0, 37.27], "radius": 0.5}
-circle {"center": [54.0, 34.73], "radius": 0.5}
-circle {"center": [54.0, 32.19], "radius": 0.5}
-circle {"center": [54.0, 29.65], "radius": 0.5}
-layer.current {"name": "refdes"}
-text {"at": [56.0, 42.35], "text": "SCK", "height": 1.0, "justify": "ML"}
-text {"at": [56.0, 39.81], "text": "WS", "height": 1.0, "justify": "ML"}
-text {"at": [56.0, 37.27], "text": "SD", "height": 1.0, "justify": "ML"}
-text {"at": [56.0, 34.73], "text": "L/R", "height": 1.0, "justify": "ML"}
-text {"at": [56.0, 32.19], "text": "VDD", "height": 1.0, "justify": "ML"}
-text {"at": [56.0, 29.65], "text": "GND", "height": 1.0, "justify": "ML"}
-text {"at": [51.8, 36.0], "text": "J2 mic", "height": 1.4, "justify": "MR", "rotation": 90}
+circle {"center": [47.65, 40.0], "radius": 0.5}
 layer.current {"name": "components"}
-rectang {"p1": [41.0, 46.3], "p2": [47.0, 48.7]}
-line {"points": [[39.0, 47.5], [41.0, 47.5]]}
-line {"points": [[47.0, 47.5], [49.0, 47.5]]}
-layer.current {"name": "pins"}
-circle {"center": [39.0, 47.5], "radius": 0.5}
-circle {"center": [49.0, 47.5], "radius": 0.5}
+line {"points": [[47.65, 41.27], [47.65, 47.27]]}
 layer.current {"name": "refdes"}
-text {"at": [44.0, 44.6], "text": "R3 10 k", "height": 1.3, "justify": "MC"}
+text {"at": [48.55, 41.870000000000005], "text": "SCK", "height": 0.8, "justify": "L", "rotation": 90}
+layer.current {"name": "pins"}
+circle {"center": [50.19, 40.0], "radius": 0.5}
 layer.current {"name": "components"}
-rectang {"p1": [63.0, 21.5], "p2": [69.0, 26.5]}
-line {"points": [[69.0, 22.2], [71.0, 22.2]]}
-line {"points": [[69.0, 25.8], [71.0, 25.8]]}
-layer.current {"name": "pins"}
-circle {"center": [65.0, 24.0], "radius": 0.5}
-circle {"center": [67.0, 24.0], "radius": 0.5}
+line {"points": [[50.19, 41.27], [50.19, 47.27]]}
 layer.current {"name": "refdes"}
-text {"at": [66.0, 19.8], "text": "J1 BAT", "height": 1.4, "justify": "MC"}
+text {"at": [51.089999999999996, 41.870000000000005], "text": "WS", "height": 0.8, "justify": "L", "rotation": 90}
+layer.current {"name": "pins"}
+circle {"center": [52.73, 40.0], "radius": 0.5}
+layer.current {"name": "components"}
+line {"points": [[52.73, 41.27], [52.73, 47.27]]}
+layer.current {"name": "refdes"}
+text {"at": [53.629999999999995, 41.870000000000005], "text": "SD", "height": 0.8, "justify": "L", "rotation": 90}
+layer.current {"name": "pins"}
+circle {"center": [55.27, 40.0], "radius": 0.5}
+layer.current {"name": "components"}
+line {"points": [[55.27, 41.27], [55.27, 47.27]]}
+layer.current {"name": "refdes"}
+text {"at": [56.17, 41.870000000000005], "text": "L/R", "height": 0.8, "justify": "L", "rotation": 90}
+layer.current {"name": "pins"}
+circle {"center": [57.81, 40.0], "radius": 0.5}
+layer.current {"name": "components"}
+line {"points": [[57.81, 41.27], [57.81, 47.27]]}
+layer.current {"name": "refdes"}
+text {"at": [58.71, 41.870000000000005], "text": "VDD", "height": 0.8, "justify": "L", "rotation": 90}
+layer.current {"name": "pins"}
+circle {"center": [60.35, 40.0], "radius": 0.5}
+layer.current {"name": "components"}
+line {"points": [[60.35, 41.27], [60.35, 47.27]]}
+layer.current {"name": "refdes"}
+text {"at": [61.25, 41.870000000000005], "text": "GND", "height": 0.8, "justify": "L", "rotation": 90}
+layer.current {"name": "refdes"}
+text {"at": [54.0, 37.3], "text": "J2 mic (right-angle)", "height": 1.3, "justify": "MC"}
+layer.current {"name": "components"}
+rectang {"p1": [37.5, 46.3], "p2": [43.5, 48.7]}
+line {"points": [[35.5, 47.5], [37.5, 47.5]]}
+line {"points": [[43.5, 47.5], [45.5, 47.5]]}
+layer.current {"name": "pins"}
+circle {"center": [35.5, 47.5], "radius": 0.5}
+circle {"center": [45.5, 47.5], "radius": 0.5}
+layer.current {"name": "refdes"}
+text {"at": [40.5, 45.5], "text": "R3 10 k", "height": 1.1, "justify": "MC"}
+layer.current {"name": "components"}
+rectang {"p1": [63.0, 24.5], "p2": [69.0, 29.5]}
+line {"points": [[69.0, 25.2], [71.0, 25.2]]}
+line {"points": [[69.0, 28.8], [71.0, 28.8]]}
+layer.current {"name": "pins"}
+circle {"center": [65.0, 27.0], "radius": 0.5}
+circle {"center": [67.0, 27.0], "radius": 0.5}
+layer.current {"name": "refdes"}
+text {"at": [66.0, 30.6], "text": "J1 BAT", "height": 1.2, "justify": "MC"}
 layer.current {"name": "components"}
 rectang {"p1": [31.0, 5.7], "p2": [37.0, 8.3]}
 line {"points": [[31.8, 5.7], [31.8, 8.3]]}
@@ -184,7 +207,7 @@ layer.current {"name": "pins"}
 circle {"center": [29.0, 7.0], "radius": 0.5}
 circle {"center": [39.0, 7.0], "radius": 0.5}
 layer.current {"name": "refdes"}
-text {"at": [34.0, 4.0], "text": "D2 SS14", "height": 1.5, "justify": "MC"}
+text {"at": [34.0, 9.9], "text": "D2 SS14", "height": 1.4, "justify": "MC"}
 layer.current {"name": "components"}
 rectang {"p1": [31.0, 11.8], "p2": [37.0, 14.2]}
 line {"points": [[29.0, 13.0], [31.0, 13.0]]}
@@ -209,13 +232,13 @@ circle {"center": [29.4, 41.0], "radius": 0.6}
 circle {"center": [29.4, 43.0], "radius": 0.6}
 layer.current {"name": "refdes"}
 text {"at": [37.2, 42.0], "text": "C4 100µF", "height": 1.25, "justify": "MC"}
-layer.current {"name": "components"}
-rectang {"p1": [31.46, 46.23], "p2": [36.54, 48.77]}
 layer.current {"name": "pins"}
-circle {"center": [32.73, 47.5], "radius": 0.5}
-circle {"center": [35.27, 47.5], "radius": 0.5}
+circle {"center": [28.73, 47.5], "radius": 0.7}
+circle {"center": [31.27, 47.5], "radius": 0.7}
+layer.current {"name": "components"}
+pline {"vertices": [[29.4, 47.5], [30.6, 47.5]], "width": 0.9}
 layer.current {"name": "refdes"}
-text {"at": [30.5, 47.5], "text": "JP1", "height": 1.6, "justify": "R"}
+text {"at": [27.4, 47.5], "text": "JP1 bridge", "height": 1.2, "justify": "MR"}
 layer.current {"name": "components"}
 rectang {"p1": [65.2, 31.7], "p2": [68.8, 40.3]}
 rectang {"p1": [68.8, 35.0], "p2": [71.0, 37.0]}
@@ -224,17 +247,17 @@ circle {"center": [67.0, 33.0], "radius": 0.5}
 circle {"center": [67.0, 36.0], "radius": 0.5}
 circle {"center": [67.0, 39.0], "radius": 0.5}
 layer.current {"name": "refdes"}
-text {"at": [67.6, 30.0], "text": "SW2", "height": 1.6, "justify": "MC"}
+text {"at": [67.0, 42.0], "text": "SW2", "height": 1.6, "justify": "MC"}
 layer.current {"name": "dims"}
 dimstyle {"name": "PCB", "current": true, "DIMTXT": 2.2, "DIMASZ": 1.8, "DIMEXO": 1, "DIMEXE": 1.2, "DIMDEC": 1, "DIMPOST": "<> mm", "DIMGAP": 0.6}
 dimlinear {"p1": [0, 0], "p2": [70, 0], "at": [35, -7]}
 dimlinear {"p1": [0, 0], "p2": [0, 50], "at": [-7, 25]}
-line {"points": [[65.01, 41.510000000000005], [72.5, 41.510000000000005]]}
-line {"points": [[65.01, 44.050000000000004], [72.5, 44.050000000000004]]}
-line {"points": [[72, 41.510000000000005], [72, 44.050000000000004]]}
-line {"points": [[71.6, 42.11000000000001], [72.4, 40.910000000000004]]}
-line {"points": [[71.6, 44.650000000000006], [72.4, 43.45]]}
-text {"at": [73, 42.78000000000001], "text": "pitch 2.54", "height": 1.4, "justify": "ML"}
+line {"points": [[59.13, 47.39], [59.13, 52.5]]}
+line {"points": [[61.67, 47.39], [61.67, 52.5]]}
+line {"points": [[59.13, 52], [61.67, 52]]}
+line {"points": [[58.53, 51.6], [59.730000000000004, 52.4]]}
+line {"points": [[61.07, 51.6], [62.27, 52.4]]}
+text {"at": [60.400000000000006, 53.6], "text": "pitch 2.54", "height": 1.4, "justify": "MC"}
 line {"points": [[0, -14], [10, -14]]}
 line {"points": [[0, -15], [0, -13]]}
 line {"points": [[5, -15], [5, -13]]}
@@ -243,8 +266,8 @@ text {"at": [12, -14], "text": "10 mm", "height": 2, "justify": "ML"}
 text {"at": [0, -3], "text": "origin (0,0)", "height": 1.5, "justify": "R"}
 line {"points": [[0, 0], [-3, -2.2]]}
 layer.current {"name": "notes"}
-text {"at": [35, 60], "text": "Perfboard 70 × 50 mm, top view (component side), rev B.1", "height": 2.5, "justify": "MC"}
-text {"at": [35, 56.5], "text": "2.54 mm grid, 24 × 18 holes Ø1.0; SW2 actuator points to the x = 70 edge", "height": 1.8, "justify": "MC"}
+text {"at": [35, 60], "text": "Perfboard 70 × 50 mm, top view (component side), rev B.3", "height": 2.5, "justify": "MC"}
+text {"at": [35, 56.5], "text": "2.54 mm grid, 24 × 18 holes Ø1.0; 4 × 4 mm corner notches; SW2 actuator points to the x = 70 edge", "height": 1.8, "justify": "MC"}
 text {"at": [15.8, -3], "text": "micro-USB edge (y = 0)", "height": 1.6, "justify": "MC"}
 text {"at": [52.5, -3.2], "text": "USB-C (charge)", "height": 1.6, "justify": "MC"}
 text {"at": [15.8, 51.5], "text": "antenna edge (y = 50)", "height": 1.6, "justify": "MC"}
@@ -253,6 +276,7 @@ layer.current {"name": "under"}
 line {"points": [[0, -10.5], [2.5, -10.5]]}
 line {"points": [[3.7, -10.5], [6.2, -10.5]]}
 layer.current {"name": "notes"}
-text {"at": [8, -10.5], "text": "BT1 LiPo 803040 (40 × 30 × 8) taped to the floor under the perfboard, centred (35, 25)", "height": 1.4, "justify": "ML"}
-text {"at": [24, -14], "text": "M2 INMP441 I2S mic sits under the lid, 6 wires to header J2; D2 band (cathode) toward U1", "height": 1.4, "justify": "ML"}
+text {"at": [8, -10.5], "text": "BT1 LiPo 803040 (40 × 30 × 8) taped to the floor under the perfboard, centred (35, 26.5)", "height": 1.4, "justify": "ML"}
+text {"at": [24, -14], "text": "M2 INMP441 I2S mic under the lid, 6 wires into J2 from y = 50", "height": 1.4, "justify": "ML"}
+text {"at": [24, -17.5], "text": "D2 band (cathode) toward U1; JP1 = solder bridge (closed = battery mode)", "height": 1.4, "justify": "ML"}
 zoom {"mode": "extents"}

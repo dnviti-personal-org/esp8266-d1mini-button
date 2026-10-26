@@ -170,7 +170,8 @@ edges, rubber feet so the box does not slide when pressed.
   through the lid at the pocket centre. The board is held with a drop of glue
   or foam tape, port facing the hole; 6 wires run to J2 on the perfboard.
 - **Charge-LED window** in the lid: 10 (x) × 2.5 (y) mm slot centred at
-  cavity (57.5, 4.5), right above the TP4056 LEDs next to its USB-C end, in
+  cavity (62, 4.5) (the closest spot to the TP4056 LEDs that clears the key-cap
+  flange by 0.5 mm; the LEDs are seen obliquely), in
   the strip between the wall and the key-cap flange.
 - Key cap: Ø52 mm, domed top (spherical dome rising 4 mm over a 4 mm tall
   cylindrical rim = 8 mm proud of the lid at rest), retaining flange Ø55 × 1.5

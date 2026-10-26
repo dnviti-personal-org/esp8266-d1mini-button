@@ -87,43 +87,49 @@ M1 TP4056 CHRG ──┬── D0 (GPIO16)   (open drain, low = charging)
 | M2 | INMP441 I2S MEMS microphone breakout | 11 × 14 mm, 6 pins (VDD GND SD WS SCK L/R), 1.4 mA, mounted under the lid, 6 wires to the perfboard |
 | R3 | 10 kΩ 1/4 W (pull-up for CHRG on GPIO16) | axial |
 | J1 | JST-PH 2-pin right-angle header (battery) | 2.0 mm pitch |
+| J2 | 1×6 right-angle pin header 2.54 mm (microphone wires) | 2.5 mm tall; or solder the wires directly |
 | SW1 | Tactile switch 12 × 12 mm, THT, 7.3 mm actuator, **low force 100 gf** (e.g. Omron B3F-4000) | standard 12×12 footprint |
 | SW2 | SPDT slide switch SS12D00 (power) | 8.6 × 3.6 mm body, 3 pins 3.0 mm pitch, actuator 2 mm |
 | D2 | Schottky diode SS14 / 1N5819 (battery → 5V pin) | axial / SMA on pads |
 | C3 | 100 nF ceramic X7R | 2.54 mm pitch |
 | C4 | 100 µF 6.3 V low-ESR electrolytic (3V3 rail) | Ø5 × 11 mm radial |
 | R2 | 10 kΩ 1/4 W | axial |
-| JP1 | 2-pin header 2.54 mm + shunt (or solder bridge) | |
+| JP1 | Solder bridge (two pads 2.54 mm apart); closed = battery mode | no header: nothing tall under the key cap |
 | — | 4 × M2 × 8 mm self-tapping screws (PCB), 4 × M2.5 × 10 mm (lid), 4 × Ø8 mm adhesive rubber feet, double-sided foam tape for the LiPo | |
 
 ## 5. Perfboard placement (mm, origin = perfboard bottom-left corner, X along 70 mm, Y along 50 mm, top view)
 
-The tactile switch sits at the **geometric centre of the enclosure** so the
-big key cap is centred on the lid. The LiPo lies on the enclosure floor
-**under** the perfboard.
+Revision B.3 (after the full 3D assembly check): the perfboard sits at cavity
+offset **(5, 1.5)** so the D1 mini's micro-USB reaches the wall; the board
+corners are **notched 4 × 4 mm** to clear the Ø6 lid bosses; the four mounting
+holes moved to spots not covered by modules; J2 is a right-angle header and
+JP1 a solder bridge so nothing tall sits under the key-cap flange.
 
-| Ref | Center (x, y) | Footprint | Orientation |
+| Ref | Center (x, y) | Footprint | Orientation / notes |
 |---|---|---|---|
-| U1 D1 mini | (15.8, 25.0) | 25.6 (X) × 34.2 (Y) | micro-USB toward the **y = 0** edge, antenna toward y = 50 |
-| SW1 button | (35.0, 25.0) | 12 × 12 | exact centre of the enclosure (cavity 40, 28) |
-| M1 TP4056 | (52.5, 9.5) | 26 (X) × 17.5 (Y), x 39.5 → 65.5 | USB-C toward the **y = 0** edge (protrudes ≈ 1.5 mm), on male header pins |
-| J2 mic header | (54.0, 36.0) | 6 pins 2.54 along Y | wires to M2 in the lid (SCK WS SD L/R VDD GND) |
-| R3 | (44.0, 47.5) | axial, 10 mm along X | pads at x 39 and 49 |
-| J1 battery | (66.0, 24.0) | 6 (X) × 5 (Y) | wires leave toward x = 70 and go under the board |
+| U1 D1 mini | (15.8, 17.1) | 25.6 (X) × 34.2 (Y), PCB y 0 → 34.2 | micro-USB on the **y = 0** edge, receptacle protrudes 1 mm past the board edge; antenna toward y = 50 |
+| SW1 button | (35.0, 26.5) | 12 × 12 | = cavity (40, 28), the lid centre |
+| M1 TP4056 | (52.5, 9.5) | 26 (X) × 17.5 (Y), x 39.5 → 65.5, y 0.75 → 18.25 | USB-C on the **y = 0** edge, protrudes ≈ 1.5 mm past the module; on male header pins; LEDs near the USB-C end |
+| J2 mic header | (54.0, 40.0) | right-angle 1×6, body 15.24 (X) × 2.54 (Y) × 2.5, bent pins 6 mm toward y = 50 (reach y ≈ 47.3) | wires to M2 in the lid (SCK WS SD L/R VDD GND); or solder the wires directly |
+| J1 battery | (66.0, 27.0) | JST-PH 2-pin right-angle 6 (X) × 4.5 (Y) × 6 | opening toward x = 70, wires go under the board |
 | D2 | (34.0, 7.0) | axial, 10 mm along X | cathode (band) toward U1 |
 | R2 | (34.0, 13.0) | axial, 10 mm along X | |
+| R3 | (40.5, 47.5) | axial, 10 mm along X (pads 35.5 / 45.5) | |
 | C3 | (36.0, 35.0) | 2.54 pitch | |
 | C4 | (36.0, 42.0) | Ø5 × 11 lying flat along X | |
-| JP1 | (34.0, 47.5) | 2 pins along X | |
-| SW2 slide | (67.0, 36.0) | 3.6 (X) × 8.6 (Y) | actuator points to the **x = 70** edge |
-| BT1 LiPo | (35.0, 25.0) **under the board** | 40 (X) × 30 (Y) × 8 | taped to the floor |
-| Mounting holes | (3,3) (67,3) (3,47) (67,47) | Ø2.2 | drill if the board has none |
+| JP1 | (30.0, 47.5) | **solder bridge**, two pads 2.54 apart along X | closed = battery mode |
+| SW2 slide | (67.0, 36.0) | 3.6 (X) × 8.6 (Y), body 5 mm tall on 1 mm pins, actuator centre ≈ 3.2 mm above the board | actuator points to the **x = 70** edge |
+| BT1 LiPo | cavity (40, 28) **under the board** | 40 (X) × 30 (Y) × 8 | taped to the floor |
+| M2 INMP441 | in the lid pocket | 11 × 14 × 1.6 | 6 wires to J2 |
+| Mounting holes | (34, 3) (34, 47) (6, 40) (64, 21) | Ø2.2 | all four are free of modules and reachable with a screwdriver |
+| Corner notches | 4 × 4 at all four corners | | clear the Ø6 lid bosses |
 
-Solder pins protrude ≈ 1.5 mm below the perfboard. Tallest parts above the perfboard top surface: U1 stack ≈ 7.0 mm (header
-2.5 + PCB 1.0 + shield/USB 3.5), M1 ≈ 6.8 (header 2.5 + PCB 1.0 + USB-C 3.3),
-J2 header ≈ 8 mm, SW1 actuator top 7.3 mm. micro-USB receptacle centre ≈ 5.2 mm
-above the perfboard at x = 15.8 on the y = 0 edge; USB-C receptacle centre
-≈ 5.2 mm above the perfboard at x = 54 on the y = 0 edge.
+Solder pins protrude ≈ 1.5 mm below the perfboard. Tallest parts above the
+perfboard top surface: U1 stack ≈ 7.0 mm (header 2.5 + PCB 1.0 + shield/USB
+3.5), M1 ≈ 6.8 (header 2.5 + PCB 1.0 + USB-C 3.3), SW2 6 mm, J1 6 mm, SW1
+actuator top 7.3 mm, C4 5.5 mm, J2 right-angle 2.5 mm. micro-USB receptacle
+centre ≈ 5.2 mm above the perfboard at x = 15.8 on the y = 0 edge; USB-C
+receptacle centre ≈ 5.2 mm above the perfboard at x = 52.5 on the y = 0 edge.
 
 ## 6. Enclosure (3D print, PETG or PLA, 0.2 mm layers) — designed for an elderly user
 
@@ -135,22 +141,27 @@ edges, rubber feet so the box does not slide when pressed.
   + 4 rubber-foot recesses), **lid** (round hole for the key cap, microphone
   pocket, charge-LED window), **key cap / plunger**.
 - Cavity: **80 × 56 × 24 mm** (7 mm taller than rev. A for the LiPo under the
-  board: 8 mm cell + 1.5 mm solder pins under the perfboard + 1.5 mm air). The perfboard (70 × 50) sits at cavity offset (5, 3): x 5 → 75,
-  y 3 → 53. Walls 2 mm, floor 2 mm, lid 2 mm ⇒ outer **84 × 60 × 28 mm**.
+  board: 8 mm cell + 1.5 mm solder pins under the perfboard + 1.5 mm air).
+  The perfboard (70 × 50, corners notched 4 × 4) sits at cavity offset
+  **(5, 1.5)**: x 5 → 75, y 1.5 → 51.5, so the USB receptacles are ≈ 0.5 mm
+  from the inner face of the y = 0 wall. Walls 2 mm, floor 2 mm, lid 2 mm ⇒ outer **84 × 60 × 28 mm**.
   Outer vertical edges rounded r = 4 mm, bottom and lid-top edges r = 1.5 mm.
 - PCB standoffs: Ø5 mm × **11 mm** tall, Ø1.6 mm pilot hole, at cavity
-  (8, 6), (72, 6), (8, 50), (72, 50). The LiPo (40 × 30 × 8) lies on the floor
+  **(39, 4.5), (39, 48.5), (11, 41.5), (69, 22.5)** (= perfboard holes +
+  offset). The LiPo (40 × 30 × 8) lies on the floor
   between them, centred at cavity (40, 28).
 - Lid bosses: Ø6 mm in the four inner corners (centres 3 mm from each wall),
   full cavity height, Ø2.0 mm pilot holes for M2.5 self-tapping screws; the
   lid has matching Ø2.8 mm countersunk holes.
-- Programming USB slot through the **y = 0 wall**: 12 mm wide × 7 mm tall,
+- Programming micro-USB slot through the **y = 0 wall**: **14 mm wide × 9 mm
+  tall** (the plug's overmold enters the wall so the shell seats fully),
   centre at cavity x = 20.8, z = 17.7 above the inner floor (11 standoff +
   1.6 perfboard + 5.2).
-- Charging USB-C slot through the **y = 0 wall**: 10 mm wide × 5 mm tall,
+- Charging USB-C slot through the **y = 0 wall**: **12 mm wide × 8 mm tall**,
   centre at cavity x = 57.5, z = 17.7.
 - Slide-switch slot through the **x = 80 wall**: 8 mm wide (along y) × 3.5 mm
-  tall, centre at cavity y = 39, z ≈ 14.8 above the inner floor.
+  tall, centre at cavity y = 37.5, z = 16.8 above the inner floor (board top
+  12.6 + 1 mm pins + actuator centre 3.2).
 - Rubber-foot recesses under the floor: Ø8 × 0.8 mm, 6 mm in from each corner.
 - Key-cap hole in the lid: **Ø52.6 mm**, centred at cavity (40, 28) — the lid
   centre.
@@ -158,10 +169,9 @@ edges, rubber feet so the box does not slide when pressed.
   (x × y) recess 1.2 mm deep for the INMP441 breakout and a Ø2 mm sound hole
   through the lid at the pocket centre. The board is held with a drop of glue
   or foam tape, port facing the hole; 6 wires run to J2 on the perfboard.
-- **Charge-LED window** in the lid: 6 (x) × 3 (y) mm slot centred at cavity
-  (66.5, 11), just outside the key-cap flange on the TP4056 side (the module's
-  LEDs are seen obliquely; add a short light pipe or mount M1 with its LEDs
-  toward x = 70 if needed).
+- **Charge-LED window** in the lid: 10 (x) × 2.5 (y) mm slot centred at
+  cavity (57.5, 4.5), right above the TP4056 LEDs next to its USB-C end, in
+  the strip between the wall and the key-cap flange.
 - Key cap: Ø52 mm, domed top (spherical dome rising 4 mm over a 4 mm tall
   cylindrical rim = 8 mm proud of the lid at rest), retaining flange Ø55 × 1.5
   mm under the lid, central stem Ø8 reaching the tactile switch actuator

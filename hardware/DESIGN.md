@@ -76,8 +76,8 @@ big key cap is centred on the lid.
 | Ref | Center (x, y) | Footprint | Orientation |
 |---|---|---|---|
 | U1 D1 mini | (15.8, 25.0) | 25.6 (X) × 34.2 (Y) | micro-USB toward the **y = 0** edge, antenna toward y = 50 |
-| SW1 button | (36.0, 25.0) | 12 × 12 | centre of the device |
-| BT1 holder | (56.0, 13.0) | ≈ 24 × 24 | cell loads from the top |
+| SW1 button | (35.0, 25.0) | 12 × 12 | exact centre of the enclosure (cavity 40, 28) |
+| BT1 holder | (53.5, 14.0) | ≈ 24 × 24 | cell loads from the top; x 41.5 → 65.5 |
 | C1 | (54.0, 35.0) | Ø8 × 20, lying flat along X | x 44 → 64 |
 | C2 | (54.0, 44.0) | Ø8 × 20, lying flat along X | x 44 → 64 |
 | C4 | (36.0, 42.0) | Ø5 × 11 lying flat along X | |
@@ -85,7 +85,7 @@ big key cap is centred on the lid.
 | R1 | (36.0, 7.0) | axial, 10 mm along X | |
 | R2 | (36.0, 13.0) | axial, 10 mm along X | |
 | JP1 | (34.0, 47.5) | 2 pins along X | |
-| SW2 slide | (67.0, 44.0) | 3.6 (X) × 8.6 (Y) | actuator points to the **x = 70** edge |
+| SW2 slide | (67.0, 36.0) | 3.6 (X) × 8.6 (Y) | actuator points to the **x = 70** edge |
 | Mounting holes | (3,3) (67,3) (3,47) (67,47) | Ø2.2 | drill if the board has none |
 
 Tallest parts above the perfboard top surface: U1 stack ≈ 7.0 mm (header
@@ -115,7 +115,7 @@ no sharp edges, rubber feet so the box does not slide when pressed.
   cavity x = 20.8, z = 10.7 above the inner floor (4 standoff + 1.6 perfboard
   + 5.2).
 - Slide-switch slot through the **x = 80 wall**: 8 mm wide (along y) × 3.5 mm
-  tall, centre at cavity y = 47, z ≈ 7.8 above the inner floor.
+  tall, centre at cavity y = 39, z ≈ 7.8 above the inner floor.
 - Rubber-foot recesses under the floor: Ø8 × 0.8 mm, 6 mm in from each corner.
 - Key-cap hole in the lid: **Ø52.6 mm**, centred at cavity (40, 28) — the lid
   centre.

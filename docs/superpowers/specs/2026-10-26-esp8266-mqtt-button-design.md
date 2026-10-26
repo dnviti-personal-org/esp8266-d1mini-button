@@ -105,6 +105,22 @@ tested natively.
 - `pio run -e d1_mini`: firmware builds.
 - Manual: `pio device monitor`, configure via menu, observe HA auto-discovery.
 
+## Battery mode (added 2026-10-26 after the CR2032 requirement)
+
+- New settings: `power_mode` (`battery` default | `always_on`), `awake_seconds`
+  (config window, default 60).
+- `battery`: boot reason `REASON_DEEP_SLEEP_AWAKE` ⇒ a press woke us: connect,
+  publish `ON` (non retained) + `vcc`, flush, `ESP.deepSleep(0)`.
+  `REASON_EXT_SYS_RST` (press while awake, or a flash) ⇒ publish the press but
+  keep the configuration window. `REASON_DEFAULT_RST` ⇒ configuration window
+  only. Unconfigured Wi-Fi/MQTT ⇒ stay awake 15 min. Serial input extends the
+  window by 60 s; `stay` cancels it; `sleep` sleeps now. Network unreachable
+  for 20 s after a wake ⇒ press lost, sleep.
+- No LWT/availability in battery mode; discovery carries `off_delay: 2`.
+- A second discovery entity publishes the supply voltage from `ADC_MODE(ADC_VCC)`.
+- Wi-Fi channel + BSSID cached in RTC user memory for fast reconnect.
+- Hardware: see `hardware/DESIGN.md`.
+
 ## Out of scope
 
 OTA updates, web UI, multiple buttons, TLS to the broker.
